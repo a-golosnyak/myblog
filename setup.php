@@ -9,7 +9,19 @@
         <?php
         require_once 'functions.php';
 
-        $connection = new mysqli('localhost', root, '', 'test_blog_db');
+        //--- Проверяем есть ли наша база данных, если нет - создаем --------------------
+        $link = mysqli_connect('localhost', 'root', '');
+
+        if(!$link)
+            $die('Couldnt connect: ' . mysql_error());
+
+        $db_selected = mysqli_select_db( $link, 'test_blog_db');
+
+        if($db_selected != true)
+            $query = 'CREATE DATABASE test_blog_db';    
+
+        //--- Работаем по созданию нужной нам таблицы -----------------------------------
+        $connection = new mysqli('localhost', 'root', '');
 
         if ($connection->connect_error){
             echo "Не получилось соединиться с базой данных." . "<br>";
@@ -19,10 +31,14 @@
         $query = "SELECT * FROM user";
         $query = "CREATE TABLE IF NOT EXISTS user,
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                
-         "
+                user VARCHAR(16),
+                password VARCHAR(16),
+                screen_name VARCHAR(16)";
 
-        if($result = $connection->query($query)){
+        $result = $connection->query($query);
+
+        if($result)
+        {
             echo "print_r ";
             print_r($result);
             echo "<br>";
@@ -31,7 +47,10 @@
             echo $result;
             echo "<br>";
         }
-/*        createTable('members',
+        else
+           echo "error "; 
+
+        /*        createTable('members',
         'user VARCHAR(16),
         pass VARCHAR(16),
         INDEX(user(6))');
