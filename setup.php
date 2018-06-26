@@ -9,7 +9,7 @@
         <?php
         require_once 'functions.php';
 
-        $connection = new mysqli('localhost', root, '', 'db_symf_test');
+        $connection = new mysqli('localhost', root, '', 'test_blog_db');
 
         if ($connection->connect_error){
             echo "Не получилось соединиться с базой данных." . "<br>";
@@ -17,6 +17,10 @@
         }
 
         $query = "SELECT * FROM user";
+        $query = "CREATE TABLE IF NOT EXISTS user,
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                
+         "
 
         if($result = $connection->query($query)){
             echo "print_r ";
