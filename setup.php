@@ -9,51 +9,77 @@
         <?php
         require_once 'functions.php';
 
-        //--- Проверяем есть ли наша база данных, если нет - создаем --------------------
-        $link = mysqli_connect('localhost', 'root', '');
-
+        //=== CREATE DATABASE ================================== test_blog_db ================
+        $link = mysqli_connect('127.0.0.1', 'root', '');            // Соединяемся с сервером
         if(!$link)
-            $die('Couldnt connect: ' . mysql_error());
-
-        $db_selected = mysqli_select_db( $link, 'test_blog_db');
-
-        if($db_selected != true)
-            $query = 'CREATE DATABASE test_blog_db';    
-
-        //--- Работаем по созданию нужной нам таблицы -----------------------------------
-        $connection = new mysqli('localhost', 'root', '');
-
-        if ($connection->connect_error){
-            echo "Не получилось соединиться с базой данных." . "<br>";
-            die($connection->connect_error);
+            $die('Report 1. Connection problems. ' . mysqli_error());
+        
+        $db_selected = mysqli_select_db( $link, 'test_blog_db');    // Пытаемся выбрать базу
+        if(!$db_selected)
+        {
+            $query = "CREATE DATABASE test_blog_db";  
+            $result = mysqli_query($link, $query);                  // Запрос без создания сущности
+            echo "Database test_blog_db created.";
         }
+        else
+            echo "DB test_blog_db exists.";
+        echo "<br>";
 
-        $query = "SELECT * FROM user";
-        $query = "CREATE TABLE IF NOT EXISTS user,
+        //=== CREATE TABLE ================================== users ==========================
+        $connection = new mysqli('localhost', 'root', '', 'test_blog_db');
+        if ($connection->connect_error)
+            die("Connectio attemt denied " . $connection->connect_error);
+
+        $query = 'CREATE TABLE IF NOT EXISTS users (
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 user VARCHAR(16),
                 password VARCHAR(16),
-                screen_name VARCHAR(16)";
+                screen_name VARCHAR(16))';
 
         $result = $connection->query($query);
 
-        if($result)
-        {
-            echo "print_r ";
-            print_r($result);
-            echo "<br>";
-
-            echo "echo";
-            echo $result;
-            echo "<br>";
+        if($result)          /* if($result)  - если все нормально. if(!$result) - если что-то не так */
+        { 
+            print_r("Table users created." . $result . "<br>");
         }
         else
-           echo "error "; 
+           echo "Table creation error.";
 
-        /*        createTable('members',
-        'user VARCHAR(16),
-        pass VARCHAR(16),
-        INDEX(user(6))');
+        //=== CREATE TABLE ================================== posts ==========================
+        $connection = new mysqli('localhost', 'root', '', 'test_blog_db');
+        if ($connection->connect_error)
+            die("Connectio attemt denied " . $connection->connect_error);
+
+        $query = 'CREATE TABLE IF NOT EXISTS posts (
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                user VARCHAR(16),
+                password VARCHAR(16),
+                screen_name VARCHAR(16))';
+
+        $result = $connection->query($query);
+
+        if($result)          /* if($result)  - если все нормально. if(!$result) - если что-то не так */
+        { 
+            print_r("Table users created." . $result . "<br>");
+        }
+        else
+           echo "Table creation error.";
+
+        //=== Показать таблицы SHOW TABLES ========================= SHOW TABLES =============
+        $query = "DESCRIBE user";
+        $result = $connection->query($query);
+        echo "<pre>";
+        print_r($result);
+        mysqli_fetch_array($result, MYSQL_ASSOC);
+        echo "</pre>";  
+        echo "<br>";
+        
+/*
+        createTable('user',
+        'id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        user VARCHAR(16),
+        password VARCHAR(16),
+        screen_name VARCHAR(16)');
 
         createTable('messages', 
         'id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -81,3 +107,24 @@
         <br>...done.
     </body>
 </html>
+
+
+<?php
+
+/**********************************************************************
+  * @brief  Функция возвращает случайную строку.
+  * @param  length - длинна строки 
+  * @retval Собственно строка.
+   ********************************************************************/
+function RandString($length = 2)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+?>
