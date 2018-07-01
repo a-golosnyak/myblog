@@ -52,9 +52,10 @@
 
         $query = 'CREATE TABLE IF NOT EXISTS posts (
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                user VARCHAR(16),
-                password VARCHAR(16),
-                screen_name VARCHAR(16))';
+                author_id INT UNSIGNED,
+                pub_date DATETIME DEFAULT NULL,
+                title VARCHAR(255),
+                post_body TEXT)';
 
         $result = $connection->query($query);
 
@@ -65,14 +66,48 @@
         else
            echo "Table creation error.";
 
-        //=== Показать таблицы SHOW TABLES ========================= SHOW TABLES =============
-        $query = "DESCRIBE user";
+        //=== Создаем элементы таблицы ================================ INSERT ================
+ /*       $query = "INSERT INTO users VALUES ('1', 'admin', '1111', 'adm')";   // id=1 уже есть. Будет ошибка.
         $result = $connection->query($query);
-        echo "<pre>";
-        print_r($result);
-        mysqli_fetch_array($result, MYSQL_ASSOC);
-        echo "</pre>";  
+
+        if($result) echo "Item created.";
+        else        echo "Item creation error.";
         echo "<br>";
+
+        $uniq_str = RandString(2);
+
+        //--- Вставка нового элемента ---------------------------------------------
+        $query = "INSERT INTO users VALUES (
+                   '0', 'Vasya" . $uniq_str . "', '1111', 'Vas" . $uniq_str . "')";
+        $result = $connection->query($query);
+
+        if($result)                                      
+            echo "Item created.";
+        else
+           echo "Item creation error.";
+        echo "<br>";*/
+
+        $query = "INSERT INTO posts VALUES ('1', 'admin', '1111', 'adm')";   // id=1 уже есть. Будет ошибка.
+        $result = $connection->query($query);
+
+        if($result) echo "Item created.";
+        else        echo "Item creation error.";
+        echo "<br>";
+
+        $uniq_str = RandString(2);
+
+        //--- Вставка нового элемента ---------------------------------------------
+        $query = "INSERT INTO users VALUES (
+                   '0', 'Vasya" . $uniq_str . "', '1111', 'Vas" . $uniq_str . "')";
+        $result = $connection->query($query);
+
+        if($result)                                      
+            echo "Item created.";
+        else
+           echo "Item creation error.";
+        echo "<br>";
+
+
         
 /*
         createTable('user',
@@ -80,6 +115,11 @@
         user VARCHAR(16),
         password VARCHAR(16),
         screen_name VARCHAR(16)');
+
+        createTable('members',
+        'user VARCHAR(16),
+        pass VARCHAR(16),
+        INDEX(user(6))');
 
         createTable('messages', 
         'id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -101,8 +141,8 @@
         'user VARCHAR(16),
         text VARCHAR(4096),
         INDEX(user(6))');
-        
 */
+
         ?>
         <br>...done.
     </body>

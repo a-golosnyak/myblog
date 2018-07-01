@@ -60,7 +60,7 @@
         $uniq_str = RandString(2);
 
         //--- Вставка нового элемента ---------------------------------------------
-/*        $query = "INSERT INTO user VALUES (
+        $query = "INSERT INTO user VALUES (
                    '0', 'Vasya" . $uniq_str . "', '1111', 'Vas" . $uniq_str . "')";
         $result = $connection->query($query);
 
@@ -68,11 +68,10 @@
             echo "Item created.";
         else
            echo "Item creation error.";
-        echo "<br>";    */
+        echo "<br>";    
 
-        //=== Создаем элементы таблицы =========================== INSERT IF NOT EXIST =======
-/*
-        $query = "INSERT INTO user (user, password, screen_name)
+        //=== Создаем элементы таблицы =========================== INSERT IF NOT EXIST - =====
+/*        $query = "INSERT INTO user (user, password, screen_name)
                     SELECT * FROM (SELECT \'Vasya1\', \'111\', \'Vas\') AS tmp 
                     WHERE NOT EXISTS (
                         SELECT user FROM user WHERE name = \'Vasya\') LIMIT 1";
