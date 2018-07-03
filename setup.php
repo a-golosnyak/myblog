@@ -87,7 +87,11 @@
            echo "Item creation error.";
         echo "<br>";*/
 
-        $query = "INSERT INTO posts VALUES ('1', 'admin', '1111', 'adm')";   // id=1 уже есть. Будет ошибка.
+        $connection = new mysqli('localhost', 'root', '', 'test_blog_db');
+        if ($connection->connect_error)
+            die("Connectio attemt denied " . $connection->connect_error);
+
+        $query = "INSERT INTO users VALUES ('1', 'admin', '1111', 'adm')";   // id=1 уже есть. Будет ошибка.
         $result = $connection->query($query);
 
         if($result) echo "Item created.";
@@ -98,7 +102,7 @@
 
         //--- Вставка нового элемента ---------------------------------------------
         $query = "INSERT INTO users VALUES (
-                   '0', 'Vasya" . $uniq_str . "', '1111', 'Vas" . $uniq_str . "')";
+                   '0', 'Vasya" . $uniq_str . "' , '1111', 'Vas" . $uniq_str . "')";
         $result = $connection->query($query);
 
         if($result)                                      
