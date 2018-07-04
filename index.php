@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,13 +38,16 @@
                 $userstr  = " ($user)";
             }
             else 
-                $loggedin = FALSE;
+                $userLoggedIn = FALSE;
+
+            var_dump($_SESSION);
 
             if ($userLoggedIn == true) 
             {
                 echo    "<div class='alert alert-primary' role='alert' style='width: 100%; margin-bottom: 0;'>
                             <div class='container'>
                                 <strong>Вход пользователем выполнен.</strong>
+                                <div>$userstr</div>
                             </div>
                         </div>";
             } 
@@ -52,7 +59,7 @@
                             </div>
                         </div>";
 
-                }
+            }
         ?>
         
         

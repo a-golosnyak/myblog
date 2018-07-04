@@ -9,7 +9,7 @@
         <?php
         require_once 'functions.php';
 
-        //=== CREATE DATABASE ================================== test_blog_db ================
+        //=== CREATE DATABASE ================================== test_blog_db ==========================
         $link = mysqli_connect('127.0.0.1', 'root', '');            // Соединяемся с сервером
         if(!$link)
             $die('Report 1. Connection problems. ' . mysqli_error());
@@ -25,7 +25,7 @@
             echo "DB test_blog_db exists.";
         echo "<br>";
 
-        //=== CREATE TABLE ================================== users ==========================
+        //=== CREATE TABLE ================================== users ====================================
         $connection = new mysqli('localhost', 'root', '', 'test_blog_db');
         if ($connection->connect_error)
             die("Connectio attemt denied " . $connection->connect_error);
@@ -45,7 +45,7 @@
         else
            echo "Table creation error.";
 
-        //=== CREATE TABLE ================================== posts ==========================
+        //=== CREATE TABLE ================================== posts ====================================
         $connection = new mysqli('localhost', 'root', '', 'test_blog_db');
         if ($connection->connect_error)
             die("Connectio attemt denied " . $connection->connect_error);
@@ -66,8 +66,8 @@
         else
            echo "Table creation error.";
 
-        //=== Создаем элементы таблицы ================================ INSERT ================
- /*       $query = "INSERT INTO users VALUES ('1', 'admin', '1111', 'adm')";   // id=1 уже есть. Будет ошибка.
+        //=== Создаем пользователей =================================== INSERT ========================
+/*        $query = "INSERT INTO users VALUES ('1', 'admin', '1111', 'adm')";   // id=1 уже есть. Будет ошибка.
         $result = $connection->query($query);
 
         if($result) echo "Item created.";
@@ -82,35 +82,34 @@
         $result = $connection->query($query);
 
         if($result)                                      
-            echo "Item created.";
+            echo "User created.";
         else
-           echo "Item creation error.";
-        echo "<br>";*/
-
-        $connection = new mysqli('localhost', 'root', '', 'test_blog_db');
-        if ($connection->connect_error)
-            die("Connectio attemt denied " . $connection->connect_error);
-
-        $query = "INSERT INTO users VALUES ('1', 'admin', '1111', 'adm')";   // id=1 уже есть. Будет ошибка.
-        $result = $connection->query($query);
-
-        if($result) echo "Item created.";
-        else        echo "Item creation error.";
+           echo "User creation error.";
         echo "<br>";
 
-        $uniq_str = RandString(2);
+        //=== Создаем посты ========================================= INSERT ==========================
+        $randPost = RandString(20);
+        $randTitle = 'string';
+
+        for($i=0; $i<5; $i++)
+            $randTitle[$i] = $randPost[$i]; 
+
+        echo $randPost;
+        echo "<br>";
+        echo $randTitle;
+        echo "<br>";
 
         //--- Вставка нового элемента ---------------------------------------------
-        $query = "INSERT INTO users VALUES (
-                   '0', 'Vasya" . $uniq_str . "' , '1111', 'Vas" . $uniq_str . "')";
+        $query = "INSERT INTO posts VALUES 
+        ('0', '4', '2018-01-01 01:00:00','titl ". $randTitle ."', 'postik ". $randPost ."')";
         $result = $connection->query($query);
 
         if($result)                                      
-            echo "Item created.";
+            echo "Post created.";
         else
-           echo "Item creation error.";
+           echo "Post creation error.";
         echo "<br>";
-
+*/
 
         
 /*
@@ -162,7 +161,7 @@
    ********************************************************************/
 function RandString($length = 2)
 {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';       // 0123456789
     $charactersLength = strlen($characters);
     $randomString = '';
     for ($i = 0; $i < $length; $i++) {

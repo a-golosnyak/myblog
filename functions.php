@@ -1,6 +1,6 @@
 <?php // Example 26-1: functions.php
     $dbhost  = 'localhost';    // Unlikely to require changing
-    $dbname  = 'TestBlogDb';   // Modify these...
+    $dbname  = 'test_blog_db';   // Modify these...
     $dbuser  = 'root';   // ...variables according
     $dbpass  = '';   // ...to your installation
     $appname = "TestBlog"; // ...and preference
