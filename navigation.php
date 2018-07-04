@@ -1,10 +1,7 @@
-
-<link rel="stylesheet" href="css/main.css">
-
 <div class="navigation">
     <div class="row ">
         <div class="container">
-            <div class=" col-xs-6"> 
+            <div class="col-xs-6"> 
                 <div class="nav nav-tabs ">
                     <div class="nav-item">
                         <div class="nav-link " href="#">Главная</div>
@@ -43,49 +40,38 @@
             <div class=" col-xs-2">
                 <div class="nav nav-tabs">
                     <div class="nav-item dropdown " style="left: auto; right: 0;">
-                        <?php /*
+
+                        <?php 
                         if ($userLoggedIn == true) 
                         {
-                            echo    "<div class='alert alert-primary' role='alert' style='width: 100%; margin-bottom: 0;'>
-                                        <div class='container'>
-                                            <strong>Вход пользователем выполнен.</strong>
-                                            <div>$userstr</div>
-                                        </div>
+                            echo    "<div class='media-middle nav-item'>
+                                        <img class='avatar'src='images/ava/avamin.jpg'alt='...'>
+                                    </div>
+
+                                    <div class='nav-link dropdown-toggle nav-item offset-sm-0'data-toggle='dropdown'href='#'role='button'    aria-haspopup='true'aria-expanded='false'>
+                                    </div>
+                                    <div class='dropdown-menu dropdown-menu-right'>
+                                        <div class='dropdown-item'href='#'>Action</div>
+                                        <div class='dropdown-divider'></div>
+                                        <div class='dropdown-item'href='#'>Another action</div>
+                                        <div class='dropdown-item'href='#'>Something else here</div>
+                                        <div class='dropdown-item'href='#'>Separated link</div>
                                     </div>";
                         } 
                         else 
                         { 
-                            echo    "<div class='alert alert-danger' role='alert' style='width: 100%; margin-bottom: 0;'>
-                                        <div class='container'>
-                                            <strong>Пользователь не зарегистрирован.</strong>
-                                        </div>
-                                    </div>";
+                            echo    "<div class='nav-link dropdown-toggle' data-toggle='dropdown' href='#'' role='button'         aria-haspopup='true' aria-expanded='false'>Sign In</div>
+                                        <div class='dropdown-menu dropdown-menu-right'>
+                                            <div class='dropdown-item' href='#'>Action</div>
+                                            <div class='dropdown-divider'></div>
+                                            <div class='dropdown-item' href='#'>Another action</div>
+                                            <div class='dropdown-item' href='#'>Something else here</div>
+                                            <div class='dropdown-item' href='#'>Separated link</div>
+                                        </div> ";
 
-                        }       */
+                        }       
                     ?>      
-         <!--               <div class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign In</div>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div class="dropdown-item" href="#">Action</div>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-item" href="#">Another action</div>
-                            <div class="dropdown-item" href="#">Something else here</div>
-                            <div class="dropdown-item" href="#">Separated link</div>
-                        </div>          -->
-
-                        <div class="media-left media-middle">
-                                <img class="avatar" src="images/ava/avamin.jpg" alt="..." style="width: 40px; display: inline; float: left;">
-                        </div>
-
-                        <div class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"     aria-haspopup="true" aria-expanded="false" style="display: block; float: right;">
-                        </div>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div class="dropdown-item" href="#">Action</div>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-item" href="#">Another action</div>
-                            <div class="dropdown-item" href="#">Something else here</div>
-                            <div class="dropdown-item" href="#">Separated link</div>
-                        </div>
-
+                                 
                     </div>
                 </div> 
             </div>

@@ -19,6 +19,8 @@
 
     <body>
         <?php
+            global $userLoggedIn;
+
             require_once  'functions.php' ; 
 
             $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
