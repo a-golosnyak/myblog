@@ -6,12 +6,14 @@
  */
 @media (min-width: 48em) {
   html {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 h1, .h1,
@@ -96,6 +98,18 @@ h6, .h6 {
     border:1px solid green;
 }
 
+.user_nav_item::after {         /* Убираем отступ только стрелочки где регистрация */
+    margin-left: 0em;
+}
+
+
+.btn-md, .btn-group-md > .btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+  margin-bottom: 5px;
+}
+
 /*
  * Header -------------------------------------------------------------------
  */
@@ -141,6 +155,11 @@ h6, .h6 {
   border-top-right-radius: 5;
   border-top-left-radius: 5;
 }
+
+.user_nav_item{
+    margin-left: 0px;
+}
+
 /*
  * Sidebar ------------------------------------------------------------------
  */
@@ -190,7 +209,7 @@ h6, .h6 {
 
 .blog-post-title {
   margin-bottom: .25rem;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 .blog-post-meta {
