@@ -24,10 +24,9 @@
                 die($connection->connect_error);
             }
 
- //           require_once  'header.php' ;                
+            require_once  'header.php' ;                
             require_once  'navigation.php' ;
              
-
    //         var_dump($_SESSION);
 
             if ($userLoggedIn == true) 

@@ -62,7 +62,7 @@
                         } 
                         else 
                         { 
-                            echo    "<div class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Sign In
+                            echo    "<div class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Вход
                                 </div>
                                 <div class='dropdown-menu dropdown-menu-right'>
                                     <div class='dropdown-item' href='#'>
@@ -78,12 +78,12 @@
                                     <div class='dropdown-item' href='#'>
                                         <div class='checkbox '>
                                             <label>
-                                                <input type='checkbox' value='remember-me'> Remember me
+                                                <input type='checkbox' value='remember-me'> Запомнить меня
                                             </label>
                                         </div>
                                     </div>
                                     <div class='dropdown-item' href='#'>
-                                        <button class='btn btn-lg btn-primary btn-block' type='submit'>Sign in</button>
+                                        <button class='btn btn-lg btn-primary btn-block' type='submit'>Вход </button>
                                     </div>
                                     <div class='dropdown-divider'></div>
                                     <div class='dropdown-item' href='#'>
