@@ -33,8 +33,7 @@
             {
                 echo    "<div class='alert alert-primary' role='alert' style='width: 100%; margin-bottom: 0;'>
                             <div class='container'>
-                                <strong>Вход пользователем выполнен.</strong>
-                                <div>$userstr</div>
+                                <strong>Вход пользователем выполнен </strong>$userstr
                             </div>
                         </div>";
             } 

@@ -10,6 +10,6 @@ $userstr = ' (Guest)';
     else 
         $userLoggedIn = FALSE;
 
-    $userLoggedIn = true;
+//    $userLoggedIn = true;
 ?>
 
