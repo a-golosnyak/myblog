@@ -1,5 +1,6 @@
 <?php // Example 26-7: login.php
-$userstr = ' (Guest)';
+
+	$userstr = '(Guest)';
 
     if (isset($_SESSION['user']))
     {

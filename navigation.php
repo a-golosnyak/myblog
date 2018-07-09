@@ -57,28 +57,32 @@
                                         <div class='dropdown-divider'></div>
                                         <div class='dropdown-item'href='#'>Профиль</div>
                                         <div class='dropdown-divider'></div>
-                                        <div class='dropdown-item'href='#'>Выход</div>
+                                        <div class='dropdown-item'href='#'>
+                                            <a href='logout.php'>Выход</a>
+                                        </div>
                                     </div>";
                         } 
                         else 
                         { 
-                            echo    "<div class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Вход
+                            echo    "
+                            <form class='form-signin' method='post' action='index.php'>
+
+                                <div class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Вход
                                 </div>
                                 <div class='dropdown-menu dropdown-menu-right'>
                                     <div class='dropdown-item' href='#'>
                                         <label for='inputEmail' class='sr-only'></label>
-                                        <input type='email' id='inputEmail' maxlength='30' size='20' class='form-control' placeholder='Email address' required autofocus>
+                                        <input type='text' name='user' maxlength='30' size='20' class='form-control' placeholder='Email address' required autofocus>
                                     </div>
 
-                                <form class='form-signin'>
                                     <div class='dropdown-item' href='#'>
                                         <label for='inputPassword' class='sr-only'>Password</label>
-                                        <input type='password' id='inputPassword' class='form-control' size='40' placeholder='Password' required>
+                                        <input type='password' name='pass' class='form-control' size='40' placeholder='Password' required>
                                     </div>
                                     <div class='dropdown-item' href='#'>
                                         <div class='checkbox '>
                                             <label>
-                                                <input type='checkbox' value='remember-me'> Запомнить меня
+                                                <input type='checkbox' value='remember-me'>  Запомнить меня  
                                             </label>
                                         </div>
                                     </div>
@@ -88,31 +92,31 @@
                                     <div class='dropdown-divider'></div>
                                     <div class='dropdown-item' href='#'>
                                         <button class='btn btn-md btn-primary btn-block' type='submit'>Регистрация</button>
-                                    </div>
-                                </form>
-                            </div> 
-                                ";
+                                    </div> 
+                                </div> 
+                            </form>
+                                "; 
+                        }    
 
-                        }       
-                    ?>      
+                        if(isset($_POST['user']))
+                        {
+                            $user = sanitizeString($_POST['user']);
+                            $pass = sanitizeString($_POST['pass']);
 
-                            
-                       
+                            if ($user == "" || $pass == "")
+                                $error = "Заполните пожалуйста все поля<br>";
+                            else
+                            {
+                                $_SESSION['user'] = $user;
+                                $_SESSION['pass'] = $pass;
 
-  <!--                  <form class="form-signin">
-                        <h2 class="form-signin-heading">Please sign in</h2>
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                        <div class="checkbox">
-                        <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                        </label>
-                        </div>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                    </form>
--->
+                     //           header("Location: http://myblog/index.php");
+                                echo '<meta http-equiv="refresh" content="0; url=http://myblog">';    
+                                die();
+
+                            }
+                        }
+                    ?>       
                     </div>
                 </div> 
             </div>

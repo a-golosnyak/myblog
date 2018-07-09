@@ -15,6 +15,7 @@
             $die('Report 1. Connection problems. ' . mysqli_error());
         
         $db_selected = mysqli_select_db( $link, 'test_blog_db');    // Пытаемся выбрать базу
+        
         if(!$db_selected)
         {
             $query = "CREATE DATABASE test_blog_db";  
