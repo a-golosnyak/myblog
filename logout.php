@@ -4,8 +4,9 @@
     if (isset($_SESSION['user']))
     {
         session_unset();
-//      header("Location: http://myblog/index.php");                          // Пока что не работает"
-        echo '<meta http-equiv="refresh" content="0; url=http://myblog">';    
+        
+        header('Location: index.php');    
+ //       echo '<meta http-equiv="refresh" content="0; url=index.php">';    
         die();
 
     }

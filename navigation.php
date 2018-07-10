@@ -4,7 +4,9 @@
             <div class="col-xs-6"> 
                 <div class="nav nav-tabs ">
                     <div class="nav-item">
-                        <div class="nav-link " href="#">Главная</div>
+                        <div class="nav-link">
+                            <a href="index.php">Главная</a>
+                        </div>
                     </div>
                     <div class="nav-item dropdown">
                         <div class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Рубрика</div>
@@ -30,8 +32,8 @@
             <div class=" col-xs-3"> 
                 <div class="row">
                     <div class="nav-tabs">
-                        <form class="form-inline my-2 my-xs-4 nav-item" >
-                            <input class="form-control mr-xs-2" type="search" placeholder="Найти" aria-label="Search" size="12" style="margin-top: 2px;">
+                        <form class=" nav-item" >
+                            <input class="form-control " type="search" placeholder="Найти" aria-label="Search" size="12" ">
                         </form>
                         <div class="item-search nav-item" ><i class="fab fa-sistrix"></i></div>
                     </div>
@@ -43,10 +45,11 @@
 
                         <?php
                         require_once  'log.php' ; 
-
+                        require_once  'functions.php' ; 
+                        
                         if ($userLoggedIn == true) 
                         {
-                            echo    "<div class='media-middle nav-item'>
+                            echo    "<div class=' nav-item'>
                                         <img class='avatar'src='images/ava/avamin.jpg'alt='...'>
                                     </div>
 
@@ -57,9 +60,8 @@
                                         <div class='dropdown-divider'></div>
                                         <div class='dropdown-item'href='#'>Профиль</div>
                                         <div class='dropdown-divider'></div>
-                                        <div class='dropdown-item'href='#'>
-                                            <a href='logout.php'>Выход</a>
-                                        </div>
+                                        <div class='dropdown-item'>
+                                        <a href='logout.php'>Выход</a></div>
                                     </div>";
                         } 
                         else 
@@ -82,7 +84,7 @@
                                     <div class='dropdown-item' href='#'>
                                         <div class='checkbox '>
                                             <label>
-                                                <input type='checkbox' value='remember-me'>  Запомнить меня  
+                                                <input type='checkbox' name='remember'>  Запомнить меня  
                                             </label>
                                         </div>
                                     </div>
@@ -97,25 +99,6 @@
                             </form>
                                 "; 
                         }    
-
-                        if(isset($_POST['user']))
-                        {
-                            $user = sanitizeString($_POST['user']);
-                            $pass = sanitizeString($_POST['pass']);
-
-                            if ($user == "" || $pass == "")
-                                $error = "Заполните пожалуйста все поля<br>";
-                            else
-                            {
-                                $_SESSION['user'] = $user;
-                                $_SESSION['pass'] = $pass;
-
-                     //           header("Location: http://myblog/index.php");
-                                echo '<meta http-equiv="refresh" content="0; url=http://myblog">';    
-                                die();
-
-                            }
-                        }
                     ?>       
                     </div>
                 </div> 
@@ -125,6 +108,81 @@
 
     </div>
 </div>
+
+<?php
+
+//$user = $pass = "";
+
+if(isset($_POST['user']))
+{
+    $user = sanitizeString($_POST['user']);
+    $pass = sanitizeString($_POST['pass']);
+
+    if ($user == "" || $pass == "")
+        echo "Заполните пожалуйста все поля<br>";
+    else
+    {
+        $query = "SELECT * FROM users WHERE user='$user' AND password=$pass";
+        $result = $connection->query($query);
+
+        if($result->num_rows == 0)
+        {
+            $status =  "Пользователь не зарегистрирован";
+
+            echo "
+            <div class='alert alert-danger' role='alert' style='width: 100%; margin-bottom: 0;'>
+                <div class='container'>
+                    <strong>$status</strong>$userstr
+                </div>
+            </div>";
+        }
+        else
+        {
+            if (isset($_POST['remember']))
+            {
+                $status = "Галочку remember влупили. ";
+            }
+
+            $_SESSION['user'] = $user;
+            $_SESSION['pass'] = $pass;
+
+            $status = $status . "Вход выполнен пользователем";
+
+            echo "
+            <div class='alert alert-success' role='alert' style='width: 100%; margin-bottom: 0;'>
+                <div class='container'>
+                    <strong>$status</strong>$userstr
+                </div>
+            </div>";
+
+//            echo '<meta http-equiv="refresh" content="0" url="http://myblog/">';    
+ //           die();
+        }    
+    }       
+}
+elseif (isset($_COOKIE['user']))
+{
+    $user = $_COOKIE['user'];
+    $pass = $_COOKIE['pass'];
+
+    $_SESSION['user'] = $user;
+    $_SESSION['pass'] = $pass;
+
+    $status = "Вход выполнен пользователем";
+
+    echo "
+    <div class='alert alert-success' role='alert' style='width: 100%; margin-bottom: 0;'>
+        <div class='container'>
+            <strong>$status</strong>$userstr
+        </div>
+    </div>";
+}
+
+
+?>
+
+
+
 
 
 

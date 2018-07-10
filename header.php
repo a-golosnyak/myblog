@@ -1,6 +1,7 @@
 <div class="blog-header">
     <div class="container">
-        <h3 class="blog-title">The Blog</h3>
+        <h3 class="blog-title"> 
+            <a href="index.php">The Blog</a></h3>
         <p class="lead blog-description">An example blog template built with Bootstrap.</p>
     </div>
 </div>

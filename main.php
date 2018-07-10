@@ -29,22 +29,7 @@
              
    //         var_dump($_SESSION);
 
-            if ($userLoggedIn == true) 
-            {
-                echo    "<div class='alert alert-primary' role='alert' style='width: 100%; margin-bottom: 0;'>
-                            <div class='container'>
-                                <strong>Вход пользователем выполнен </strong>$userstr
-                            </div>
-                        </div>";
-            } 
-            else 
-            { 
-                echo    "<div class='alert alert-danger' role='alert' style='width: 100%; margin-bottom: 0;'>
-                            <div class='container'>
-                                <strong>Пользователь не зарегистрирован.</strong>
-                            </div>
-                        </div>";
-            }
+            
         ?>
         
         <!-- ---------------------------------------------------------------------------------------- -->
