@@ -3,8 +3,10 @@
 
     if (isset($_SESSION['user']))
     {
+        $_SESSION = array();
+        setcookie('user', $user, time() - 60*60*24*31);        // Анулируем Remember me
         session_unset();
-        
+
         header('Location: index.php');    
  //       echo '<meta http-equiv="refresh" content="0; url=index.php">';    
         die();
@@ -14,6 +16,10 @@
     {
         echo "<div class='main'><br>" .
         "You cannot log out because you are not logged in";
+
+        $_SESSION = array();
+        setcookie('user', $user, time() - 60*60*24*31);        // Анулируем Remember me
+        session_unset();
     }
 ?>
 

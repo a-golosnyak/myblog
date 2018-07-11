@@ -43,9 +43,9 @@
                 <div class="nav nav-tabs">
                     <div class="nav-item dropdown " style="left: auto; right: 0;">
 
-                        <?php
-                        require_once  'log.php' ; 
+                    <?php
                         require_once  'functions.php' ; 
+                        require_once  'log.php' ; 
                         
                         if ($userLoggedIn == true) 
                         {
@@ -103,86 +103,20 @@
                     </div>
                 </div> 
             </div>
-
         </div>
-
     </div>
 </div>
 
 <?php
 
-//$user = $pass = "";
+echo $signin_message;
 
-if(isset($_POST['user']))
-{
-    $user = sanitizeString($_POST['user']);
-    $pass = sanitizeString($_POST['pass']);
-
-    if ($user == "" || $pass == "")
-        echo "Заполните пожалуйста все поля<br>";
-    else
-    {
-        $query = "SELECT * FROM users WHERE user='$user' AND password=$pass";
-        $result = $connection->query($query);
-
-        if($result->num_rows == 0)
-        {
-            $status =  "Пользователь не зарегистрирован";
-
-            echo "
-            <div class='alert alert-danger' role='alert' style='width: 100%; margin-bottom: 0;'>
-                <div class='container'>
-                    <strong>$status</strong>$userstr
-                </div>
-            </div>";
-        }
-        else
-        {
-            if (isset($_POST['remember']))
-            {
-                $status = "Галочку remember влупили. ";
-            }
-
-            $_SESSION['user'] = $user;
-            $_SESSION['pass'] = $pass;
-
-            $status = $status . "Вход выполнен пользователем";
-
-            echo "
-            <div class='alert alert-success' role='alert' style='width: 100%; margin-bottom: 0;'>
-                <div class='container'>
-                    <strong>$status</strong>$userstr
-                </div>
-            </div>";
-
-//            echo '<meta http-equiv="refresh" content="0" url="http://myblog/">';    
- //           die();
-        }    
-    }       
-}
-elseif (isset($_COOKIE['user']))
-{
-    $user = $_COOKIE['user'];
-    $pass = $_COOKIE['pass'];
-
-    $_SESSION['user'] = $user;
-    $_SESSION['pass'] = $pass;
-
-    $status = "Вход выполнен пользователем";
-
-    echo "
-    <div class='alert alert-success' role='alert' style='width: 100%; margin-bottom: 0;'>
-        <div class='container'>
-            <strong>$status</strong>$userstr
-        </div>
-    </div>";
-}
-
-
+/*
+echo "SESSION ";
+print_r($_SESSION);
+echo "<br>COOKIES ";
+print_r($_COOKIE);
+echo "<br>REQUEST ";
+print_r($_REQUEST);
+*/
 ?>
-
-
-
-
-
-

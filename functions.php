@@ -4,7 +4,7 @@
     $dbuser  = 'root';   // ...variables according
     $dbpass  = '';   // ...to your installation
     $appname = "TestBlog"; // ...and preference
-    $userLoggedIn = true;
+
 
     $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
     if ($connection->connect_error) 
