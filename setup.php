@@ -35,7 +35,8 @@
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 user VARCHAR(16),
                 password VARCHAR(16),
-                screen_name VARCHAR(16))';
+                screen_name VARCHAR(16)),
+                creation_date    ';
 
         $result = $connection->query($query);
 
