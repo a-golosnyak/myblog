@@ -229,6 +229,25 @@ a:focus, a:hover {
 }
 
 /*
+ *Profile -------------------------------------------------------------------
+ */
+.profile-field {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 4rem;
+}
+
+.profile-title {
+  margin-bottom: .25rem;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+}
+
+.profile-meta {
+  margin-bottom: 1.25rem;
+  color: #999;
+}
+/*
  * Footer -------------------------------------------------------------------
  */
 .blog-footer {

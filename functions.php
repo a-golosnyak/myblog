@@ -5,6 +5,11 @@
     $dbpass  = '';   // ...to your installation
     $appname = "TestBlog"; // ...and preference
 
+    define("REGISTRATION", 1);
+    define("EMBEDDED", 2);
+    define("CARS", 3);
+    define("SPORT", 4);
+    define("PROFILE", 5);
 
     $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
     if ($connection->connect_error) 

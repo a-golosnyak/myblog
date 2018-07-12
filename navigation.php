@@ -11,11 +11,19 @@
                     <div class="nav-item dropdown">
                         <div class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Рубрика</div>
                         <div class="dropdown-menu dropdown-menu-left">
-                            <div class="dropdown-item" href="#">Разработка электроники</div>
-                            <div class="dropdown-item" href="#">Автомобили</div>
-                            <div class="dropdown-item" href="#">Спорт</div>
+                            <a href='index.php?view=2'>
+                                <div class="dropdown-item">Разработка электроники</div>
+                            </a>
+                            <a href='index.php?view=3'>
+                                <div class="dropdown-item">Автомобили</div>
+                            </a>
+                            <a href='index.php?view=4'>
+                                <div class="dropdown-item">Спорт</div>
+                            </a>
                             <div class="dropdown-divider"></div>
-                            <div class="dropdown-item" href="#">Тестовые проекты</div>
+                            <a href='index.php?view=1'>
+                                <div class="dropdown-item" href="#">Тестовые проекты</div>
+                            </a>
                         </div>
                     </div>
                     <div class="nav-item">
@@ -58,45 +66,51 @@
                                     <div class='dropdown-menu dropdown-menu-right'>
                                         <div class='dropdown-item'href='#'>Вы вошли как $userstr</div>
                                         <div class='dropdown-divider'></div>
-                                        <div class='dropdown-item'href='#'>Профиль</div>
+                                        <a href='index.php?view=5'>
+                                            <div class='dropdown-item'href='#'>Профиль</div>
+                                        </a>
                                         <div class='dropdown-divider'></div>
-                                        <div class='dropdown-item'>
-                                        <a href='logout.php'>Выход</a></div>
+                                        <a href='logout.php'>
+                                            <div class='dropdown-item'>Выход</div>
+                                        </a>
                                     </div>";
                         } 
                         else 
                         { 
-                            echo    "
-                            <form class='form-signin' method='post' action='index.php'>
-
+                            echo "
                                 <div class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Вход
                                 </div>
                                 <div class='dropdown-menu dropdown-menu-right'>
-                                    <div class='dropdown-item' href='#'>
-                                        <label for='inputEmail' class='sr-only'></label>
-                                        <input type='text' name='user' maxlength='30' size='20' class='form-control' placeholder='Email address' required autofocus>
-                                    </div>
-
-                                    <div class='dropdown-item' href='#'>
-                                        <label for='inputPassword' class='sr-only'>Password</label>
-                                        <input type='password' name='pass' class='form-control' size='40' placeholder='Password' required>
-                                    </div>
-                                    <div class='dropdown-item' href='#'>
-                                        <div class='checkbox '>
-                                            <label>
-                                                <input type='checkbox' name='remember'>  Запомнить меня  
-                                            </label>
+                                    <form class='form-signin' method='post' action='index.php'>
+                                        <div class='dropdown-item' href='#'>
+                                            <label for='inputEmail' class='sr-only'></label>
+                                            <input type='text' name='user' maxlength='30' size='20' class='form-control' placeholder='Email address' required autofocus>
                                         </div>
-                                    </div>
-                                    <div class='dropdown-item' href='#'>
-                                        <button class='btn btn-lg btn-primary btn-block' type='submit'>Вход </button>
-                                    </div>
+
+                                        <div class='dropdown-item' href='#'>
+                                            <label for='inputPassword' class='sr-only'>Password</label>
+                                            <input type='password' name='pass' class='form-control' size='40' placeholder='Password' required>
+                                        </div>
+                                        <div class='dropdown-item' href='#'>
+                                            <div class='checkbox '>
+                                                <label>
+                                                    <input type='checkbox' name='remember'>  Запомнить меня  
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class='dropdown-item' href='#'>
+                                            <button class='btn btn-lg btn-primary btn-block' type='submit'>Вход </button>
+                                        </div>
+                                    </form>
                                     <div class='dropdown-divider'></div>
-                                    <div class='dropdown-item' href='#'>
-                                        <button class='btn btn-md btn-primary btn-block' type='submit'>Регистрация</button>
-                                    </div> 
-                                </div> 
-                            </form>
+                                    <a href='index.php?view=1'>
+                                        <div class='dropdown-item' href='#'>
+                                            <button class='btn btn-md btn-primary btn-block' type='submit'>
+                                                Регистрация
+                                            </button>
+                                        </div> 
+                                    </a>
+                                </div>
                                 "; 
                         }    
                     ?>       
@@ -120,3 +134,4 @@ echo "<br>REQUEST ";
 print_r($_REQUEST);
 */
 ?>
+

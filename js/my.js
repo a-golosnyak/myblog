@@ -1,18 +1,18 @@
 /*!
-My custom
-Version 2.9.2+30qun
+Version 
 © 2018 Ivan Malopinsky - http://imsky.co
-Site:     http://holderjs.com
-Issues:   https://github.com/imsky/holder/issues
+Site:     
+Issues:   
 License:  MIT
 */
 
 $( document ).ready(function() {
- //   alert( "ready!" );
+//    alert( "ready!" );
+
+	$(window).scrollTop(130);
+
 
 	$(document).ready(function(){
 	    $(".alert-primary").css({"backgroundColor" : "#BFB", "font-size" : "20px" }) ; });
-
-	$('.carousel').carousel('dispose');
 
 });
