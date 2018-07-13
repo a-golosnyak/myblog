@@ -54,6 +54,7 @@ $user = $pass = "";
 
 //=== Проверка осуществлен ли вход ======================================================================
 	$userstr = '(Guest)';
+	global $userLoggedIn;
 	$userLoggedIn = FALSE;
 
 	if (isset($_SESSION['user']))

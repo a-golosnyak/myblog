@@ -9,7 +9,7 @@ License:  MIT
 $( document ).ready(function() {
 //    alert( "ready!" );
 
-	$(window).scrollTop(130);
+	$(window).scrollTop(250);
 
 
 	$(document).ready(function(){

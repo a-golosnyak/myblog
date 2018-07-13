@@ -1,27 +1,113 @@
+<?php
+    require_once  'main.php' ; 
+
+    if (!$userLoggedIn) 
+        die();
+
+    if(isset($_FILES['image']['name']))
+    {
+        echo "Картинка заходит!";
+        $saveto = "$user.jpg";
+        move_uploaded_file($_FILES['image']['tmp_name'], $saveto);
+        $typeok = TRUE;
+
+        switch($_FILES['image']['type'])
+        {
+          case "image/gif":   $src = imagecreatefromgif($saveto); break;
+          case "image/jpeg":  // Both regular and progressive jpegs
+          case "image/pjpeg": $src = imagecreatefromjpeg($saveto); break;
+          case "image/png":   $src = imagecreatefrompng($saveto); break;
+          default:            $typeok = FALSE; break;
+        }    
+    }
+
+    var_dump($_FILES);
+?>
+
 <div class="main-field">  
     <div class="container-fluid " >
         <div class="container data-field">
             <div class="row">
                 <div class="col-sm-8 blog-main">
                     <div class="profile-field">
-                        <h4 class="profile-title">Ваш профиль</h4>
-                        <br>
-                        <p class="profile-meta">January 1, 2014 by <a href="#">Mark</a></p>
+                            <h3 class="form-signin-heading profile-title">Ваш профиль</h3>
+                            <br>
+                            <span class="pull-sm-left">Профиль создан</span>
+                            <span class="profile-meta pull-sm-right">January 1, 2014 by <a href="#">Mark</a></span>
+                            <br style="clear: both;">
+                        <form class="form-signin">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label for="name">Имя</label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input type="name" id="name"  placeholder="Имя пользователя" required autofocus>
+                                </div>
+                                <div class="col-xs-2" >
+                                    <button type="button" class="btn pull-right" style="text-align: center;">Применить</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="form-signin">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label for="inputEmail">Электронная почта</label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input type="email" id="inputEmail"  placeholder="Email address" required autofocus>
+                                </div>
+                                <div class="col-xs-2" >
+                                    <button type="button" class="btn pull-right" >Применить</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="form-signin">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label for="password">Пароль</label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input type="password" id="password"  placeholder="Пароль" required autofocus>
+                                </div>
+                                <div class="col-xs-2" >
 
-                        <p>Для выделения пробега текста благодаря<mark> своей актуальности в другом контексте, использовать тег mark.</mark></p>
-                        <p>This text <span class="lead">hilighted with lead class </span></p>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="form-signin">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label for="">Повторите пароль</label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input type="password" id="password"  placeholder="Пароль" required autofocus>
+                                </div>
+                                <div class="col-xs-2" >
+                                    <button type="button" class="btn pull-right" >Применить</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div class="row">
+                            <form class="form-signin" method= 'post' action='profile.php' enctype='multipart/form-data'>
+                                <div class="col-xs-4">
+                                    <label for="">Фото профиля</label>
+                                </div>
+                                <div class="col-xs-6">
+                                    Image:<input type='file' name='image' size='14'>
+                                </div>
+                                <div class="col-xs-2" >
+                                    <button type="submit" class="btn pull-right" >Применить</button>
+                                </div>
+                                </form>
+                            </div>
 
-                        <p><del>Для обозначения блоков текста, которые были удалены</del> использовать тег del.</p>
-                        <p>Не для индикации блоков текста, которые <s>утратили свою актуальность использования</s> тег s </p>
-                        <p><ins>Для обозначения дополнения к документу использовать ins </ins></p>
+                            <br style="clear: both;">
+                            <div style="clear: both;"> </div>
+                        </form>
 
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        </blockquote>
-                    
-                    </div><!-- /.profile-field -->
-
-        
+                        <img src='$user.jpg' style='float:left;'>
+                    </div>
 
                     <nav class="blog-pagination">
                         <a class="btn btn-outline-primary" href="#">Older</a>

@@ -241,11 +241,16 @@ a:focus, a:hover {
   margin-bottom: .25rem;
   margin-left: 2rem;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .profile-meta {
   margin-bottom: 1.25rem;
   color: #999;
+}
+.btn{
+  padding: 3px;
+
 }
 /*
  * Footer -------------------------------------------------------------------
@@ -255,7 +260,6 @@ a:focus, a:hover {
   color: #999;
   text-align: center;
   background-color: #f9f9f9;
-  border-top: .05rem solid #e5e5e5;
   background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.5)), no-repeat, url(../images/06.jpg);
   background-position: 50% 40%;
 }

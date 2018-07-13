@@ -49,7 +49,7 @@
             </div>
             <div class=" col-xs-2">
                 <div class="nav nav-tabs">
-                    <div class="nav-item dropdown " style="left: auto; right: 0;">
+                    <div class="nav-item dropdown " style="vertical-align: right;">
 
                     <?php
                         require_once  'functions.php' ; 
@@ -66,7 +66,7 @@
                                     <div class='dropdown-menu dropdown-menu-right'>
                                         <div class='dropdown-item'href='#'>Вы вошли как $userstr</div>
                                         <div class='dropdown-divider'></div>
-                                        <a href='index.php?view=5'>
+                                        <a href='profile.php'>
                                             <div class='dropdown-item'href='#'>Профиль</div>
                                         </a>
                                         <div class='dropdown-divider'></div>
