@@ -69,7 +69,7 @@
            echo "Table creation error.";
 
         //=== Создаем пользователей =================================== INSERT ========================
-/*        $query = "INSERT INTO users VALUES ('1', 'admin', '1111', 'adm')";   // id=1 уже есть. Будет ошибка.
+        $query = "INSERT INTO users VALUES ('1', 'adm', '111', 'adm')";   // id=1 уже есть. Будет ошибка.
         $result = $connection->query($query);
 
         if($result) echo "Item created.";
@@ -111,7 +111,7 @@
         else
            echo "Post creation error.";
         echo "<br>";
-*/
+
 
         
 /*

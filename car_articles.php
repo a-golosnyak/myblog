@@ -1,10 +1,15 @@
+<?php
+    require_once 'main.php';
+
+?>
+
 <div class="main-field">  
     <div class="container-fluid " >
         <div class="container data-field">
             <div class="row">
                 <div class="col-sm-8 blog-main">
                     <div class="blog-post">
-                        <h4 class="blog-post-title">Casr</h4>
+                        <h4 class="blog-post-title">Cars</h4>
                         <h5 class="blog-post-title">Sample blog post</h5>
                         <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
 
@@ -94,3 +99,8 @@
         </div><!-- /.container -->
     </div>
 </div>
+
+<?php
+    require_once 'footer.php'
+
+?>

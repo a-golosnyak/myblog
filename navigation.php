@@ -11,13 +11,13 @@
                     <div class="nav-item dropdown">
                         <div class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Рубрика</div>
                         <div class="dropdown-menu dropdown-menu-left">
-                            <a href='index.php?view=2'>
+                            <a href='emb_articles.php'>
                                 <div class="dropdown-item">Разработка электроники</div>
                             </a>
-                            <a href='index.php?view=3'>
+                            <a href='car_articles.php'>
                                 <div class="dropdown-item">Автомобили</div>
                             </a>
-                            <a href='index.php?view=4'>
+                            <a href='sport_articles.php'>
                                 <div class="dropdown-item">Спорт</div>
                             </a>
                             <div class="dropdown-divider"></div>

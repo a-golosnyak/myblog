@@ -21,7 +21,38 @@
         }    
     }
 
-    var_dump($_FILES);
+ //   var_dump($_FILES);
+
+    if ($typeok)
+    {
+        list($w, $h) = getimagesize($saveto);
+
+        $max = 200;
+        $tw  = $w;
+        $th  = $h;
+
+        if ($w > $h && $max < $w)
+        {
+            $th = $max / $w * $h;
+            $tw = $max;
+        }
+        elseif ($h > $w && $max < $h)
+        {
+            $tw = $max / $h * $w;
+            $th = $max;
+        }
+        elseif ($max < $w)
+            $tw = $th = $max;
+
+        $tmp = imagecreatetruecolor($tw, $th);
+        imagecopyresampled($tmp, $src, 0, 0, 0, 0, $tw, $th, $w, $h);
+        imageconvolution($tmp, array(array(-1, -1, -1),
+        array(-1, 16, -1), array(-1, -1, -1)), 8, 0);
+        imagejpeg($tmp, $saveto);
+        imagedestroy($tmp);
+        imagedestroy($src);
+    }
+
 ?>
 
 <div class="main-field">  
@@ -33,7 +64,7 @@
                             <h3 class="form-signin-heading profile-title">Ваш профиль</h3>
                             <br>
                             <span class="pull-sm-left">Профиль создан</span>
-                            <span class="profile-meta pull-sm-right">January 1, 2014 by <a href="#">Mark</a></span>
+                            <span class="profile-meta pull-sm-right">January 1, 2014</span>
                             <br style="clear: both;">
                         <form class="form-signin">
                             <div class="row">
@@ -48,6 +79,7 @@
                                 </div>
                             </div>
                         </form>
+                        <br style="clear: both;">
                         <form class="form-signin">
                             <div class="row">
                                 <div class="col-xs-4">
@@ -61,6 +93,7 @@
                                 </div>
                             </div>
                         </form>
+                        <br style="clear: both;">
                         <form class="form-signin">
                             <div class="row">
                                 <div class="col-xs-4">
@@ -87,26 +120,34 @@
                                 </div>
                             </div>
                         </form>
-                        
-                        <div class="row">
+                        <br style="clear: both;">
+                <!--        <div class="row">
                             <form class="form-signin" method= 'post' action='profile.php' enctype='multipart/form-data'>
                                 <div class="col-xs-4">
                                     <label for="">Фото профиля</label>
                                 </div>
                                 <div class="col-xs-6">
-                                    Image:<input type='file' name='image' size='14'>
+                                    <input type='file' name='image' size='12'>
                                 </div>
                                 <div class="col-xs-2" >
                                     <button type="submit" class="btn pull-right" >Применить</button>
                                 </div>
-                                </form>
-                            </div>
+                            </form>
+                        </div> -->
+                        <hr>
+                        <input type="file" />
+                        <img class="crop" style="display:none" />
+                        <button type="submit" style="display:none">Upload</button>          
+                        <hr>
+                        <?php 
+                        //    showProfile($user);
+                        ?>
 
-                            <br style="clear: both;">
-                            <div style="clear: both;"> </div>
-                        </form>
+                        <br style="clear: both;">
+                        <div style="clear: both;"> </div>
 
-                        <img src='$user.jpg' style='float:left;'>
+                        <!-- <img src='$user.jpg' style='float:left;'> -->
+                        
                     </div>
 
                     <nav class="blog-pagination">
@@ -122,3 +163,8 @@
         </div><!-- /.container -->
     </div>
 </div>
+
+<?php
+    require_once 'footer.php'
+
+?>

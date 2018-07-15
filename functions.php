@@ -55,7 +55,7 @@
         if (file_exists("$user.jpg"))
             echo "<img src='$user.jpg' style='float:left;'>";
 
-        $result = queryMysql("SELECT * FROM profiles WHERE user='$user'");
+        $result = queryMysql("SELECT * FROM users WHERE user='$user'");
 
         if ($result->num_rows)
         {
