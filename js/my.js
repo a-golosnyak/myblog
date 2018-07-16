@@ -29,14 +29,17 @@ $("input[type=file]").on("change", function(){
         width: previewSize,
         height: previewSize
     }).done(function(imgDataUrl, origImage) {
-        $("input, img, button").toggle();
+//        $("input, img, button").toggle();
+        $("#InpProfilePhoto, button").toggle();
         initJCrop(imgDataUrl);
     }).fail(function(msg) {
         alert(msg);
     });
 });
 
-$("button[type=submit]").on("click", function(){
+//$("button[type=submit]").on("click", function(){
+
+    $("#PhotoSubmit").on("click", function(){
     $(this).text("Uploading...").prop("disabled", true);
 
     readFile(file, {
@@ -49,14 +52,18 @@ $("button[type=submit]").on("click", function(){
         data.append('file', blobFile);
         
         $.ajax({
-            url: "profile.php",
+            url: "request.php",
             data: data,
             cache: false,
-            contentType: false,
-            processData: false,
+            processData: false, 
+            contentType: false,   
             type: 'POST',
-            success: function() {
-                alert("Yay!");
+            response: 'text',
+            success: function(response) {
+                alert("Success! " + " " + response);
+            },
+            complete: function(){
+            //    alert("Complete!");
             },
             error: function(xhr) {
                 alert("Well, obviously we can't upload the file here."+
@@ -101,7 +108,8 @@ var readFile = function(file, options) {
 
         //init reader onload event handlers
         reader.onload = function(e) {
-            var image = $('<img/>')
+//            var image = $('<img/>')
+                var image = $('#ProfilePhoto')
                 .on('load', (function() {
                     //when image is fully loaded
                     var newimageurl = getCanvasImage(this, options);

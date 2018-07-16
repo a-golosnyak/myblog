@@ -4,6 +4,11 @@
     if (!$userLoggedIn) 
         die();
 
+    if(isset($_POST['data']))
+    {
+        echo "Картинка заходит!";
+    }
+
     if(isset($_FILES['image']['name']))
     {
         echo "Картинка заходит!";
@@ -21,7 +26,7 @@
         }    
     }
 
- //   var_dump($_FILES);
+    var_dump($_FILES);
 
     if ($typeok)
     {
@@ -135,9 +140,9 @@
                             </form>
                         </div> -->
                         <hr>
-                        <input type="file" />
-                        <img class="crop" style="display:none" />
-                        <button type="submit" style="display:none">Upload</button>          
+                        <input type="file" id="InpProfilePhoto" name="image" />
+                        <img class="crop" id="ProfilePhoto" style="display:none" />
+                        <button type="submit" id="PhotoSubmit" style="display:none">Upload</button>          
                         <hr>
                         <?php 
                         //    showProfile($user);
