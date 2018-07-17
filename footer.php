@@ -12,11 +12,10 @@
 
 <!--    <script src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script>
     <link rel="stylesheet" href="http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.css" type="text/css" />      -->
-
-    <script src="js/jquery.Jcrop.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/my.js"></script>
-
+<!--    <script src="js/jquery.Jcrop.min.js"></script>  -->
+    <script src="js/jquery.Jcrop.js"></script>
 
   </body>
 </html>

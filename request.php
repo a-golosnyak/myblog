@@ -2,28 +2,106 @@
     header("Content-type: text/txt; charset=UTF-8");
 //    echo var_dump($_POST) . "<br>";
 
-//    echo var_dump($_FILES) . "<br>";
+//    echo var_dump($_POST) . "<br>";
+//    require_once 'main.php';
 
     if(isset($_FILES) && isset($_FILES['file']))
     {
-        $saveto = "xxx.jpg";
-        $image = $_FILES['file']['name'];
-//        move_uploaded_file($_FILES['file']['blob'], $saveto);
-//        $imageFormat = explode('.', $image['blob']);
-
         echo var_dump($_FILES) . "<br>";
-    }
+        $image = $_FILES['file'];
+        $imageFormat = explode('/', $image['type']);
+        $imageType = $imageFormat[0];
+        $imageFormat = $imageFormat[1];
+        $imageName = 'images_' .  date("Y-m-d His");
 
-    
+        move_uploaded_file($_FILES['file']['tmp_name'], $imageName  . '_m' . '.' . $imageFormat);
 
-/*        switch($_POST['image']['type'])
+        $src = imagecreatefromjpeg($imageName  . '_m' . '.' . $imageFormat); 
+        $tw = 200; 
+        $th = 200;
+        $tmp = imagecreatetruecolor($tw, $th);
+        imagecopyresampled($tmp, $src, 0, 0, 0, 0, $tw, $th, $w, $h);
+        imageconvolution($tmp, array(array(-1, -1, -1),
+        array(-1, 16, -1), array(-1, -1, -1)), 8, 0);
+
+        imagejpeg($tmp, $imageName .'_i' . '.' . $imageFormat);
+
+/*        header('Content-type: image/jpeg');
+        imagejpeg($tmp,null,100);
+        exit;
+*/
+
+ /*     switch($_FILES['file']['type'])
         {
-          case "image/gif":   $src = imagecreatefromgif($saveto); break;
+          case "image/gif":   
+            $src = imagecreatefromgif($saveto); 
+            break;
           case "image/jpeg":  // Both regular and progressive jpegs
-          case "image/pjpeg": $src = imagecreatefromjpeg($saveto); break;
-          case "image/png":   $src = imagecreatefrompng($saveto); break;
-          default:            $typeok = FALSE; break;
-        }  
+          case "image/pjpeg": 
+            $src = imagecreatefromjpeg($saveto); 
+            break;
+          case "image/png":   
+            $src = imagecreatefrompng($saveto); 
+            break;
+          default:            
+            $typeok = false; 
+            break;
+        } 
+
+        if($typeok == true)
+        {
+            list($w, $h) = getimagesize($saveto);
+
+            $max = 100;
+            $tw  = $w;
+            $th  = $h;
+
+            if ($w > $h && $max < $w)
+            {
+                $th = $max / $w * $h;
+                $tw = $max;
+            }
+            elseif ($h > $w && $max < $h)
+            {
+                $tw = $max / $h * $w;
+                $th = $max;
+            }
+            elseif ($max < $w)
+            {
+                $tw = $th = $max;
+            }
+
+            $tmp = imagecreatetruecolor($tw, $th);
+            imagecopyresampled($tmp, $src, 0, 0, 0, 0, $tw, $th, $w, $h);
+            imageconvolution($tmp, array(array(-1, -1, -1),
+            array(-1, 16, -1), array(-1, -1, -1)), 8, 0);
+            imagejpeg($tmp, $saveto);
+            imagedestroy($tmp);
+            imagedestroy($src);
+*/
+/*
+            $saveto = $imageName . '.' . $imageType;
+
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $saveto)) 
+//            $tmp = imagecreatetruecolor(100, 100);
+//            if(imagejpeg($tmp, $saveto))
+
+            if (move_uploaded_file($imageName, $saveto)) 
+                $status = 'success';
+            else
+                $status = 'error';
+
+//            move_uploaded_file($_FILES['file']['blob'], $saveto);
+        }
+*/
+//        echo $saveto . "<br>";
+//        echo $imageType . ' ' . $imageFormat . ' ' . $imageName . ' ' . $status;
+//        echo var_dump($imageName) . "<br>";
+//        echo var_dump($_FILES['file']['name']) . "<br>";
+//        echo var_dump($_FILES) . "<br>";
+    }
+    
+/*        
 
     if ($typeok)
     {

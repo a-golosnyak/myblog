@@ -14,7 +14,10 @@
         echo "Картинка заходит!";
         $saveto = "$user.jpg";
         move_uploaded_file($_FILES['image']['tmp_name'], $saveto);
-        $typeok = TRUE;
+
+        echo var_dump($_FILES);
+
+/*        $typeok = TRUE;
 
         switch($_FILES['image']['type'])
         {
@@ -26,7 +29,7 @@
         }    
     }
 
-    var_dump($_FILES);
+    
 
     if ($typeok)
     {
@@ -56,8 +59,9 @@
         imagejpeg($tmp, $saveto);
         imagedestroy($tmp);
         imagedestroy($src);
+        */
     }
-
+    
 ?>
 
 <div class="main-field">  
@@ -118,7 +122,7 @@
                                     <label for="">Повторите пароль</label>
                                 </div>
                                 <div class="col-xs-6">
-                                    <input type="password" id="password"  placeholder="Пароль" required autofocus>
+                                    <input type="password" id="password_confirm"  placeholder="Пароль" required autofocus>
                                 </div>
                                 <div class="col-xs-2" >
                                     <button type="button" class="btn pull-right" >Применить</button>
@@ -126,7 +130,7 @@
                             </div>
                         </form>
                         <br style="clear: both;">
-                <!--        <div class="row">
+                        <div class="row">
                             <form class="form-signin" method= 'post' action='profile.php' enctype='multipart/form-data'>
                                 <div class="col-xs-4">
                                     <label for="">Фото профиля</label>
@@ -138,11 +142,13 @@
                                     <button type="submit" class="btn pull-right" >Применить</button>
                                 </div>
                             </form>
-                        </div> -->
+                        </div> 
                         <hr>
-                        <input type="file" id="InpProfilePhoto" name="image" />
+                        <input type="file" id="InpProfilePhoto" name="image" id="image" />
                         <img class="crop" id="ProfilePhoto" style="display:none" />
-                        <button type="submit" id="PhotoSubmit" style="display:none">Upload</button>          
+                        <button type="submit" id="PhotoSubmit" style="display:none">Upload</button>        
+                        <hr>
+                        <img scr="" width="125" height="125" id="userAvatar"/>
                         <hr>
                         <?php 
                         //    showProfile($user);

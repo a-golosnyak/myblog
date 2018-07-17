@@ -30,7 +30,7 @@ $("input[type=file]").on("change", function(){
         height: previewSize
     }).done(function(imgDataUrl, origImage) {
 //        $("input, img, button").toggle();
-        $("#InpProfilePhoto, button").toggle();
+        $("#InpProfilePhoto, #PhotoSubmit").toggle();
         initJCrop(imgDataUrl);
     }).fail(function(msg) {
         alert(msg);
@@ -51,6 +51,9 @@ $("input[type=file]").on("change", function(){
         var blobFile = dataURItoBlob(imgDataURI);
         data.append('file', blobFile);
         
+//        $('#userAvatar').attr('src', data.image);
+        $( "#userAvatar" ).html(data.image);
+
         $.ajax({
             url: "request.php",
             data: data,
