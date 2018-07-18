@@ -17,14 +17,19 @@ $( document ).ready(function() {
 
 });
 
+/********************************************************
+Организовать вывод координат в инпуты.
 
+
+*********************************************************/
 var cropCoords,
     file,
-    uploadSize = 360,
-    previewSize = 350;
+    uploadSize = 100,
+    previewSize = 1000;
 
-$("input[type=file]").on("change", function(){
-    file = this.files[0];
+$("input[type=file]").on("change", function(){      // Это событие, когда изменен элемент type=file
+    file = this.files[0];                           //
+    sourceFile = this.files[0];                     //*****
     readFile(file, {
         width: previewSize,
         height: previewSize
@@ -39,7 +44,7 @@ $("input[type=file]").on("change", function(){
 
 //$("button[type=submit]").on("click", function(){
 
-    $("#PhotoSubmit").on("click", function(){
+    $("#PhotoSubmit").on("click", function(){       // Событие отправка формы
     $(this).text("Uploading...").prop("disabled", true);
 
     readFile(file, {
@@ -49,10 +54,11 @@ $("input[type=file]").on("change", function(){
     }).done(function(imgDataURI) {
         var data = new FormData();
         var blobFile = dataURItoBlob(imgDataURI);
-        data.append('file', blobFile);
-        
-//        $('#userAvatar').attr('src', data.image);
-        $( "#userAvatar" ).html(data.image);
+        data.append('file', blobFile);                // Это имя файла уходит в запросе.
+
+//        data.append('file', sourceFile);
+        var html = data;
+        $('.ajax-respond').html( html );
 
         $.ajax({
             url: "request.php",
@@ -63,6 +69,7 @@ $("input[type=file]").on("change", function(){
             type: 'POST',
             response: 'text',
             success: function(response) {
+                // Если все ОК
                 alert("Success! " + " " + response);
             },
             complete: function(){
@@ -153,14 +160,16 @@ var getCanvasImage = function(image, options) {
     canvas.width = options.crop ? Math.min(image.height, options.width) : Math.min(image.width, Math.floor(options.width * ratio.x));
     var ctx = canvas.getContext("2d");
 
-    if (options.crop) {
-        //get resized width and height
+    if (options.crop) 
+    {                   //get resized width and height 
         var c = options.crop;
-        var f = image.width / options.previewWidth;
+//      var f = image.width / options.previewWidth;       // where is options.previewWidth????? ******
+        var f = image.width / image.width;
         var t = function(a) {
             return Math.round(a * f);
         };
-        ctx.drawImage(image, t(c.x), t(c.y), t(c.w), t(c.h), 0, 0, canvas.width, canvas.height);
+
+        ctx.drawImage(image, c.x, c.y, c.w, c.h, 0, 0, canvas.width, canvas.height);
     } else {
         ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
     }

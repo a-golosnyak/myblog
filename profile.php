@@ -144,9 +144,10 @@
                             </form>
                         </div> 
                         <hr>
-                        <input type="file" id="InpProfilePhoto" name="image" id="image" />
+                        <input type="file" id="InpProfilePhoto" name="profileimage" id="image" />
                         <img class="crop" id="ProfilePhoto" style="display:none" />
-                        <button type="submit" id="PhotoSubmit" style="display:none">Upload</button>        
+                        <button type="submit" id="PhotoSubmit" style="display:none">Upload</button>  
+                        <div class="ajax-respond"></div>      
                         <hr>
                         <img scr="" width="125" height="125" id="userAvatar"/>
                         <hr>
