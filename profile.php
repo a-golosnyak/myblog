@@ -74,7 +74,7 @@
                             <br>
                             <span class="pull-sm-left">Профиль создан</span>
                             <span class="profile-meta pull-sm-right">January 1, 2014</span>
-                            <br style="clear: both;">
+                            <hr style="clear: both;">
                         <form class="form-signin">
                             <div class="row">
                                 <div class="col-xs-4">
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </form>
-                        <br style="clear: both;">
+                        <hr style="clear: both;">
                         <form class="form-signin">
                             <div class="row">
                                 <div class="col-xs-4">
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                         </form>
-                        <br style="clear: both;">
+                        <hr style="clear: both;">
                         <form class="form-signin">
                             <div class="row">
                                 <div class="col-xs-4">
@@ -129,39 +129,62 @@
                                 </div>
                             </div>
                         </form>
-                        <br style="clear: both;">
+                        <hr style="clear: both;">
                         <div class="row">
                             <form class="form-signin" method= 'post' action='profile.php' enctype='multipart/form-data'>
                                 <div class="col-xs-4">
                                     <label for="">Фото профиля</label>
                                 </div>
                                 <div class="col-xs-6">
-                                    <input type='file' name='image' size='12'>
+                                    <!--input type='file' name='image' size='12'-->
+                                    <input type="file" id="InpProfilePhoto" name="profileimage" />
                                 </div>
                                 <div class="col-xs-2" >
-                                    <button type="submit" class="btn pull-right" >Применить</button>
+                                    <!--button type="submit" class="btn pull-right" >Применить</button-->
+                                    <button type="submit" class="btn pull-right" id="PhotoSubmit">Загрузить</button>  
+                       					<div class="ajax-respond"></div> 
                                 </div>
                             </form>
                         </div> 
+                        <br>
+                        <img class="crop" id="ProfilePhoto" style="display:none" />
+                        <hr>	
+						<div id="preview-pane">
+							<div class="preview-container">
+								<img src="" class="jcrop-preview" id="PreviewArea" alt="Preview" style="display:none"/>
+							</div>
+						</div>
                         <hr>
-                        <input type="file" id="InpProfilePhoto" name="profileimage" id="image" />
+
+                        <!--*** Работа с картинкой профиля *********************************************
+                        <input type="file" id="InpProfilePhoto" name="profileimage" />
                         <img class="crop" id="ProfilePhoto" style="display:none" />
                         <button type="submit" id="PhotoSubmit" style="display:none">Upload</button>  
                         <div class="ajax-respond"></div>      
-                        <hr>
-                        <img scr="" width="125" height="125" id="userAvatar"/>
-                        <hr>
-                        <?php 
-                        //    showProfile($user);
-                        ?>
-
+                        -->
                         <br style="clear: both;">
+
+                        <!-- This is the form that our event handler fills  	DEBUG SECTION ***
+						<form id="coords"
+							class="coords"
+							onsubmit="return false;">
+
+							<div class="inline-labels">
+								<label>X1 <input type="text" size="4" id="x1" name="x1" /></label>
+								<label>Y1 <input type="text" size="4" id="y1" name="y1" /></label>
+								<label>X2 <input type="text" size="4" id="x2" name="x2" /></label>
+								<label>Y2 <input type="text" size="4" id="y2" name="y2" /></label>
+								<label>W <input type="text" size="4" id="w" name="w" /></label>
+								<label>H <input type="text" size="4" id="h" name="h" /></label>
+							</div>
+						</form>
+
                         <div style="clear: both;"> </div>
+						**************************************************************************-->
 
-                        <!-- <img src='$user.jpg' style='float:left;'> -->
-                        
+
+                        <!-- <img src='$user.jpg' style='float:left;'> -->        
                     </div>
-
                     <nav class="blog-pagination">
                         <a class="btn btn-outline-primary" href="#">Older</a>
                         <a class="btn btn-outline-secondary disabled" href="#">Newer</a>

@@ -6,17 +6,7 @@ Issues:
 License:  
 */
 
-var jcrop_api,
-    boundx,
-    boundy,
-
-    // Grab some information about the preview pane
-    $preview = $('#preview-pane'),
-    $pcnt = $('#preview-pane .preview-container'),
-    $pimg = $('#preview-pane .preview-container img'),
-
-    xsize = $pcnt.width(),
-    ysize = $pcnt.height();
+//var jcrop_api;              // Пока не знаю что делать эта переменная будет здесь. Должна быть глобальной
 
 
 $( document ).ready(function() {
@@ -33,8 +23,10 @@ $( document ).ready(function() {
 
 var cropCoords,
     file,
-    uploadSize = 500,
-    previewSize = 500;    
+    uploadSize = 300,
+    previewSize = 300;
+//    previewWidth = 300;
+    
 
 $("input[type=file]").on("change", function(){      // Это событие, когда изменен элемент type=file
     file = this.files[0];                           //
@@ -45,12 +37,7 @@ $("input[type=file]").on("change", function(){      // Это событие, к
     }).done(function(imgDataUrl, origImage) {
 //        $("input, img, button").toggle();
         $("#InpProfilePhoto").toggle();
-        $("#PreviewArea").toggle();  
-        
         initJCrop(imgDataUrl);
-
-        $("#PreviewArea").attr({src: imgDataUrl});
-
     }).fail(function(msg) {
         alert(msg);
     });
@@ -124,23 +111,6 @@ $("input[type=file]").on("change", function(){      // Это событие, к
         jcrop_api.setSelect([x1,y1,x2,y2]);
     });
 //====================================================================================================
-//=== Preview ========================================================================================
-    function updatePreview(c)
-    {
-      if (parseInt(c.w) > 0)
-      {
-        var rx = xsize / c.w;
-        var ry = ysize / c.h;
-
-        $pimg.css({
-          width: Math.round(rx * boundx) + 'px',
-          height: Math.round(ry * boundy) + 'px',
-          marginLeft: '-' + Math.round(rx * c.x) + 'px',
-          marginTop: '-' + Math.round(ry * c.y) + 'px'
-        });
-      }
-    };
-//==================================================================================================== 
 
 /*****************************
 show local image and init JCrop
@@ -152,33 +122,22 @@ var initJCrop = function(imgDataUrl){
         cropCoords = c;
     };
     
+    
+
     var w = img.width();
     var h = img.height();
     var s = uploadSize;
     img.Jcrop({
-        onChange: storeCoords,          
-        onSelect: storeCoords,          
-        onChange: showCoords,           
-        onselect: showCoords,           
-        onRelease:clearCoords,          
-        onChange: updatePreview,           
-        onSelect: updatePreview,        
-        aspectRatio: 1,                 // Соотношение сторон
-        //aspectRatio: xsize / ysize,
+        onChange: storeCoords,
+        onChange: showCoords,
+        onselect: showCoords,
+        onSelect: storeCoords,
+        onRelease:  clearCoords,
+        aspectRatio: 1,
         //setSelect: [(w - s) / 2, (h - s) / 2, (w - s) / 2 + s, (h - s) / 2 + s]
-        // setSelect: [10, 10, 50, 50]    // Начальный размер рамки выделения
-        setSelect: [0, 0, 0, 0]
+         setSelect: [10, 10, 50, 50]
         },function(){
-            // Use the API to get the real image size
-            var bounds = this.getBounds();
-            boundx = bounds[0];
-            boundy = bounds[1];
-
-            // Store the API in the jcrop_api variable
             jcrop_api = this;
-
-            // Move the preview into the jcrop container for css positioning
-            $preview.appendTo(jcrop_api.ui.holder);
         });
 };
 
@@ -198,12 +157,11 @@ var readFile = function(file, options) {
 //            var image = $('<img/>')
                 var image = $('#ProfilePhoto')
                 .on('load', (function() {
-                    // when image is fully loaded
+                    //when image is fully loaded
                     var newimageurl = getCanvasImage(this, options);
                     dfd.resolve(newimageurl, this);
                 }))
                 .attr('src', e.target.result);
-
         };
         reader.onerror = function(e) {
             dfd.reject("Couldn't read file " + file.name);
@@ -238,12 +196,6 @@ var getCanvasImage = function(image, options) {
     canvas.width = options.crop ? Math.min(image.height, options.width) : Math.min(image.width, Math.floor(options.width * ratio.x));
     var ctx = canvas.getContext("2d");
 
-
-/*
-    getCanvasImage doesn't recieve options.crop parameter!
-*/
-
-
     if (options.crop) 
     {                   //get resized width and height 
         var c = options.crop;
@@ -256,12 +208,12 @@ var getCanvasImage = function(image, options) {
         var t = function(a) {
             return Math.round(a * f);
         };
-/*          DEBUG
+
         var sx =        t(c.x);
         var sy =        t(c.y);
         var sWidth =    t(c.w);
         var sHeight =   t(c.h);
-*/
+
         ctx.drawImage(image, t(c.x), t(c.y), t(c.w), t(c.h), 0, 0, canvas.width, canvas.height);
     } else {
         ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);

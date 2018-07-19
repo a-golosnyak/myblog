@@ -16,6 +16,7 @@
     <script src="js/my.js"></script>
 <!--    <script src="js/jquery.Jcrop.min.js"></script>  -->
     <script src="js/jquery.Jcrop.js"></script>
+    
 
   </body>
 </html>
