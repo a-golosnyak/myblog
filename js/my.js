@@ -9,7 +9,6 @@ License:
 var jcrop_api,
     boundx,
     boundy,
-
     // Grab some information about the preview pane
     $preview = $('#preview-pane'),
     $pcnt = $('#preview-pane .preview-container'),
@@ -17,6 +16,11 @@ var jcrop_api,
 
     xsize = $pcnt.width(),
     ysize = $pcnt.height();
+
+var cropCoords,
+    file,
+    uploadSize = 400,
+    previewSize = 400; 
 
 
 $( document ).ready(function() {
@@ -27,14 +31,9 @@ $( document ).ready(function() {
 
 	$(document).ready(function(){
 	    $(".alert-primary").css({"backgroundColor" : "#BFB", "font-size" : "20px" }) ; });
-
 });
 
-
-var cropCoords,
-    file,
-    uploadSize = 500,
-    previewSize = 500;    
+   
 
 $("input[type=file]").on("change", function(){      // Это событие, когда изменен элемент type=file
     file = this.files[0];                           //
@@ -43,7 +42,7 @@ $("input[type=file]").on("change", function(){      // Это событие, к
         width: previewSize,
         height: previewSize
     }).done(function(imgDataUrl, origImage) {
-//        $("input, img, button").toggle();
+//      $("input, img, button").toggle();
         $("#InpProfilePhoto").toggle();
         $("#PreviewArea").toggle();  
         
@@ -70,10 +69,6 @@ $("input[type=file]").on("change", function(){      // Это событие, к
         var blobFile = dataURItoBlob(imgDataURI);
         data.append('file', blobFile);                // Это имя файла уходит в запросе.
 
-//        data.append('file', sourceFile);
-        var html = data;
-        $('.ajax-respond').html( html );
-
         $.ajax({
             url: "request.php",
             data: data,
@@ -97,6 +92,24 @@ $("input[type=file]").on("change", function(){      // Это событие, к
         });
     });
 });
+
+//=== Preview ========================================================================================
+    function updatePreview(c)
+    {
+      if (parseInt(c.w) > 0)
+      {
+        var rx = xsize / c.w;
+        var ry = ysize / c.h;
+
+        $pimg.css({
+          width: Math.round(rx * boundx) + 'px',
+          height: Math.round(ry * boundy) + 'px',
+          marginLeft: '-' + Math.round(rx * c.x) + 'px',
+          marginTop: '-' + Math.round(ry * c.y) + 'px'
+        });
+      }
+    };
+//==================================================================================================== 
 
 //=== Additional - Show coordinates ==================================================================
 // Simple event handler, called from onChange and onSelect
@@ -124,23 +137,7 @@ $("input[type=file]").on("change", function(){      // Это событие, к
         jcrop_api.setSelect([x1,y1,x2,y2]);
     });
 //====================================================================================================
-//=== Preview ========================================================================================
-    function updatePreview(c)
-    {
-      if (parseInt(c.w) > 0)
-      {
-        var rx = xsize / c.w;
-        var ry = ysize / c.h;
 
-        $pimg.css({
-          width: Math.round(rx * boundx) + 'px',
-          height: Math.round(ry * boundy) + 'px',
-          marginLeft: '-' + Math.round(rx * c.x) + 'px',
-          marginTop: '-' + Math.round(ry * c.y) + 'px'
-        });
-      }
-    };
-//==================================================================================================== 
 
 /*****************************
 show local image and init JCrop
@@ -150,19 +147,20 @@ var initJCrop = function(imgDataUrl){
     
     var storeCoords = function(c) {
         cropCoords = c;
+        // Пока не получилось привязать вызов этой функции к иницилизации Jcrop
+        // потому вызываю здесь, события те же, что и для ф-ции storeCoords
+        updatePreview(c);       
     };
     
     var w = img.width();
     var h = img.height();
     var s = uploadSize;
-    img.Jcrop({
-        onChange: storeCoords,          
-        onSelect: storeCoords,          
-        onChange: showCoords,           
-        onselect: showCoords,           
-        onRelease:clearCoords,          
-        onChange: updatePreview,           
-        onSelect: updatePreview,        
+
+    img.Jcrop({                
+        onChange: storeCoords,           // Тут важна последовательность  
+//        onChange: updatePreview,
+        onSelect: storeCoords,         // Сначала фмксируем координаты, потом обновляем превью.       
+//        onSelect: updatePreview, 
         aspectRatio: 1,                 // Соотношение сторон
         //aspectRatio: xsize / ysize,
         //setSelect: [(w - s) / 2, (h - s) / 2, (w - s) / 2 + s, (h - s) / 2 + s]
@@ -173,13 +171,11 @@ var initJCrop = function(imgDataUrl){
             var bounds = this.getBounds();
             boundx = bounds[0];
             boundy = bounds[1];
-
             // Store the API in the jcrop_api variable
             jcrop_api = this;
-
             // Move the preview into the jcrop container for css positioning
             $preview.appendTo(jcrop_api.ui.holder);
-        });
+        });   
 };
 
 /*****************************

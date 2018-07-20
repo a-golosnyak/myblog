@@ -130,31 +130,27 @@
                             </div>
                         </form>
                         <hr style="clear: both;">
-                        <div class="row">
+                        <div class="row preview-zone">
                             <form class="form-signin" method= 'post' action='profile.php' enctype='multipart/form-data'>
-                                <div class="col-xs-4">
-                                    <label for="">Фото профиля</label>
-                                </div>
-                                <div class="col-xs-6">
-                                    <!--input type='file' name='image' size='12'-->
-                                    <input type="file" id="InpProfilePhoto" name="profileimage" />
-                                </div>
-                                <div class="col-xs-2" >
+                                    <div class="photo-item">Фото профиля</div>
+                                    <input type="file" class="photo-item" id="InpProfilePhoto" name="profileimage" tagName=" aaa " />
                                     <!--button type="submit" class="btn pull-right" >Применить</button-->
-                                    <button type="submit" class="btn pull-right" id="PhotoSubmit">Загрузить</button>  
-                       					<div class="ajax-respond"></div> 
-                                </div>
+                                    <br>
+                                    <button type="submit" class="btn pull-right photo-item" id="PhotoSubmit" >Загрузить</button>  
                             </form>
                         </div> 
-                        <br>
-                        <img class="crop" id="ProfilePhoto" style="display:none" />
-                        <hr>	
-						<div id="preview-pane">
-							<div class="preview-container">
-								<img src="" class="jcrop-preview" id="PreviewArea" alt="Preview" style="display:none"/>
-							</div>
-						</div>
-                        <hr>
+
+                        <div class="row">
+                        
+                     <!--       <div class="col-sm-6">
+                                <div id="preview-pane">
+                                    <div class="preview-container">
+                                        <img src="" class="jcrop-preview" id="PreviewArea" alt="Preview" style="display:none;"/>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <br style="clear: both;">
 
                         <!--*** Работа с картинкой профиля *********************************************
                         <input type="file" id="InpProfilePhoto" name="profileimage" />
@@ -162,7 +158,7 @@
                         <button type="submit" id="PhotoSubmit" style="display:none">Upload</button>  
                         <div class="ajax-respond"></div>      
                         -->
-                        <br style="clear: both;">
+                        
 
                         <!-- This is the form that our event handler fills  	DEBUG SECTION ***
 						<form id="coords"
