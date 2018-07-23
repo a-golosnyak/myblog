@@ -68,7 +68,7 @@
     <div class="container-fluid " >
         <div class="container data-field">
             <div class="row">
-                <div class="col-sm-8 blog-main">
+                <div class="col-sm-9 blog-main">
                     <div class="profile-field">
                             <h3 class="form-signin-heading profile-title">Ваш профиль</h3>
                             <br>
@@ -129,56 +129,33 @@
                                 </div>
                             </div>
                         </form>
-                        <hr style="clear: both;">
+                        <hr style="clear: both; " class="media-middle">
                         <div class="row preview-zone">
                             <form class="form-signin" method= 'post' action='profile.php' enctype='multipart/form-data'>
-                                    <div class="photo-item">Фото профиля</div>
-                                    <input type="file" class="photo-item" id="InpProfilePhoto" name="profileimage" tagName=" aaa " />
-                                    <!--button type="submit" class="btn pull-right" >Применить</button-->
-                                    <br>
-                                    <button type="submit" class="btn pull-right photo-item" id="PhotoSubmit" >Загрузить</button>  
+                                <h5 class="photo-item">Фото профиля</h5>
+
+                                <img class="crop profile-photo" src='images/ava/avamin.jpeg' id="ProfilePhoto"  />
+                                <br>
+                                <label for="InpProfilePhoto" >
+                                    <span class='btn btn-md btn-primary' id="InpProfileSelect" >Загрузить новую картинку</span>
+                                    <input type="file"  id="InpProfilePhoto" style="display:none" aria-hidden="true">
+                                </label>
+
+                                <button class="btn btn-md btn-danger" id="PhotoCancel" style="display: none" href='profile.php'>Отмена</button>
+
+                                <button type="submit" class="btn btn-md btn-primary" id="PhotoSubmit" style="display:none">Загрузить</button>  
                             </form>
                         </div> 
-
                         <div class="row">
-                        
-                     <!--       <div class="col-sm-6">
+                            <div class="col-sm-6">
                                 <div id="preview-pane">
                                     <div class="preview-container">
                                         <img src="" class="jcrop-preview" id="PreviewArea" alt="Preview" style="display:none;"/>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div> 
                         </div>
                         <br style="clear: both;">
-
-                        <!--*** Работа с картинкой профиля *********************************************
-                        <input type="file" id="InpProfilePhoto" name="profileimage" />
-                        <img class="crop" id="ProfilePhoto" style="display:none" />
-                        <button type="submit" id="PhotoSubmit" style="display:none">Upload</button>  
-                        <div class="ajax-respond"></div>      
-                        -->
-                        
-
-                        <!-- This is the form that our event handler fills  	DEBUG SECTION ***
-						<form id="coords"
-							class="coords"
-							onsubmit="return false;">
-
-							<div class="inline-labels">
-								<label>X1 <input type="text" size="4" id="x1" name="x1" /></label>
-								<label>Y1 <input type="text" size="4" id="y1" name="y1" /></label>
-								<label>X2 <input type="text" size="4" id="x2" name="x2" /></label>
-								<label>Y2 <input type="text" size="4" id="y2" name="y2" /></label>
-								<label>W <input type="text" size="4" id="w" name="w" /></label>
-								<label>H <input type="text" size="4" id="h" name="h" /></label>
-							</div>
-						</form>
-
-                        <div style="clear: both;"> </div>
-						**************************************************************************-->
-
-
                         <!-- <img src='$user.jpg' style='float:left;'> -->        
                     </div>
                     <nav class="blog-pagination">

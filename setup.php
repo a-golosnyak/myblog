@@ -36,7 +36,7 @@
                 user VARCHAR(16),
                 password VARCHAR(16),
                 screen_name VARCHAR(16)),
-                creation_date    ';
+                creation_date TIMESTAMP';
 
         $result = $connection->query($query);
 

@@ -58,7 +58,7 @@
                         if ($userLoggedIn == true) 
                         {
                             echo    "<div class=' nav-item'>
-                                        <img class='avatar'src='images/ava/avamin.jpg'alt='...'>
+                                        <img class='avatar'  src='images/ava/avamin.jpg'alt='...'>
                                     </div>
 
                                     <div class='nav-link dropdown-toggle nav-item user_nav_item'data-toggle='dropdown'href='#'role='button'    aria-haspopup='true'aria-expanded='false'>

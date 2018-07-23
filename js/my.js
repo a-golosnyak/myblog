@@ -43,8 +43,10 @@ $("input[type=file]").on("change", function(){      // Это событие, к
         height: previewSize
     }).done(function(imgDataUrl, origImage) {
 //      $("input, img, button").toggle();
-        $("#InpProfilePhoto").toggle();
+        $("#InpProfileSelect").toggle();
         $("#PreviewArea").toggle();  
+        $("#PhotoSubmit").toggle();  
+        $("#PhotoCancel").toggle();  
         
         initJCrop(imgDataUrl);
 
@@ -58,7 +60,7 @@ $("input[type=file]").on("change", function(){      // Это событие, к
 //$("button[type=submit]").on("click", function(){
 
     $("#PhotoSubmit").on("click", function(){       // Событие отправка формы
-    $(this).text("Uploading...").prop("disabled", true);
+    $(this).text("Загрузка...").prop("disabled", true);
 
     readFile(file, {
         width: uploadSize,
@@ -80,6 +82,8 @@ $("input[type=file]").on("change", function(){      // Это событие, к
             success: function(response) {
                 // Если все ОК
                 //alert("Success! " + " " + response);
+                $("#ProfilePhoto").attr({src: "images/ava/avamin.jpeg"});
+                window.location.href = "profile.php";
             },
             complete: function(){
             //    alert("Complete!");
@@ -157,9 +161,9 @@ var initJCrop = function(imgDataUrl){
     var s = uploadSize;
 
     img.Jcrop({                
-        onChange: storeCoords,           // Тут важна последовательность  
+        onChange: storeCoords,          // Тут важна последовательность  
 //        onChange: updatePreview,
-        onSelect: storeCoords,         // Сначала фмксируем координаты, потом обновляем превью.       
+        onSelect: storeCoords,          // Сначала фмксируем координаты, потом обновляем превью.       
 //        onSelect: updatePreview, 
         aspectRatio: 1,                 // Соотношение сторон
         //aspectRatio: xsize / ysize,
@@ -192,13 +196,13 @@ var readFile = function(file, options) {
         //init reader onload event handlers
         reader.onload = function(e) {
 //            var image = $('<img/>')
-                var image = $('#ProfilePhoto')
-                .on('load', (function() {
-                    // when image is fully loaded
-                    var newimageurl = getCanvasImage(this, options);
-                    dfd.resolve(newimageurl, this);
-                }))
-                .attr('src', e.target.result);
+            var image = $('#ProfilePhoto')
+            .on('load', (function() {
+                // when image is fully loaded
+                var newimageurl = getCanvasImage(this, options);
+                dfd.resolve(newimageurl, this);
+            }))
+            .attr('src', e.target.result);
 
         };
         reader.onerror = function(e) {

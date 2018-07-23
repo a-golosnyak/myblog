@@ -2,7 +2,7 @@
 //    header("Content-type: text/txt; charset=UTF-8");
 //    echo var_dump($_POST) . "<br>";
 
-    echo var_dump($_FILES) . "<br>";
+//    echo var_dump($_FILES) . "<br>";
 //    require_once 'main.php';
 
 //    if(isset($_FILES) && isset($_FILES['file']))
@@ -21,5 +21,5 @@
             echo "Looks like success<br>";
         else
             echo "Shit happens<br>";
+    }
 ?>
-        
