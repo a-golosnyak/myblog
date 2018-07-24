@@ -1,19 +1,19 @@
 <?php
-//    header("Content-type: text/txt; charset=UTF-8");
-//    echo var_dump($_POST) . "<br>";
 
-//    echo var_dump($_FILES) . "<br>";
-//    require_once 'main.php';
+    require_once  'log.php' ;            // Проверяем авторизирован ли пользователь
 
-//    if(isset($_FILES) && isset($_FILES['file']))
+//    if (!$userLoggedIn) 
+//        die();
+
     if( isset( $_FILES['file'] ) )
     {
-//      echo var_dump($_FILES) . "<br>";
+      echo var_dump($_FILES) . "<br>";
         $image = $_FILES['file'];
         $imageFormat = explode('/', $image['type']);
         $imageType = $imageFormat[0];
         $imageFormat = $imageFormat[1];
-        $imageName = 'images_' .  date("Y-m-d His");
+//        $imageName = 'images/ava/'. $usermail .'_'. date("Y-m-d_His");
+        $imageName = 'images/ava/'. $usermail;
 
         $fileName = $imageName . '.' . $imageFormat;
 

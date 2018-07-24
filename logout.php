@@ -1,10 +1,10 @@
 <?php // Example 26-12: logout.php
     session_start();
 
-    if (isset($_SESSION['user']))
+    if (isset($_SESSION['usermail']))
     {
         $_SESSION = array();
-        setcookie('user', $user, time() - 60*60*24*31);        // Анулируем Remember me
+        setcookie('usermail', $usermail, time() - 60*60*24*31);        // Анулируем Remember me
         session_unset();
 
         header('Location: index.php');    
@@ -18,7 +18,7 @@
         "You cannot log out because you are not logged in";
 
         $_SESSION = array();
-        setcookie('user', $user, time() - 60*60*24*31);        // Анулируем Remember me
+        setcookie('usermail', $usermail, time() - 60*60*24*31);        // Анулируем Remember me
         session_unset();
     }
 ?>

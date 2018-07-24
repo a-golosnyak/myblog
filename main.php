@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once  'log.php' ;           // Проверяем авторизирован ли пользователь
+    require_once  'login.php' ;         // Проверяем авторизирован ли пользователь
     require_once  'functions.php' ;     //
 
     $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);

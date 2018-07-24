@@ -7,7 +7,7 @@
         <h3>Setting up...</h3>
 
         <?php
-        require_once 'functions.php';
+ //       require_once 'functions.php';
 
         //=== CREATE DATABASE ================================== test_blog_db ==========================
         $link = mysqli_connect('127.0.0.1', 'root', '');            // Соединяемся с сервером
@@ -33,10 +33,10 @@
 
         $query = 'CREATE TABLE IF NOT EXISTS users (
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                user VARCHAR(16),
-                password VARCHAR(16),
-                screen_name VARCHAR(16)),
-                creation_date TIMESTAMP';
+                usermail VARCHAR(30),
+                password VARCHAR(30),
+                screen_name VARCHAR(30),
+                creation_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)';
 
         $result = $connection->query($query);
 
@@ -45,7 +45,7 @@
             print_r("Table users created." . $result . "<br>");
         }
         else
-           echo "Table creation error.";
+           echo "Table users creation error.";
 
         //=== CREATE TABLE ================================== posts ====================================
         $connection = new mysqli('localhost', 'root', '', 'test_blog_db');
@@ -63,24 +63,24 @@
 
         if($result)          /* if($result)  - если все нормально. if(!$result) - если что-то не так */
         { 
-            print_r("Table users created." . $result . "<br>");
+            print_r("Table posts created." . $result . "<br>");
         }
         else
-           echo "Table creation error.";
+           echo "Table posts creation error.";
 
         //=== Создаем пользователей =================================== INSERT ========================
-        $query = "INSERT INTO users VALUES ('1', 'adm', '111', 'adm')";   // id=1 уже есть. Будет ошибка.
+        $query = "INSERT INTO users VALUES ('1', 'adm@mail.ru', '111', 'adm', '')";   // id=1 уже есть. Будет ошибка.
         $result = $connection->query($query);
 
-        if($result) echo "Item created.";
-        else        echo "Item creation error.";
+        if($result) echo "adm created.";
+        else        echo "adm creation error.";
         echo "<br>";
 
         $uniq_str = RandString(2);
 
         //--- Вставка нового элемента ---------------------------------------------
         $query = "INSERT INTO users VALUES (
-                   '0', 'Vasya" . $uniq_str . "', '1111', 'Vas" . $uniq_str . "')";
+                   '0', 'Vasya".$uniq_str."@gmail.com', '1111', 'Vas" . $uniq_str . "', '')";
         $result = $connection->query($query);
 
         if($result)                                      

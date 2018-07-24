@@ -52,13 +52,12 @@
                     <div class="nav-item dropdown " style="vertical-align: right;">
 
                     <?php
-                        require_once  'functions.php' ; 
-                        require_once  'log.php' ; 
+                        require_once  'login.php' ; 
                         
                         if ($userLoggedIn == true) 
                         {
                             echo    "<div class=' nav-item'>
-                                        <img class='avatar'  src='images/ava/avamin.jpg'alt='...'>
+                                        <img class='avatar'  src='images/ava/$usermail.jpeg' alt='...'>
                                     </div>
 
                                     <div class='nav-link dropdown-toggle nav-item user_nav_item'data-toggle='dropdown'href='#'role='button'    aria-haspopup='true'aria-expanded='false'>
@@ -84,7 +83,7 @@
                                     <form class='form-signin' method='post' action='index.php'>
                                         <div class='dropdown-item' href='#'>
                                             <label for='inputEmail' class='sr-only'></label>
-                                            <input type='text' name='user' maxlength='30' size='20' class='form-control' placeholder='Email address' required autofocus>
+                                            <input type='email' name='usermail' maxlength='30' size='20' class='form-control' placeholder='Email address' required autofocus>
                                         </div>
 
                                         <div class='dropdown-item' href='#'>
