@@ -18,8 +18,9 @@
         <div class="container data-field">
             <div class="row">
                 <div class="col-md-9 blog-main">
-                    <div class="profile-field " style="border: 1px solid grey;">
-                        <h3 class="form-signin-heading profile-title">Ваш профиль</h3>
+                    <div class="profile-field " >
+                        <h3 class="form-signin-heading profile-title">Ваш профиль</h3> 
+                         <!--style="border: 1px solid grey;" -->
                         <br>
                         <div class="row" >
                                 <div class="col-xs-5">
@@ -31,7 +32,7 @@
                                 </div>
                         </div>
                         <hr>
-                        <form class="row form-signin" style="border: 1px solid grey;">
+                        <form class="row form-signin">
                                 <div class="col-xs-4">
                                     <label for="name">Имя</label>
                                 </div>
