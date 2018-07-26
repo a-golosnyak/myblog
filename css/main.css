@@ -6,7 +6,7 @@
  */
 @media (min-width: 48em) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 body {
@@ -202,7 +202,7 @@ a:focus, a:hover {
 }
 
 /*
- * Blog posts ---------------------------------------------------------------
+ * Blog posts ===============================================================
  */
 .main-field {
   background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6)), no-repeat, url(../images/06.jpg);
@@ -211,6 +211,8 @@ a:focus, a:hover {
 
 .data-field {
   background-color: white;
+  line-height: 1.3em;
+  text-align: justify;
 }
 
 .blog-post {
@@ -226,6 +228,25 @@ a:focus, a:hover {
 .blog-post-meta {
   margin-bottom: 1.25rem;
   color: #999;
+}
+
+.image-wrapper {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 16px;
+  line-height: 1.2em;
+  
+}
+
+  img{
+  max-width: 100%;
+  height: auto;
+}
+
+.image-data{
+  width: 80%;
+  margin: auto;
+  text-align: center;
 }
 
 /*
