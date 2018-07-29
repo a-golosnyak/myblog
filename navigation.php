@@ -124,12 +124,12 @@
 
 echo $signin_message;
 
-/*
+
 echo "SESSION ";
 print_r($_SESSION);
 echo "<br>COOKIES ";
 print_r($_COOKIE);
-echo "<br>REQUEST ";
+/*echo "<br>REQUEST ";
 print_r($_REQUEST);
 */
 ?>

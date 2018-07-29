@@ -81,7 +81,7 @@ $("input[type=file]").on("change", function(){      // Это событие, к
             response: 'text',
             success: function(response) {
                 // Если все ОК
-                // alert("Success! " + " " + response);
+                 alert("Success! " + " " + response);
                 // $("#ProfilePhoto").attr({src: "images/ava/avamin.jpeg"});
                 window.location.href = "profile.php";
             },

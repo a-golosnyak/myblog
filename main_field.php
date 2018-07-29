@@ -32,6 +32,12 @@
                             </div>
                         </div>
 
+                        <style type="text/css">
+                            img{
+                                
+                            }
+                        </style>
+
                         <dl>
                             <dt>Термин</dt><dd>а это его определение.</dd>
                         </dl>
