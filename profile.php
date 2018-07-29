@@ -4,13 +4,23 @@
     if (!$userLoggedIn) 
         die();
 
-/*    if(isset($_POST['data']))
-        echo "Картинка заходит!";
-
-    if(isset($_FILES['image']['name']))
+    if(isset($_POST['name']))
     {
+
     }
-    */
+    if(isset($_POST['name']))
+    {
+            
+    }
+    if(isset($_POST['name']))
+    {
+            
+    }
+    if(isset($_POST['name']))
+    {
+            
+    }
+    
 ?>
 
 <div class="main-field">  
@@ -32,7 +42,7 @@
                                 </div>
                         </div>
                         <hr>
-                        <form class="row form-signin">
+                        <form class="row form-signin" action="profile.php">
                                 <div class="col-xs-4">
                                     <label for="name">Имя</label>
                                 </div>
@@ -45,7 +55,7 @@
                         </form>
                         <hr>
 
-                        <form class="row form-signin">
+                        <form class="row form-signin" action="profile.php">
                                 <div class="col-xs-4">
                                     <label for="inputEmail">Электронная почта</label>
                                 </div>
@@ -57,7 +67,7 @@
                                 </div>
                         </form>
                         <hr>
-                        <form class="row form-signin">
+                        <form class="row form-signin" action="profile.php">
                                 <div class="col-xs-4">
                                     <p>Пароль</p>
                                     <p>Повторите пароль</p>
