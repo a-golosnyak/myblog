@@ -4,23 +4,61 @@
     if (!$userLoggedIn) 
         die();
 
-    if(isset($_POST['name']))
-    {
+    echo '<br>';
+    var_dump($_POST);
+    echo '<br>';
 
-    }
     if(isset($_POST['name']))
     {
-            
+        echo "incoming name " . $_POST['name'];
+
+        $user = sanitizeString($_POST['user']);
+        $pass = sanitizeString($_POST['pass']);
+
+        if ($user == "" || $pass == "")
+            $error = "Not all fields were entered<br><br>";
+        else
+        {
+            $result = queryMysql("SELECT * FROM members WHERE user='$user'");
+
+            if ($result->num_rows)
+                $error = "That username already exists<br><br>";
+            else
+            {
+                queryMysql("INSERT INTO members VALUES('$user', '$pass')");
+                die("<h4>Account created</h4>Please Log in.<br><br>");
+            }
+        }
     }
-    if(isset($_POST['name']))
+
+    if(isset($_POST['email']))
     {
-            
+        echo "incoming email " . $_POST['email'] . "<br>";   
+
+        $email = sanitizeString($_POST['email']);
+
+        $result = queryMysql("SELECT * FROM users WHERE usermail='$email'");
+
+        $row = $result->fetch_assoc();
+        var_dump($row); 
+
+      if ($result->num_rows)
+            $error = "Такой адрес электронной почты уже существует<br><br>";
+        else
+        {
+            queryMysql("UPDATE users SET usermail = $email 
+                        WHERE usermail=$row[usermail]");
+
+            echo "Ok";   
+        }
+        */
     }
-    if(isset($_POST['name']))
+
+    if(isset($_POST['password_confirm']))
     {
-            
+        echo "incoming password " . $_POST['password'] . "<br>";
+        echo "incoming password_confirm " . $_POST['password_confirm'];        
     }
-    
 ?>
 
 <div class="main-field">  
@@ -42,12 +80,12 @@
                                 </div>
                         </div>
                         <hr>
-                        <form class="row form-signin" action="profile.php">
+                        <form class="row form-signin" action="profile.php" method="post">
                                 <div class="col-xs-4">
                                     <label for="name">Имя</label>
                                 </div>
                                 <div class="col-xs-5">
-                                    <input type="name" id="name"  placeholder="Имя пользователя" required style="">
+                                    <input type="name" id="name" name="name" placeholder="Имя пользователя" required style="">
                                 </div>
                                 <div class="col-xs-3" >
                                     <button type="submit" class="profile-btn" style="text-align: center;">Применить</button>
@@ -55,30 +93,30 @@
                         </form>
                         <hr>
 
-                        <form class="row form-signin" action="profile.php">
+                        <form class="row form-signin" action="profile.php" method="post">
                                 <div class="col-xs-4">
                                     <label for="inputEmail">Электронная почта</label>
                                 </div>
                                 <div class="col-xs-5">
-                                    <input type="email" id="inputEmail"  placeholder="Email address" required>
+                                    <input type="email" id="inputEmail" name="email" placeholder="Email address" required>
                                 </div>
                                 <div class="col-xs-3" >
-                                    <button type="button" class="profile-btn" >Применить</button>
+                                    <button type="submit" class="profile-btn" >Применить</button>
                                 </div>
                         </form>
                         <hr>
-                        <form class="row form-signin" action="profile.php">
+                        <form class="row form-signin" action="profile.php" method="post">
                                 <div class="col-xs-4">
                                     <p>Пароль</p>
                                     <p>Повторите пароль</p>
 
                                 </div>
                                 <div class="col-xs-5">
-                                    <input type="password" id="password"  placeholder="Пароль" required>
-                                    <input type="password" id="password_confirm"  placeholder="Пароль"  required>
+                                    <input type="password" name="password"  placeholder="Пароль" required>
+                                    <input type="password" name="password_confirm"  placeholder="Пароль"  required>
                                 </div>
                                 <div class="col-xs-3" style="padding-top: 0.7em;" >
-                                    <button type="button" class="profile-btn" >Применить</button>
+                                    <button type="submit" class="profile-btn" >Применить</button>
                                 </div>
                         </form>
                         <hr>
