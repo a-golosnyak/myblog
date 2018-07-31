@@ -19,7 +19,7 @@ var jcrop_api,
 
 var cropCoords,
     file,
-    uploadSize = 400,
+    uploadSize = 2000,
     previewSize = 400; 
 
 
@@ -39,8 +39,8 @@ $("input[type=file]").on("change", function(){      // Это событие, к
     file = this.files[0];                           //
     sourceFile = this.files[0];                     //*****
     readFile(file, {
-        width: previewSize,
-        height: previewSize
+        width: uploadSize,
+        height: uploadSize
     }).done(function(imgDataUrl, origImage) {
 //      $("input, img, button").toggle();
         $("#InpProfileSelect").toggle();
@@ -57,8 +57,7 @@ $("input[type=file]").on("change", function(){      // Это событие, к
     });
 });
 
-//$("button[type=submit]").on("click", function(){
-
+//  $("button[type=submit]").on("click", function(){
     $("#PhotoSubmit").on("click", function(){       // Событие отправка формы
     $(this).text("Загрузка...").prop("disabled", true);
 

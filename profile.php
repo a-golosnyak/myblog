@@ -4,9 +4,11 @@
     if (!$userLoggedIn) 
         die();
 
-//    echo '<br>';
-
-
+/*    echo '<br>';
+    echo "POST : "; 
+    var_dump($_POST);
+    echo '<br>';
+*/
     if(isset($_POST['name']))
     {
         echo "incoming name " . $_POST['name'];
@@ -33,36 +35,43 @@
     if(isset($_POST['email']))
     {
         $email = sanitizeString($_POST['email']);
-
-        $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
-        $row = $result->fetch_assoc();
-//        var_dump($row); 
-
         $result = queryMysql("SELECT * FROM users WHERE usermail='$email'");
-
-        $row = $result->fetch_assoc();
-        var_dump($row); 
-        echo '<br>';
-
+   /*     $row = $result->fetch_assoc();
+        echo "DB : "; 
+        echo ($row["usermail"]);
+        echo "<br>";    
+*/
         if ($result->num_rows)
         {
-            $error = "Такой адрес электронной почты уже существует<br>";
-            echo $error;
+            $status = "Такой адрес электронной почты уже существует<br>";
+
+                $signin_message = "                                     
+                <div class='alert alert-info' role='alert' style='width: 100%; margin-bottom: 0;'>
+                    <div class='container'>
+                        <strong>$status</strong>
+                    </div>
+                </div>";
+                echo $signin_message;
         }
         else
         {
+            $_SESSION['usermail'] = $email;
             queryMysql("UPDATE users SET usermail = '$email' 
-                        WHERE usermail='$usermail'");
+                        WHERE usermail='$usermail' ");
+            $file = "images/ava/$usermail.jpeg";
+            $newFile = "images/ava/$email.jpeg";
 
-            echo "Ok"; 
-            echo '<br>';  
+            if (copy($file, $newFile))          // Делаем копию файла        
+                $status = "";
+            else
+                $status = "err01";
+
+ //         unlink($file);                      // удаляем оригинал
+            echo "<script>
+                    alert('Адрес электронной почты изменен. Выполните пожалуйста вход. $status');
+                    window.location.href='logout.php';
+                </script>";    
         }
-
-        $result = queryMysql("SELECT * FROM users WHERE usermail='$email'");
-        $row = $result->fetch_assoc();
-        var_dump($row);
-        echo '<br>';
-        $usermail = $email;
         
     }
 
@@ -71,26 +80,28 @@
         echo "incoming password " . $_POST['password'] . "<br>";
         echo "incoming password_confirm " . $_POST['password_confirm'];        
     }
-?>
 
-<div class="main-field">  
-    <div class="container-fluid " >
-        <div class="container data-field">
-            <div class="row">
-                <div class="col-md-9 blog-main">
-                    <div class="profile-field " >
-                        <h3 class="form-signin-heading profile-title">Ваш профиль</h3> 
-                         <!--style="border: 1px solid grey;" -->
+
+
+    echo "<div class='main-field'>  
+    <div class='container-fluid ' >
+        <div class='container data-field'>
+            <div class='row'>
+                <div class='col-md-9 blog-main'>
+                    <div class='profile-field ' >
+                        <h3 class='form-signin-heading profile-title'>Ваш профиль <b>$usermail</b></h3> 
+                         <!--style='border: 1px solid grey;' -->
                         <br>
-                        <div class="row" >
-                                <div class="col-xs-5">
+                        <div class='row' >
+                                <div class='col-xs-5'>
                                     <span>Профиль создан</span>
                                 </div>
-                                <div class="col-xs-4"></div>
-                                <div class="col-xs-3" >
-                                    <span class="profile-meta ">January 1, 2014</span>
+                                <div class='col-xs-4'></div>
+                                <div class='col-xs-3' >
+                                    <span class='profile-meta '>January 1, 2014</span>
                                 </div>
-                        </div>
+                        </div>";
+?>
                         <hr>
                         <form class="row form-signin" action="profile.php" method="post">
                                 <div class="col-xs-4">

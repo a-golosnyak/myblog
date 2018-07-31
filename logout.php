@@ -4,12 +4,12 @@
     if (isset($_SESSION['usermail']))
     {
         $_SESSION = array();
-        setcookie('usermail', $usermail, time() - 60*60*24*31);        // Анулируем Remember me
-        setcookie('user', 'adm', time() - 60*60*24*31);        // Анулируем Remember me
+        setcookie('usermail', $usermail, time() - 60*60*24*31);             // Анулируем Remember me
+//        setcookie('test_user', 'test_user', time() - 60*60*24*31);        // Анулируем Remember me
         session_unset();
 
-        header('Location: index.php');    
- //       echo '<meta http-equiv="refresh" content="0; url=index.php">';    
+        header('Location: index.php');                                      // Это должно быть в начале скрипта 
+ //     echo '<meta http-equiv="refresh" content="0; url=index.php">';      // Это работает с любой точки скрипта  
         die();
 
     }
