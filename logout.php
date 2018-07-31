@@ -5,6 +5,7 @@
     {
         $_SESSION = array();
         setcookie('usermail', $usermail, time() - 60*60*24*31);        // Анулируем Remember me
+        setcookie('user', 'adm', time() - 60*60*24*31);        // Анулируем Remember me
         session_unset();
 
         header('Location: index.php');    

@@ -4,9 +4,8 @@
     if (!$userLoggedIn) 
         die();
 
-    echo '<br>';
-    var_dump($_POST);
-    echo '<br>';
+//    echo '<br>';
+
 
     if(isset($_POST['name']))
     {
@@ -33,25 +32,38 @@
 
     if(isset($_POST['email']))
     {
-        echo "incoming email " . $_POST['email'] . "<br>";   
-
         $email = sanitizeString($_POST['email']);
+
+        $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
+        $row = $result->fetch_assoc();
+//        var_dump($row); 
 
         $result = queryMysql("SELECT * FROM users WHERE usermail='$email'");
 
         $row = $result->fetch_assoc();
         var_dump($row); 
+        echo '<br>';
 
-      if ($result->num_rows)
-            $error = "Такой адрес электронной почты уже существует<br><br>";
+        if ($result->num_rows)
+        {
+            $error = "Такой адрес электронной почты уже существует<br>";
+            echo $error;
+        }
         else
         {
-            queryMysql("UPDATE users SET usermail = $email 
-                        WHERE usermail=$row[usermail]");
+            queryMysql("UPDATE users SET usermail = '$email' 
+                        WHERE usermail='$usermail'");
 
-            echo "Ok";   
+            echo "Ok"; 
+            echo '<br>';  
         }
-        */
+
+        $result = queryMysql("SELECT * FROM users WHERE usermail='$email'");
+        $row = $result->fetch_assoc();
+        var_dump($row);
+        echo '<br>';
+        $usermail = $email;
+        
     }
 
     if(isset($_POST['password_confirm']))

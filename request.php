@@ -1,13 +1,14 @@
 <?php
 
     require_once  'log.php' ;            // Проверяем авторизирован ли пользователь
-
+    require_once  'functions.php' ;  
 //    if (!$userLoggedIn) 
 //        die();
 
     if( isset( $_FILES['file'] ) )
     {
-      echo var_dump($_FILES) . "<br>";
+        echo var_dump($_FILES) . "<br>";
+
         $image = $_FILES['file'];
         $imageFormat = explode('/', $image['type']);
         $imageType = $imageFormat[0];
