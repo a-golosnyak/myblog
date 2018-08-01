@@ -481,12 +481,13 @@ a:focus, a:hover {
 }
 
 .jcrop-holder{
-  margin-left: 4%;
-  margin-right: auto;
+/*  margin-left: 4%;
+    margin-right: auto;
+  */
 }
 
 .profile-photo{
-  margin: 1em;
+//  margin: 0,5em;
 }
 
 #InpProfileSelect, .profile-btn

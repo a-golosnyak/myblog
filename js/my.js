@@ -49,7 +49,6 @@ $("input[type=file]").on("change", function(){      // Это событие, к
         $("#PhotoCancel").toggle();  
         
         initJCrop(imgDataUrl);
-
         $("#PreviewArea").attr({src: imgDataUrl});
 
     }).fail(function(msg) {
