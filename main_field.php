@@ -25,7 +25,7 @@
                         </p>
   
                         <div class="image-wrapper">
-                            <img src="images/posts/Fig_1_Rus.gif">
+                            <img class='article-image' src="images/posts/Fig_1_Rus.gif">
                             <div class="image-data">
                                 Рисунок 1.  Фильтр верхних частот и два фильтра нижних частот помогают уменьшить
                                 или удалить низкочастотный фон и высокочастотные шумы из аудио сигналов.  
