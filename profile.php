@@ -163,6 +163,22 @@
                                 <button type="submit" class="profile-btn btn-md btn-primary" id="PhotoSubmit" style="display:none">Загрузить</button>  
                             </form>
                         </div> 
+
+                        <!-- This is the form that our event handler fills      DEBUG SECTION ***-->
+                        <form id="coords"
+                            class="coords"
+                            onsubmit="return false;">
+
+                            <div class="inline-labels">
+                                <label>X1 <input type="text" size="4" id="x1" name="x1" /></label>
+                                <label>Y1 <input type="text" size="4" id="y1" name="y1" /></label>
+                                <label>X2 <input type="text" size="4" id="x2" name="x2" /></label>
+                                <label>Y2 <input type="text" size="4" id="y2" name="y2" /></label>
+                                <label>W <input type="text" size="4" id="w" name="w" /></label>
+                                <label>H <input type="text" size="4" id="h" name="h" /></label>
+                            </div>
+                        </form>
+                        
                         <div class="row">
                             <div class="col-sm-6">
                                 <div id="preview-pane">
@@ -173,6 +189,12 @@
                             </div> 
                         </div>
                         <br style="clear: both;">
+
+                        
+
+                        <div style="clear: both;"> </div>
+
+
                         <!-- <img src='$user.jpg' style='float:left;'> -->        
                     </div>
                     <nav class="blog-pagination">

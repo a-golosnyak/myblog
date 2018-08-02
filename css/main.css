@@ -238,10 +238,7 @@ a:focus, a:hover {
   
 }
 
-  img{
-  max-width: 100%;
-  height: auto;
-}
+
 
 .image-data{
   width: 80%;
@@ -511,6 +508,10 @@ a:focus, a:hover {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ecf1f3', GradientType=0 );
 }
 
+.image-article{
+  max-width: 100%;
+  height: auto;
+}
 
 .form-signin{
 /*    border-bottom: 1px solid #CCC;

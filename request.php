@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     require_once  'log.php' ;            // Проверяем авторизирован ли пользователь
     require_once  'functions.php' ;  
 //    if (!$userLoggedIn) 

@@ -19,8 +19,8 @@ var jcrop_api,
 
 var cropCoords,
     file,
-    uploadSize = 2000,
-    previewSize = 400; 
+    uploadSize = 500,
+    previewSize = 800; 
 
 
 $( document ).ready(function() {
@@ -39,8 +39,8 @@ $("input[type=file]").on("change", function(){      // Это событие, к
     file = this.files[0];                           //
     sourceFile = this.files[0];                     //*****
     readFile(file, {
-        width: uploadSize,
-        height: uploadSize
+        width: previewSize,
+        height: previewSize
     }).done(function(imgDataUrl, origImage) {
 //      $("input, img, button").toggle();
         $("#InpProfileSelect").toggle();
@@ -79,7 +79,7 @@ $("input[type=file]").on("change", function(){      // Это событие, к
             response: 'text',
             success: function(response) {
                 // Если все ОК
-                 alert("Success! " + " " + response);
+                // alert("Success! " + " " + response);
                 // $("#ProfilePhoto").attr({src: "images/ava/avamin.jpeg"});
                 window.location.href = "profile.php";
             },
@@ -145,13 +145,14 @@ $("input[type=file]").on("change", function(){      // Это событие, к
 show local image and init JCrop
 *****************************/
 var initJCrop = function(imgDataUrl){
-    var img = $("img.crop").attr("src", imgDataUrl);
+    var img = $("#ProfilePhoto").attr("src", imgDataUrl);
     
     var storeCoords = function(c) {
         cropCoords = c;
         // Пока не получилось привязать вызов этой функции к иницилизации Jcrop
         // потому вызываю здесь, события те же, что и для ф-ции storeCoords
-        updatePreview(c);       
+        updatePreview(c);     
+        showCoords(c);  
     };
     
     var w = img.width();
