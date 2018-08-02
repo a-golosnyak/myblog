@@ -149,7 +149,7 @@
                                 <h5 class="photo-item">Фото профиля</h5>
 
                                 <?php
-                                    echo "<img class='crop profile-photo' src='images/ava/$usermail.jpeg' id='ProfilePhoto'  />";
+                                    echo "<img class='crop jcrop-holder' src='images/ava/$usermail.jpeg' id='ProfilePhoto'  />";
                                 ?>
 
                                 <br>

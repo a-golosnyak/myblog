@@ -238,12 +238,20 @@ a:focus, a:hover {
   
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
 .image-data{
   width: 80%;
   margin: auto;
   text-align: center;
+}
+
+.article-image{
+    max-width: 100%;
+    height: auto;
 }
 
 /*
@@ -484,7 +492,7 @@ a:focus, a:hover {
 }
 
 .profile-photo{
-//  margin: 0,5em;
+/*  margin: 0,5em;  */
 }
 
 #InpProfileSelect, .profile-btn
@@ -508,9 +516,15 @@ a:focus, a:hover {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ecf1f3', GradientType=0 );
 }
 
+<<<<<<< HEAD
 .image-article{
   max-width: 100%;
   height: auto;
+=======
+#ProfilePhoto{
+    max-width: 100%;
+    height: auto;
+>>>>>>> master
 }
 
 .form-signin{
