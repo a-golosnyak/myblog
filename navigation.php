@@ -102,7 +102,7 @@
                                         </div>
                                     </form>
                                     <div class='dropdown-divider'></div>
-                                    <a href='index.php?view=1'>
+                                    <a href='registration.php'>
                                         <div class='dropdown-item' href='#'>
                                             <button class='btn btn-md btn-primary btn-block' type='submit'>
                                                 Регистрация

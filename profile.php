@@ -4,6 +4,12 @@
     if (!$userLoggedIn) 
         die();
 
+    if($usermail == $adminmail)
+    {
+        echo "Добро пожаловать, Админ! <br>";
+
+    }
+
 /*    echo '<br>';
     echo "POST : "; 
     var_dump($_POST);
@@ -81,8 +87,6 @@
         echo "incoming password_confirm " . $_POST['password_confirm'];        
     }
 
-
-
     echo "<div class='main-field'>  
     <div class='container-fluid ' >
         <div class='container data-field'>
@@ -100,9 +104,10 @@
                                 <div class='col-xs-3' >
                                     <span class='profile-meta '>January 1, 2014</span>
                                 </div>
-                        </div>";
+                        </div> 
+                        <hr>";
 ?>
-                        <hr>
+                        
                         <form class="row form-signin" action="profile.php" method="post">
                                 <div class="col-xs-4">
                                     <label for="name">Имя</label>
@@ -121,10 +126,10 @@
                                     <label for="inputEmail">Электронная почта</label>
                                 </div>
                                 <div class="col-xs-5">
-                                    <input type="email" id="inputEmail" name="email" placeholder="Email address" required>
+                                    <input type="email" id="inputEmail" name="email" placeholder="Email" required>
                                 </div>
                                 <div class="col-xs-3" >
-                                    <button type="submit" class="profile-btn" >Применить</button>
+                                    <button type="submit " class="profile-btn disabled" >Применить</button>
                                 </div>
                         </form>
                         <hr>
@@ -136,7 +141,7 @@
                                 </div>
                                 <div class="col-xs-5">
                                     <input type="password" name="password"  placeholder="Пароль" required>
-                                    <input type="password" name="password_confirm"  placeholder="Пароль"  required>
+                                    <input type="password" name="password_confirm"  placeholder=" Повторите пароль"  required>
                                 </div>
                                 <div class="col-xs-3" style="padding-top: 0.7em;" >
                                     <button type="submit" class="profile-btn" >Применить</button>
@@ -164,7 +169,7 @@
                             </form>
                         </div> 
 
-                        <!-- This is the form that our event handler fills      DEBUG SECTION ***-->
+                        <!-- This is the form that our event handler fills      DEBUG SECTION ***
                         <form id="coords"
                             class="coords"
                             onsubmit="return false;">
@@ -177,7 +182,7 @@
                                 <label>W <input type="text" size="4" id="w" name="w" /></label>
                                 <label>H <input type="text" size="4" id="h" name="h" /></label>
                             </div>
-                        </form>
+                        </form>     -->
                         
                         <div class="row">
                             <div class="col-sm-6">

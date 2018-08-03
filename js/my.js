@@ -20,7 +20,7 @@ var jcrop_api,
 var cropCoords,
     file,
     uploadSize = 500,
-    previewSize = 800; 
+    previewSize = 500; 
 
 
 $( document ).ready(function() {
@@ -152,7 +152,7 @@ var initJCrop = function(imgDataUrl){
         // Пока не получилось привязать вызов этой функции к иницилизации Jcrop
         // потому вызываю здесь, события те же, что и для ф-ции storeCoords
         updatePreview(c);     
-        showCoords(c);  
+//        showCoords(c);          // Для того, чтобы выводить координаты
     };
     
     var w = img.width();

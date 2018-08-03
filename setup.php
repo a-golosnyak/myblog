@@ -7,7 +7,7 @@
         <h3>Setting up...</h3>
 
         <?php
- //       require_once 'functions.php';
+        require_once 'functions.php';
 
         //=== CREATE DATABASE ================================== test_blog_db ==========================
         $link = mysqli_connect('127.0.0.1', 'root', '');            // Соединяемся с сервером
@@ -69,7 +69,7 @@
            echo "Table posts creation error.";
 
         //=== Создаем пользователей =================================== INSERT ========================
-        $query = "INSERT INTO users VALUES ('1', 'adm@mail.ru', '111', 'adm', '')";   // id=1 уже есть. Будет ошибка.
+        $query = "INSERT INTO users VALUES ('1', $adminmail, '111', 'adm', '')";   // id=1 уже есть. Будет ошибка.
         $result = $connection->query($query);
 
         if($result) echo "adm created.";
