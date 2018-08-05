@@ -113,7 +113,7 @@
                                     <label for="name">Имя</label>
                                 </div>
                                 <div class="col-xs-5">
-                                    <input type="name" id="name" name="name" placeholder="Имя пользователя" required style="">
+                                    <input type="name" id="name" name="name" placeholder="Имя пользователя" required >
                                 </div>
                                 <div class="col-xs-3" >
                                     <button type="submit" class="profile-btn" style="text-align: center;">Применить</button>
@@ -202,10 +202,6 @@
 
                         <!-- <img src='$user.jpg' style='float:left;'> -->        
                     </div>
-                    <nav class="blog-pagination">
-                        <a class="btn btn-outline-primary" href="#">Older</a>
-                        <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-                    </nav>
                 </div><!-- /.blog-main -->
 
                 <?php 
