@@ -39,6 +39,7 @@
     <script>
         function checkUser(email)
         {
+            
             if(validateEmail(email.value) == "Ok")    /*(email.value.length > 5)*/
             {
                 params  = "email=" + email.value
@@ -80,7 +81,7 @@
         }
         function validate()
         {
-                ***
+
         }
 
         function validateEmail(field)
@@ -92,7 +93,7 @@
             /[^a-zA-Z0-9.@_-]/.test(field) )
                 return "Электронный адрес имеет неверный формат.\n"
 
-            return false;
+            return "";
         }
 
         function validatePassword(field) 
@@ -110,10 +111,11 @@
 
         function validateName(field)
         {
-            return (field == "") ? "Не введено имя.\n" : ""
+            if(field.length < 3)
+                return "Не введено имя.\n";
+
+            return "";
         }
-
-
 
     </script>
 
