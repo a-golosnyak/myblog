@@ -600,5 +600,11 @@ a:focus, a:hover {
 
 .fa-asterisk{
   color: rgb(200, 50, 50);
+  font-size: 0.6rem;
+}
+
+.fa-check{
+  color: rgb(200, 50, 50);
+  font-size: 0.6rem;
 }
 
