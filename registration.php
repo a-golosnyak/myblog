@@ -39,8 +39,7 @@
     <script>
         function checkUser(email)
         {
-            
-            if(validateEmail(email.value) == "Ok")    /*(email.value.length > 5)*/
+            if(validateEmail(email.value) == "")    /*(email.value.length > 5)*/
             {
                 params  = "email=" + email.value
                 request = new ajaxRequest()
@@ -79,10 +78,6 @@
             }
             return request
         }
-        function validate()
-        {
-
-        }
 
         function validateEmail(field)
         {
@@ -96,23 +91,48 @@
             return "";
         }
 
-        function validatePassword(field) 
+        function validatePassword(pass1, pass2) 
         {
-            if (field == "") 
-                return "Не введен пароль.\n"
-            else if (field.length < 6)
-                return "В пароле должно быть не менее 6 символов.\n"
-            else if (!/[a-z]/.test(field) || ! /[A-Z]/.test(field) ||
-            !/[0-9]/.test(field))
-                return "Пароль требует 1 символа из каждого набора a-z, A-Z и 0-9.\n"
-
+            if (pass1 == "") 
+            {
+                document.getElementById('pass1Ok').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
+            }
+            else if (pass2 == "")
+            {
+                document.getElementById('pass2Ok').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
+            }
+            else if (pass1.value.length < 3)
+            {
+                document.getElementById('pass1Ok').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
+            }
+            else if (pass2.value.length < 3)
+            {
+                document.getElementById('pass2Ok').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
+            }
+            else if(pass1.value == pass2.value)
+            {
+                document.getElementById('pass1Ok').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.7rem;'> ";
+                document.getElementById('pass2Ok').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.7rem;'> ";
+            }
+            else
+            {
+                document.getElementById('pass1Ok').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
+                document.getElementById('pass2Ok').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
+            }  
+//            alert(pass1.value + ' ' + pass1.value.length + ' ' + pass2.value + ' ' + pass2.value.length);
             return ""
         }
 
         function validateName(field)
         {
-            if(field.length < 3)
-                return "Не введено имя.\n";
+            if(field.value.length < 4)
+            {
+                document.getElementById('nameOk').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
+            }
+            else
+            {
+                document.getElementById('nameOk').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.7rem;'> ";
+            }
 
             return "";
         }
@@ -133,17 +153,23 @@
                 </div>
                 <br>
                 <div>
-                    <input type="password" name="password" class="form-control form-signup page-item" placeholder="Пароль" required>
-                    <i class="fas fa-asterisk "></i> 
+                    <input type="password" name="password" id="password" class="form-control form-signup page-item" placeholder="Пароль" required onkeyup="validatePassword(this, password_confirm)">
+                    <div id="pass1Ok" class="page-item">
+                        <i class="fas fa-asterisk "></i> 
+                    </div>
                 </div>
                 <div>
-                    <input type="password" name="password_confirm" class="form-control form-signup page-item" placeholder="Повторите пароль" required>
-                    <i class="fas fa-asterisk "></i> 
+                    <input type="password" name="password_confirm" class="form-control form-signup page-item" placeholder="Повторите пароль" required onkeyup="validatePassword(password, this)">
+                    <div id="pass2Ok" class="page-item">
+                       <i class="fas fa-asterisk "></i> 
+                   </div>
                 </div>
                 <br>
                 <div>
-                    <input type="text" name="screen_name" class="form-control form-signup page-item" placeholder="Имя" required>
-                    <i class="fas fa-asterisk "></i> 
+                    <input type="text" name="screen_name" class="form-control form-signup page-item" placeholder="Имя" required onkeyup = "validateName(this)">
+                    <div id="nameOk" class="page-item">
+                        <i class="fas fa-asterisk "></i> 
+                    </div>
                 </div>
                 <br>
                 <div>

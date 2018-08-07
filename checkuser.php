@@ -9,9 +9,9 @@
  //       echo "Checkuser.php reached";
 
         if ($result->num_rows)
-            echo  "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 1rem;'> ";
+            echo  "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.8rem;'> ";
         else
-            echo  "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 1rem;'> ";
+            echo  "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.8rem;'> ";
             
 
             
