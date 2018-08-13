@@ -10,7 +10,7 @@
         require_once 'functions.php';
 
         //=== CREATE DATABASE ================================== test_blog_db ==========================
-        $link = mysqli_connect('127.0.0.1', 'root', '');            // Соединяемся с сервером
+        $link = mysqli_connect('localhost', 'root', '');            // Соединяемся с сервером
         if(!$link)
             $die('Report 1. Connection problems. ' . mysqli_error());
         
