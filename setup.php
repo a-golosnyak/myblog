@@ -7,7 +7,7 @@
         <h3>Setting up...</h3>
 
         <?php
-        require_once 'functions.php';
+		require_once 'db.php';
 
         //=== CREATE DATABASE ================================== test_blog_db ==========================
         $link = mysqli_connect($dbhost, $dbuser, $dbpass);            // Соединяемся с сервером

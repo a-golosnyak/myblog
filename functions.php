@@ -1,10 +1,5 @@
 <?php // Example 26-1: functions.php
-    $dbhost  = 'localhost';    // Unlikely to require changing
-    $dbname  = 'test_blog_db';   // Modify these...
-    $dbuser  = 'root';   // ...variables according
-    $dbpass  = '80569023212';   // ...to your installation
-    $appname = "TestBlog"; // ...and preference
-    $adminmail = 'adm@mail.ru';
+    require_once 'db.php';
 
     $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
     if ($connection->connect_error) 
