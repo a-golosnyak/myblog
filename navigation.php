@@ -12,18 +12,24 @@
                         <div class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Рубрика</div>
                         <div class="dropdown-menu dropdown-menu-left">
                             <a href='emb_articles.php'>
-                                <div class="dropdown-item">Разработка электроники</div>
-                            </a>
-                            <a href='car_articles.php'>
-                                <div class="dropdown-item">Автомобили</div>
+                                <div class="dropdown-item">Микроконтроллеры STM32</div>
                             </a>
                             <a href='sport_articles.php'>
-                                <div class="dropdown-item">Спорт</div>
+                                <div class="dropdown-item">Программирование Linux</div>
                             </a>
-                            <div class="dropdown-divider"></div>
+                            <a href='sport_articles.php'>
+                                <div class="dropdown-item">ПЛИС</div>
+                            </a>
+                            <a href='sport_articles.php'>
+                                <div class="dropdown-item">Квадрокоптеры</div>
+                            </a>
+                            <a href='sport_articles.php'>
+                                <div class="dropdown-item">Живые проекты</div>
+                            </a>
+                      <!--      <div class="dropdown-divider"></div>        
                             <a href='index.php?view=1'>
                                 <div class="dropdown-item" href="#">Тестовые проекты</div>
-                            </a>
+                            </a>    -->
                         </div>
                     </div>
                     <div class="nav-item">
@@ -52,7 +58,7 @@
                     <div class="nav-item dropdown " style="vertical-align: right;">
 
                     <?php
-                        require_once  'login.php' ; 
+  //                      require_once  'login.php' ; 
                         
                         if ($userLoggedIn == true) 
                         {
@@ -122,9 +128,9 @@
 
 <?php
 
-/*    echo $signin_message;
+    echo $signin_message;
 
-    echo "SESSION ";
+/*    echo "SESSION ";
     print_r($_SESSION);
     echo "<br>COOKIES ";
     print_r($_COOKIE);

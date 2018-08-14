@@ -3,6 +3,7 @@
 	//=== Обратотка процесса входа. Он у нас в выпадающем окне, потому это нужно делать всегда ==============
 	$usermail = $pass = "";
 	
+
 	if(isset($_POST['usermail']))
 	{
 		$usermail = sanitizeString($_POST['usermail']);

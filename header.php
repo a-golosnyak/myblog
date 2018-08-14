@@ -24,7 +24,7 @@
             <div class="container">
                 <h3 class="blog-title"> 
                     <a href="index.php">The Blog</a></h3>
-                <p class="lead blog-description">An example blog template built with Bootstrap.</p>
+                <p class="lead blog-description">Блог для людей, интерисующихся электроникой.</p>
             </div>
         </div>
 

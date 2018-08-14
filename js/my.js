@@ -26,7 +26,7 @@ var cropCoords,
 $( document ).ready(function() {
 //    alert( "ready!" );
 
-	$(window).scrollTop(100);
+//	$(window).scrollTop(100);
 
 
 	$(document).ready(function(){
