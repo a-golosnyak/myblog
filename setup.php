@@ -10,11 +10,11 @@
         require_once 'functions.php';
 
         //=== CREATE DATABASE ================================== test_blog_db ==========================
-        $link = mysqli_connect('localhost', 'root', '');            // Соединяемся с сервером
+        $link = mysqli_connect($dbhost, $dbuser, $dbpass);            // Соединяемся с сервером
         if(!$link)
             $die('Report 1. Connection problems. ' . mysqli_error());
         
-        $db_selected = mysqli_select_db( $link, 'test_blog_db');    // Пытаемся выбрать базу
+        $db_selected = mysqli_select_db( $link, $dbname);    // Пытаемся выбрать базу
         
         if(!$db_selected)
         {
@@ -27,7 +27,7 @@
         echo "<br>";
 
         //=== CREATE TABLE ================================== users ====================================
-        $connection = new mysqli('localhost', 'root', '', 'test_blog_db');
+        $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($connection->connect_error)
             die("Connectio attemt denied " . $connection->connect_error);
 
@@ -48,7 +48,7 @@
            echo "Table users creation error.";
 
         //=== CREATE TABLE ================================== posts ====================================
-        $connection = new mysqli('localhost', 'root', '', 'test_blog_db');
+        $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($connection->connect_error)
             die("Connectio attemt denied " . $connection->connect_error);
 

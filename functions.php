@@ -2,7 +2,7 @@
     $dbhost  = 'localhost';    // Unlikely to require changing
     $dbname  = 'test_blog_db';   // Modify these...
     $dbuser  = 'root';   // ...variables according
-    $dbpass  = '';   // ...to your installation
+    $dbpass  = '80569023212';   // ...to your installation
     $appname = "TestBlog"; // ...and preference
     $adminmail = 'adm@mail.ru';
 
