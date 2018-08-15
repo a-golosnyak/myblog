@@ -4,46 +4,44 @@
     if (isset($_SESSION['user'])) 
         destroySession();
 
-/*    echo '<br>';
-    echo "POST :"; 
-    var_dump($_POST);
-    echo '<br>';
-*/
+    $email=$password=$screen_name = 0;
+
     if(isset($_POST['email']))
     {
-        echo "Incoming mail " . $_POST['email'];
-        echo '<br>';
         $email = sanitizeString($_POST['email']);
+        $password = sanitizeString($_POST['password']);
+        $screen_name = sanitizeString($_POST['screen_name']);
+        $date = date("Y-m-d H:i:s");
 
         $result = queryMysql("SELECT * FROM users WHERE usermail='$email'");
 
-        if ($result->num_rows)
+        if ($result->num_rows)          // Мы это уже проверили во фронтенде. Страхуемся.
         {
-            echo "That email already exists<br><br>";
+//            echo "That email already exists<br><br>";
         }
         else
         {
-            echo "This email can be used<br><br>";
-        }
+            //--- Запмсываем данные по профилю в базу данных --------------------------------------
+//            echo "This email can be used<br><br>";
+            queryMysql("INSERT INTO users VALUES('0', '$email', '$password' , '$screen_name', '$date')");
+            
+            $file = "images/ava/Guest.jpg";
+            $newFile = "images/ava/$email.jpeg";
 
-/*      if ($user == "" || $pass == "")
-            $error = "Not all fields were entered<br><br>";
-        else
-        {
-            $result = queryMysql("SELECT * FROM members WHERE user='$user'");
-
-            if ($result->num_rows)
-                $error = "That username already exists<br><br>";
+            //--- Присваеваем новому профилю стандартную картпинку --------------------------------
+            if (copy($file, $newFile))          // Делаем копию файла        
+                $status = "";
             else
-            {
-                queryMysql("INSERT INTO members VALUES('$user', '$pass')");
-                die("<h4>Account created</h4>Please Log in.<br><br>");
-            }
-        }
-        */
-    }
+                $status = "err01";
 
+            echo "<script>
+                    alert('Учетная запист зарегистрирована. Выполните пожалуйста вход. $status');
+                    window.location.href='registration.php';
+                </script>";
+        }
+    }
 ?>
+
     <script>
         function checkUser(email)
         {

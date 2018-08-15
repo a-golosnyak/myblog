@@ -3,50 +3,47 @@
 
     if (!$userLoggedIn) 
         die();
+    else
+    {
+        $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
+        $row = $result->fetch_assoc();
+     
+        $pl_usermail = $row['usermail'];
+        $pl_screen_name = $row['screen_name'];
+/*        echo "DB : "; 
+        print_r($pl_usermail);
+        echo "<br>"; 
+        print_r($pl_password);
+        echo "<br>";
+        print_r($pl_screen_name);
+        echo "<br>";        */
+    }
 
     if($usermail == $adminmail)
     {
-        echo "Добро пожаловать, Админ! <br>";
-
+        echo "                                     
+            <div class='alert alert-success' role='alert' style='width: 100%; margin-bottom: 0;'>
+                <div class='container'>
+                    <strong>Добро пожаловать, админ!</strong>
+                </div>
+            </div>";    
     }
 
-/*    echo '<br>';
-    echo "POST : "; 
-    var_dump($_POST);
-    echo '<br>';
-*/
     if(isset($_POST['name']))
     {
-        echo "incoming name " . $_POST['name'];
-
-        $user = sanitizeString($_POST['user']);
-        $pass = sanitizeString($_POST['pass']);
-
-        if ($user == "" || $pass == "")
-            $error = "Not all fields were entered<br><br>";
-        else
-        {
-            $result = queryMysql("SELECT * FROM members WHERE user='$user'");
-
-            if ($result->num_rows)
-                $error = "That username already exists<br><br>";
-            else
-            {
-                queryMysql("INSERT INTO members VALUES('$user', '$pass')");
-                die("<h4>Account created</h4>Please Log in.<br><br>");
-            }
-        }
+        $name = sanitizeString($_POST['name']);
+        queryMysql("UPDATE users SET screen_name = '$name' 
+                        WHERE usermail='$usermail' ");
+        echo "  <script>
+                   window.location.href='profile.php';
+                </script>";   
     }
 
     if(isset($_POST['email']))
     {
         $email = sanitizeString($_POST['email']);
         $result = queryMysql("SELECT * FROM users WHERE usermail='$email'");
-   /*     $row = $result->fetch_assoc();
-        echo "DB : "; 
-        echo ($row["usermail"]);
-        echo "<br>";    
-*/
+
         if ($result->num_rows)
         {
             $status = "Такой адрес электронной почты уже существует<br>";
@@ -107,46 +104,50 @@
                         </div> 
                         <hr>";
 ?>
-                        
-                        <form class="row form-signin" action="profile.php" method="post">
-                                <div class="col-xs-4">
-                                    <label for="name">Имя</label>
-                                </div>
-                                <div class="col-xs-5">
-                                    <input type="name" id="name" name="name" placeholder="Имя пользователя" required >
-                                </div>
-                                <div class="col-xs-3" >
-                                    <button type="submit" class="profile-btn" style="text-align: center;">Применить</button>
-                                </div>
-                        </form>
+                        <?php 
+                            echo "<form class='row form-signin' action='profile.php' method='post'>
+                                    <div class='col-xs-4'>
+                                        <label for='name'>Имя</label>
+                                    </div>
+                                    <div class='col-xs-5'>
+                                        <input type='name' id='name' name='name' placeholder=$pl_screen_name required >
+                                    </div>
+                                    <div class='col-xs-3' >
+                                        <button type='submit' class='profile-btn' style='text-align: center;'>Применить</button>
+                                    </div>
+                                </form>";
+                        ?>
                         <hr>
-
-                        <form class="row form-signin" action="profile.php" method="post">
-                                <div class="col-xs-4">
-                                    <label for="inputEmail">Электронная почта</label>
-                                </div>
-                                <div class="col-xs-5">
-                                    <input type="email" id="inputEmail" name="email" placeholder="Email" required>
-                                </div>
-                                <div class="col-xs-3" >
-                                    <button type="submit " class="profile-btn disabled" >Применить</button>
-                                </div>
-                        </form>
+                        <?php 
+                            echo "<form class='row form-signin' action='profile.php' method='post'>
+                                        <div class='col-xs-4'>
+                                            <label for='inputEmail'>Электронная почта</label>
+                                        </div>
+                                        <div class='col-xs-5'>
+                                            <input type='email' id='inputEmail' name='email' placeholder=$pl_usermail required>
+                                        </div>
+                                        <div class='col-xs-3' >
+                                            <button type='submit ' class='profile-btn disabled' >Применить</button>
+                                        </div>
+                                </form>";
+                        ?>
                         <hr>
-                        <form class="row form-signin" action="profile.php" method="post">
-                                <div class="col-xs-4">
-                                    <p>Пароль</p>
-                                    <p>Повторите пароль</p>
+                        <?php 
+                            echo "<form class='row form-signin' action='profile.php' method='post'>
+                                        <div class='col-xs-4'>
+                                            <p>Пароль</p>
+                                            <p>Повторите пароль</p>
 
-                                </div>
-                                <div class="col-xs-5">
-                                    <input type="password" name="password"  placeholder="Пароль" required>
-                                    <input type="password" name="password_confirm"  placeholder=" Повторите пароль"  required>
-                                </div>
-                                <div class="col-xs-3" style="padding-top: 0.7em;" >
-                                    <button type="submit" class="profile-btn" >Применить</button>
-                                </div>
-                        </form>
+                                        </div>
+                                        <div class='col-xs-5'>
+                                            <input type='password' name='password'  placeholder='Пароль' required>
+                                            <input type='password' name='password_confirm'  placeholder='Повторите пароль'  required>
+                                        </div>
+                                        <div class='col-xs-3' style='padding-top: 0.7em;' >
+                                            <button type='submit' class='profile-btn' >Применить</button>
+                                        </div>
+                                </form>";
+                        ?>
                         <hr>
                         <br>
                         <div class="row preview-zone">
@@ -159,7 +160,7 @@
 
                                 <br>
                                 <label for="InpProfilePhoto" >
-                                    <span class='btn btn-md' id="InpProfileSelect" >Загрузить новую картинку</span>
+                                    <span class='btn btn-md btn-chose-new-photo' id="InpProfileSelect" >Загрузить новую картинку</span>
                                     <input type="file" id="InpProfilePhoto" style="display:none" aria-hidden="true">
                                 </label>
 

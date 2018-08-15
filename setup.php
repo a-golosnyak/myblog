@@ -69,7 +69,8 @@
            echo "Table posts creation error.";
 
         //=== Создаем пользователей =================================== INSERT ========================
-        $query = "INSERT INTO users VALUES ('1', $adminmail, '111', 'adm', '')";   // id=1 уже есть. Будет ошибка.
+		$date = date("Y-m-d H:i:s");
+        $query = "INSERT INTO users VALUES ('1', $adminmail, '111', 'adm', '$date')";   // id=1 уже есть. Будет ошибка.
         $result = $connection->query($query);
 
         if($result) echo "adm created.";
@@ -80,7 +81,7 @@
 
         //--- Вставка нового элемента ---------------------------------------------
         $query = "INSERT INTO users VALUES (
-                   '0', 'Vasya".$uniq_str."@gmail.com', '1111', 'Vas" . $uniq_str . "', '')";
+                   '0', 'Vasya".$uniq_str."@gmail.com', '1111', 'Vas" . $uniq_str . "', '$date')";
         $result = $connection->query($query);
 
         if($result)                                      
