@@ -93,6 +93,17 @@
                         <h3 class='form-signin-heading profile-title'>Ваш профиль <b>$usermail</b></h3> 
                          <!--style='border: 1px solid grey;' -->
                         <br>
+
+                        <div class='row' >
+                                <div class='col-xs-5'>
+                                    <span>Написать пост?</span>
+                                </div>
+                                <div class='col-xs-3'></div>
+                                <div class='col-xs-4' >
+                                        <button type='submit' class='profile-btn' style='text-align: center;'>Конечно написать!</button>
+                                </div>
+                        </div>
+                        <hr>
                         <div class='row' >
                                 <div class='col-xs-5'>
                                     <span>Профиль создан</span>

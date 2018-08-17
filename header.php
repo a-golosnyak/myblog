@@ -14,7 +14,7 @@
 
      <!--   <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />   -->
         <link rel="stylesheet" href="css/jquery.Jcrop.css" type="text/css" />       <!-- Для редактирования картинки перед загрузкой -->
-        <script src="ckeditor-dev-master/ckeditor.js"></script>          <!-- Текстовый редактор для поств -->
+        <script src="ckeditor/ckeditor.js"></script>          <!-- Текстовый редактор для поств -->
         
 
      <!--   <link href="cover.css" rel="stylesheet">    -->

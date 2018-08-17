@@ -19,7 +19,7 @@
         "You cannot log out because you are not logged in";
 
         $_SESSION = array();
-        setcookie('usermail', $usermail, time() - 60*60*24*31);        // Анулируем Remember me
+        setcookie('usermail', $usermail, time() - 60*60*24*31);             // Анулируем Remember me
         session_unset();
     }
 ?>
