@@ -81,12 +81,9 @@
     if(isset($_POST['password_confirm']))
     {
         echo "incoming password " . $_POST['password'] . "<br>";
-        echo "incoming password_confirm " . $_POST['password_confirm'];        
+        echo "incoming password_confirm " . $_POST['password_confirm'];
 
-        if(strcmp($_POST['password'], $_POST['password_confirm']))
-        {
-            
-        } 
+           
     }
 
     echo "<div class='main-field'>  
@@ -104,12 +101,10 @@
                                     <span>Написать пост?</span>
                                 </div>
                                 <div class='col-xs-3'></div>
-                                <a href='addpost.php'>
-                                    <div class='col-xs-4' >
-                                            <button type='submit' class='profile-btn' style='text-align: center;'>Конечно написать!</button>
-                                            
-                                    </div>
-                                </a>
+                                <div class='col-xs-4' >
+                                        <button type='submit' class='profile-btn' style='text-align: center;'>Конечно написать!</button>
+                                        
+                                </div>
                         </div>
                         <hr>
                         <div class='row' >
@@ -129,10 +124,7 @@
                                         <label for='name'>Имя</label>
                                     </div>
                                     <div class='col-xs-5'>
-                                        <input type='name' id='name' name='name' placeholder=$pl_screen_name required onkeyup = 'validateName(this)'>
-                                        <div id='nameOk' class='page-item'>
-                                            <i class='fas fa-asterisk'></i>
-                                        </div>
+                                        <input type='name' id='name' name='name' placeholder=$pl_screen_name required >
                                     </div>
                                     <div class='col-xs-3' >
                                         <button type='submit' class='profile-btn' style='text-align: center;'>Применить</button>
@@ -146,10 +138,7 @@
                                             <label for='inputEmail'>Электронная почта</label>
                                         </div>
                                         <div class='col-xs-5'>
-                                            <input type='email' id='inputEmail' name='email' placeholder=$pl_usermail required onblur='checkUser(this)'>
-                                            <div id='emailOk' class='page-item' >
-                                                <i class='fas fa-asterisk'></i>
-                                            </div>
+                                            <input type='email' id='inputEmail' name='email' placeholder=$pl_usermail required>
                                         </div>
                                         <div class='col-xs-3' >
                                             <button type='submit ' class='profile-btn disabled' >Применить</button>
@@ -157,32 +146,22 @@
                                 </form>";
                         ?>
                         <hr>
-
-                        <form class='form-signin' action='profile.php' method='post'>
-                                <div class='row'>
+                        <?php 
+                            echo "<form class='row form-signin' action='profile.php' method='post'>
                                         <div class='col-xs-4'>
                                             <p>Пароль</p>
                                             <p>Повторите пароль</p>
+
                                         </div>
                                         <div class='col-xs-5'>
-                                            <div>
-                                                <input type='password' name='password'  placeholder='Пароль' required onkeyup='validatePassword(this, password_confirm)'>
-                                                <div id='pass1Ok' class='page-item' style="top: 100px; "> 
-                                                    <i class='fas fa-asterisk'></i>
-                                                </div>
-                                            </div>
-
-                                            <input type='password' name='password_confirm'  placeholder='Повторите пароль'  required onkeyup='validatePassword(password, this)'>
-                                            <div id='pass2Ok' class='page-item'>
-                                                <i class='fas fa-asterisk'></i>
-                                            </div>
+                                            <input type='password' name='password'  placeholder='Пароль' required>
+                                            <input type='password' name='password_confirm'  placeholder='Повторите пароль'  required>
                                         </div>
-                                        <div class='col-xs-3' style='' >
+                                        <div class='col-xs-3' style='padding-top: 0.7em;' >
                                             <button type='submit' class='profile-btn' >Применить</button>
                                         </div>
-                 
-                                </div>
-                        </form>
+                                </form>";
+                        ?>
                         <hr>
                         <br>
                         <div class="row preview-zone">
@@ -231,7 +210,7 @@
                         </div>
                         <br style="clear: both;">
 
-      <!--                  <form>
+                        <form>
                             <textarea name="editor1" id="editor1" rows="20" cols="80">
                                 This is my textarea to be replaced with CKEditor.
                             </textarea>
@@ -240,9 +219,9 @@
                                 // instance, using default configuration.
                                 CKEDITOR.replace( 'editor1' );
                             </script>
-                        </form>     -->
+                        </form>
               
-                    </div>      
+                    </div>
                 </div><!-- /.blog-main -->
 
                 <?php 
