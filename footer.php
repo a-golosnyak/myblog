@@ -1,6 +1,6 @@
         <footer class="blog-footer">
-            <p><a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>
-            </p>
+            <p>Copyright  © The Blog. All Rights Reserved. </p>
+            <p>Запрещено копирование материалов без активной ссылки на этот сайт.</p>
             <p><a href="#">Back to top</a>
             </p>
         </footer>

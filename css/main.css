@@ -158,6 +158,7 @@ a:focus, a:hover {
 }
 .item-search {
   padding-left: 10px;
+  padding-top: 6px;
   /*  width: 50px;*/
   font-size: 30px;
   color: #666;
@@ -293,7 +294,7 @@ a:focus, a:hover {
  */
 .blog-footer {
   padding: 2.5rem 0;
-  color: #999;
+  color: #444;
   text-align: center;
   background-color: #f9f9f9;
   background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.5)), no-repeat, url(../images/06.jpg);
@@ -487,7 +488,6 @@ a:focus, a:hover {
   margin-left: 0.5em; 
   margin-right: 0.5em; 
   padding-top: 0.5em;
-  padding-bottom: 0.5em;
 /*  width: 100%;  */
   border: 6px dashed lightgrey;
   border-radius: 10px;
@@ -610,4 +610,8 @@ a:focus, a:hover {
 
 .btn-chose-new-photo{
     margin-top: 0.5rem;
+}
+
+.inline-labels{
+    margin-top: 5px; 
 }

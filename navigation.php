@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="nav-tabs">
                         <form class=" nav-item" >
-                            <input class="form-control " type="search" placeholder="Найти" aria-label="Search" size="12" ">
+                            <input class="form-control " type="search" placeholder="Найти" aria-label="Search" size="16">
                         </form>
                         <div class="item-search nav-item" ><i class="fab fa-sistrix"></i></div>
                     </div>

@@ -1,11 +1,4 @@
-<div class="col-md-3  blog-sidebar">
-
-    
-
-    <div class="sidebar-module sidebar-module-inset">
-        <h4>About</h4>
-        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-    </div>
+<div class="col-md-3 offset-sm-1 blog-sidebar">
     <div class="sidebar-module">
         <h4>Archives</h4>
         <ol class="list-unstyled">
@@ -24,10 +17,10 @@
         </ol>
     </div>
 
-    <div class=" ">
+ <!--   <div class="sidebar-module">
         <script type="text/javascript" src="//ra.revolvermaps.com/0/0/6.js?i=01wgkx853sl&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
     </div>
-    
+    -->
     <div class="sidebar-module">
         <h4>Elsewhere</h4>
         <ol class="list-unstyled">

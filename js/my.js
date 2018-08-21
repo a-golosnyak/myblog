@@ -47,7 +47,8 @@ $("input[type=file]").on("change", function(){      // Это событие, к
         $("#PreviewArea").toggle();  
         $("#PhotoSubmit").toggle();  
         $("#PhotoCancel").toggle();  
-        
+        $("#InlineLabels").toggle(); 
+         
         initJCrop(imgDataUrl);
         $("#PreviewArea").attr({src: imgDataUrl});
 
@@ -79,7 +80,7 @@ $("input[type=file]").on("change", function(){      // Это событие, к
             response: 'text',
             success: function(response) {
                 // Если все ОК
-                 alert("Success! " + " " + response);
+                // alert("Success! " + " " + response);
                 // $("#ProfilePhoto").attr({src: "images/ava/avamin.jpeg"});
                 window.location.href = "profile.php";
             },
@@ -251,6 +252,11 @@ var getCanvasImage = function(image, options) {
             var f = image.width / options.width;       // where is options.previewWidth????? ******
         else
             var f = image.height/ options.height;
+
+        if(f < 1)
+        {
+            f = 1;
+        }
 
         var t = function(a) {
             return Math.round(a * f);

@@ -93,7 +93,7 @@
     <div class='container-fluid ' >
         <div class='container data-field'>
             <div class='row'>
-                <div class='col-md-9 blog-main'>
+                <div class='col-md-8 blog-main'>
                     <div class='profile-field ' >
                         <h3 class='form-signin-heading profile-title'>Ваш профиль <b>$usermail</b></h3> 
                          <!--style='border: 1px solid grey;' -->
@@ -180,7 +180,6 @@
                                         <div class='col-xs-3' style='' >
                                             <button type='submit' class='profile-btn' >Применить</button>
                                         </div>
-                 
                                 </div>
                         </form>
                         <hr>
@@ -210,7 +209,7 @@
                             class="coords"
                             onsubmit="return false;">
 
-                            <div class="inline-labels">
+                            <div class="inline-labels" id="InlineLabels" style="display:none">
                                 <label>X1 <input type="text" size="4" id="x1" name="x1" /></label>
                                 <label>Y1 <input type="text" size="4" id="y1" name="y1" /></label>
                                 <label>X2 <input type="text" size="4" id="x2" name="x2" /></label>
