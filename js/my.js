@@ -152,7 +152,7 @@ var initJCrop = function(imgDataUrl){
         // Пока не получилось привязать вызов этой функции к иницилизации Jcrop
         // потому вызываю здесь, события те же, что и для ф-ции storeCoords
         updatePreview(c);     
-//        showCoords(c);          // Для того, чтобы выводить координаты
+        showCoords(c);          // Для того, чтобы выводить координаты
     };
     
     var w = img.width();
@@ -255,12 +255,12 @@ var getCanvasImage = function(image, options) {
         var t = function(a) {
             return Math.round(a * f);
         };
-/*          DEBUG
+/*          DEBUG   */
         var sx =        t(c.x);
         var sy =        t(c.y);
         var sWidth =    t(c.w);
         var sHeight =   t(c.h);
-*/
+
         ctx.drawImage(image, t(c.x), t(c.y), t(c.w), t(c.h), 0, 0, canvas.width, canvas.height);
     } else {
         ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);

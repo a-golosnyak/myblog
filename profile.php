@@ -205,7 +205,7 @@
                             </form>
                         </div> 
 
-                        <!-- This is the form that our event handler fills      DEBUG SECTION ***
+                        <!-- This is the form that our event handler fills      DEBUG SECTION ***   -->
                         <form id="coords"
                             class="coords"
                             onsubmit="return false;">
@@ -218,7 +218,7 @@
                                 <label>W <input type="text" size="4" id="w" name="w" /></label>
                                 <label>H <input type="text" size="4" id="h" name="h" /></label>
                             </div>
-                        </form>     -->
+                        </form>     
                         
                         <div class="row">
                             <div class="col-sm-6">
@@ -231,6 +231,9 @@
                         </div>
                         <br style="clear: both;">
 
+
+                        
+              
       <!--                  <form>
                             <textarea name="editor1" id="editor1" rows="20" cols="80">
                                 This is my textarea to be replaced with CKEditor.
