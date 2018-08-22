@@ -68,6 +68,24 @@
         else
            echo "Table posts creation error.";
 
+        //=== CREATE TABLE ================================== category =================================
+        $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+        if ($connection->connect_error)
+            die("Connectio attemt denied " . $connection->connect_error);
+
+        $query = 'CREATE TABLE IF NOT EXISTS category (
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                category_name VARCHAR(255))';
+
+        $result = $connection->query($query);
+
+        if($result)          /* if($result)  - если все нормально. if(!$result) - если что-то не так */
+        { 
+            print_r("Table category created." . $result . "<br>");
+        }
+        else
+           echo "Table category creation error.<br>";
+
         //=== Создаем пользователей =================================== INSERT ========================
 		$date = date("Y-m-d H:i:s");
         $query = "INSERT INTO users VALUES ('1', $adminmail, '111', 'adm', '$date')";   // id=1 уже есть. Будет ошибка.
@@ -111,6 +129,34 @@
             echo "Post created.";
         else
            echo "Post creation error.";
+        echo "<br>";
+
+        //=== Создаем рубрики ======================================= INSERT ==========================
+        $query = "INSERT INTO category VALUES 
+        ('1', 'Микроконтроллеры STM32')";
+        $result = $connection->query($query);
+
+        $query = "INSERT INTO category VALUES 
+        ('2', 'Программирование Linux')";
+        $result = $connection->query($query);
+
+        $query = "INSERT INTO category VALUES 
+        ('3', 'ПЛИС')";
+        $result = $connection->query($query);
+
+        $query = "INSERT INTO category VALUES 
+        ('4', 'Квадрокоптеры')";
+        $result = $connection->query($query);
+
+        $query = "INSERT INTO category VALUES 
+        ('5', 'Живые проекты')";
+        $result = $connection->query($query);
+
+        if($result)                                      
+            echo "Category created.";
+        else
+            echo "Category creation error.";
+        
         echo "<br>";
 
 
