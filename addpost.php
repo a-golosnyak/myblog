@@ -64,7 +64,7 @@
                         <br>
                         <br>
 
-                        <div id="area" style="min-height: 100vh;">
+                        <div id="area" >
                             <form>
                                 <textarea name="editor1" id="editor1" rows="20" cols="80">
         
@@ -75,7 +75,7 @@
                                     // instance, using default configuration.
                                     CKEDITOR.replace( 'editor1');
                                     CKEDITOR.config.extraPlugins  = 'autogrow';
-                                    CKEDITOR.config.height = '90%';
+                                    // CKEDITOR.config.height = '90%';
                                 </script>
                             </form>
                         </div>
