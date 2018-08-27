@@ -24,6 +24,9 @@
         echo "</pre>";
         echo "<br>"; 
 */
+
+        print_r($_SESSION);
+
         $current_category = $category['category_name'];
     }
 
@@ -49,25 +52,22 @@
                         ?>
                         <h5 style="float: left; margin-right: 0.5em;">Категория:</h5>
 
-                        <form action="adduser.php" method="post">
-                        <select name="category">
-                <?php
-                            foreach ($category as $value)
-                            {
-                                echo "<option value=". $value['category_name'] . ">";
-                                echo ($value['category_name']);
-                                echo "</option>";
-                            }
-                ?>
-                        </select>
-
-                        <br>
-                        <br>
-
-                        <div id="area" >
-                            <form>
+                        <form action="addpost.php" method="post">
+                            <select name="category">
+                                <?php
+                                foreach ($category as $value)
+                                {
+                                    echo "<option value=". $value['category_name'] . ">";
+                                    echo ($value['category_name']);
+                                    echo "</option>";
+                                }
+                                ?>
+                            </select>
+                            <br>
+                            <br>
+                            <div id="area" >
+                                
                                 <textarea name="editor1" id="editor1" rows="20" cols="80">
-        
                                 </textarea>
 
                                 <script>
@@ -76,9 +76,18 @@
                                     CKEDITOR.replace( 'editor1');
                                     CKEDITOR.config.extraPlugins  = 'autogrow';
                                     // CKEDITOR.config.height = '90%';
+
+                                    function TimeToSubmit()
+                                    {
+                                        var data = CKEDITOR.instances.editor1.getData();
+                                        alert(data);          
+                                    }
                                 </script>
-                            </form>
-                        </div>
+                                
+                            </div>
+                            <br>
+                            <button type='submit' class='profile-btn' onclick="TimeToSubmit()" style='text-align: center;'>Опубликовать</button>
+                        </form>    
                     </div>
                 </div><!-- /.blog-main -->
 
