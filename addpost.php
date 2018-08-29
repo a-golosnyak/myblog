@@ -25,7 +25,7 @@
         echo "<br>"; 
 */
 
-        print_r($_SESSION);
+        print_r($_POST);
 
         $current_category = $category['category_name'];
     }
@@ -80,6 +80,7 @@
                                     function TimeToSubmit()
                                     {
                                         var data = CKEDITOR.instances.editor1.getData();
+                                        document.GetElementById('editor1').value = data;
                                         alert(data);          
                                     }
                                 </script>
@@ -87,6 +88,8 @@
                             </div>
                             <br>
                             <button type='submit' class='profile-btn' onclick="TimeToSubmit()" style='text-align: center;'>Опубликовать</button>
+
+
                         </form>    
                     </div>
                 </div><!-- /.blog-main -->
