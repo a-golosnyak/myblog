@@ -121,14 +121,15 @@
         echo "<br>";
 
         //--- Вставка нового элемента ---------------------------------------------
+        $date = date("Y-m-d H:i:s");
         $query = "INSERT INTO posts VALUES 
-        ('0', '4', '2018-01-01 01:00:00','titl ". $randTitle ."', 'postik ". $randPost ."')";
+        ('0', '4', '$date','titl ". $randTitle ."', 'postik ". $randPost ."')";
         $result = $connection->query($query);
 
         if($result)                                      
             echo "Post created.";
         else
-           echo "Post creation error.";
+            echo "Post creation error.";
         echo "<br>";
 
         //=== Создаем рубрики ======================================= INSERT ==========================

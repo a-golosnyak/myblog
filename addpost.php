@@ -8,6 +8,7 @@
         $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
         $user = $result->fetch_assoc();                     // Способ 1
      
+        $pl_user_id = $user['id'];
         $pl_usermail = $user['usermail'];
         $pl_screen_name = $user['screen_name'];
 
@@ -24,8 +25,7 @@
         echo "</pre>";
         echo "<br>"; 
 */
-
-        print_r($_SESSION);
+        print_r($_POST);
 
         $current_category = $category['category_name'];
     }
@@ -40,7 +40,37 @@
                 </script>";   
     }
 
-    echo "<div class='main-field'>  
+    
+
+    if(isset($_POST['post-body']))
+    {
+        //=== Создаем посты ========================================= INSERT ==========================
+        //$randPost = RandString(20);
+        $Title = 'string';
+
+        for($i=0; $i<5; $i++)
+            $Title[$i] = $Post[$i]; 
+
+        echo $Post;
+        echo "<br>";
+        echo $Title;
+        echo "<br>";
+
+        //--- Вставка нового элемента ---------------------------------------------
+        $date = date("Y-m-d H:i:s");
+        $query = "INSERT INTO posts VALUES 
+        ('0', '$pl_user_id', '$date','titl ". $Title ."', 'postik ". $Post ."')";
+        $result = $connection->query($query);
+
+        if($result)                                      
+            echo "Post created.";
+        else
+           echo "Post creation error.";
+        echo "<br>";
+
+    }
+
+echo "<div class='main-field'>  
     <div class='container-fluid ' >
         <div class='container data-field'>
             <div class='row'>
@@ -50,36 +80,42 @@
                          <!--style='border: 1px solid grey;' -->
                         <br><br>";
                         ?>
-                        <h5 style="float: left; margin-right: 0.5em;">Категория:</h5>
+                        <h5 class="sel-category">Категория:</h5>
 
                         <form action="addpost.php" method="post">
-                            <select name="category">
-                                <?php
-                                foreach ($category as $value)
-                                {
-                                    echo "<option value=". $value['category_name'] . ">";
-                                    echo ($value['category_name']);
-                                    echo "</option>";
-                                }
-                                ?>
-                            </select>
-                            <br>
-                            <br>
+                            <p>
+                                <select name="category">
+                                    <?php
+                                    foreach ($category as $value)
+                                    {
+                                        echo "<option value=". $value['category_name'] . ">";
+                                        echo ($value['category_name']);
+                                        echo "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </p>
+                            <p>
+                                <!-- <p><input type="text" name="" rows=4 style="width: 70%;"></p> -->
+                                <div class="title-input">
+                                    <textarea class="title-box" name="title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 150 - символов."></textarea>
+                                </div>
+                            </p>
+
                             <div id="area" >
                                 
-                                <textarea name="editor1" id="editor1" rows="20" cols="80">
+                                <textarea name="post-body" id="post-body" rows="40" cols="80">
+                                    Пост
                                 </textarea>
 
                                 <script>
-                                    // Replace the <textarea id="editor1"> with a CKEditor
-                                    // instance, using default configuration.
-                                    CKEDITOR.replace( 'editor1');
+                                    CKEDITOR.replace('post-body');
                                     CKEDITOR.config.extraPlugins  = 'autogrow';
                                     // CKEDITOR.config.height = '90%';
 
                                     function TimeToSubmit()
                                     {
-                                        var data = CKEDITOR.instances.editor1.getData();
+                                        var data = CKEDITOR.instances.post-body.getData();
                                         alert(data);          
                                     }
                                 </script>
