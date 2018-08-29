@@ -615,3 +615,22 @@ a:focus, a:hover {
 .inline-labels{
     margin-top: 5px; 
 }
+
+
+/* === Add post section ====================================================================== */
+.sel-category{
+    float: left;
+    margin-right: 0.5em;
+}
+
+.title-input{
+    width: 100%; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.title-box{
+    width:100%; 
+    text-align: center;
+    border: 1px solid lightgrey;
+}

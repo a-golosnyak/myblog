@@ -137,5 +137,20 @@
                 document.getElementById('nameOk').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.7rem;'> ";
             }
         }
+
+        function validateCategory(field)
+        {
+
+        }
+
+        function validateTitle(field)
+        {
+
+        }
+
+        function validateCategory(field)
+        {
+
+        }
     </script>
 
