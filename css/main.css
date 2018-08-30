@@ -634,3 +634,8 @@ a:focus, a:hover {
     text-align: center;
     border: 1px solid lightgrey;
 }
+
+#categoryOk{
+    margin-right: 14px; 
+    margin-top: 14px;
+}
