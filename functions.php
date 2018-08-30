@@ -140,7 +140,10 @@
 
         function validateCategory(field)
         {
-
+            if(field.value.length < 3)
+            {
+                
+            }
         }
 
         function validateTitle(field)
@@ -148,9 +151,5 @@
 
         }
 
-        function validateCategory(field)
-        {
-
-        }
     </script>
 

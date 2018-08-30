@@ -10,13 +10,17 @@
      
         $pl_usermail = $row['usermail'];
         $pl_screen_name = $row['screen_name'];
-/*        echo "DB : "; 
+        $pl_creation_date = $row['creation_date'];
+        $pl_creation_date = preg_replace( "#(:\d+):\d+#", '$1', $pl_creation_date ); 
+        echo "DB : "; 
         print_r($pl_usermail);
         echo "<br>"; 
         print_r($pl_password);
         echo "<br>";
         print_r($pl_screen_name);
-        echo "<br>";        */
+        echo "<br>"; 
+        print_r($pl_creation_date);
+        echo "<br>";       
     }
 
     if($usermail == $adminmail)
@@ -98,19 +102,19 @@
                         <h3 class='form-signin-heading profile-title'>Ваш профиль <b>$usermail</b></h3> 
                          <!--style='border: 1px solid grey;' -->
                         <br>
-
-                        <div class='row' >
-                                <div class='col-xs-5'>
-                                    <span>Написать пост?</span>
-                                </div>
-                                <div class='col-xs-3'></div>
-                                <a href='addpost.php'>
-                                    <div class='col-xs-4' >
-                                            <button type='submit' class='profile-btn' style='text-align: center;'>Конечно написать!</button>
-                                            
+                        <form>
+                            <div class='row' >
+                                    <div class='col-xs-5'>
+                                        <span>Написать пост?</span>
                                     </div>
-                                </a>
-                        </div>
+                                    <div class='col-xs-3'></div>
+                                    <a href='addpost.php'>
+                                        <div class='col-xs-4' >
+                                                <button type='submit' class='profile-btn' style='text-align: center;'>Конечно написать!</button>
+                                        </div>
+                                    </a>
+                            </div>
+                        </form>
                         <hr>
                         <div class='row' >
                                 <div class='col-xs-5'>
@@ -118,7 +122,7 @@
                                 </div>
                                 <div class='col-xs-4'></div>
                                 <div class='col-xs-3' >
-                                    <span class='profile-meta '>January 1, 2014</span>
+                                    <span class='profile-meta '>$pl_creation_date</span>
                                 </div>
                         </div> 
                         <hr>";

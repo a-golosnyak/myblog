@@ -34,7 +34,7 @@
         $query = 'CREATE TABLE IF NOT EXISTS users (
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 usermail VARCHAR(30),
-                password VARCHAR(30),
+                password VARCHAR(40),
                 screen_name VARCHAR(30),
                 creation_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)';
 
@@ -88,7 +88,7 @@
 
         //=== Создаем пользователей =================================== INSERT ========================
 		$date = date("Y-m-d H:i:s");
-        $query = "INSERT INTO users VALUES ('1', $adminmail, '111', 'adm', '$date')";   // id=1 уже есть. Будет ошибка.
+        $query = "INSERT INTO users VALUES ('1', '$adminmail', '111', 'adm', '$date')";   // id=1 уже есть. Будет ошибка.
         $result = $connection->query($query);
 
         if($result) echo "adm created.";
