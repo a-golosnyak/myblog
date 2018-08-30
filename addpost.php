@@ -79,17 +79,21 @@
 */
     }
 
-echo "<div class='main-field'>  
-    <div class='container-fluid ' >
-        <div class='container data-field'>
-            <div class='row'>
-                <div class='col-md-8 blog-main'>
-                    <div class='profile-field ' >
-                        <h3 class='form-signin-heading profile-title'>Создание поста от <b>$usermail</b></h3> 
-                         <!--style='border: 1px solid grey;' -->
-                        <br><br>";
-                        ?>
-                        
+echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin-bottom: 0; display: none;'>
+            <div class='container'>
+                <strong>Не заполнены некоторые поля.</strong>
+            </div>
+        </div>
+        <div class='main-field'>  
+            <div class='container-fluid ' >
+                <div class='container data-field'>
+                    <div class='row'>
+                        <div class='col-md-8 blog-main'>
+                            <div class='profile-field ' >
+                                <h3 class='form-signin-heading profile-title'>Создание поста от <b>$usermail</b></h3> 
+                                 <!--style='border: 1px solid grey;' -->
+                                <br><br>";
+?>                   
 
                         <form action="addpost.php" method="post">
                             <p>
@@ -105,7 +109,7 @@ echo "<div class='main-field'>
                                     }
                                     ?>
                                 </select>
-                                <div id="nameOk" class="page-item" >
+                                <div id="categoryOk" class="">
                                     <i class="fas fa-asterisk "></i> 
                                 </div>
                             </p>
@@ -117,7 +121,6 @@ echo "<div class='main-field'>
                             </p>
 
                             <div id="area" >
-                                
                                 <textarea name="post-body" id="post-body" rows="40" cols="80">
                                     Пост
                                 </textarea>
@@ -127,16 +130,26 @@ echo "<div class='main-field'>
                                     CKEDITOR.config.extraPlugins  = 'autogrow';
                                     // CKEDITOR.config.height = '90%';
 
-                                    function TimeToSubmit()
-                                    {
+                                    function TimeToSubmit(category, title)
+                                    {  
+                                        if(category.value=='')
+                                        {
+                                            document.getElementsByClassName('alert-warning')[0].style.display = 'block';
+
+                                            return false;
+                                        }
+                                      //  var category = document.getElementsByName('category');
+                                        alert(category.value + (category.value==''?true:false));
+
                                         var data = CKEDITOR.instances.post-body.getData();
+                                        
                                         alert(data);          
                                     }
+
                                 </script>
-                                
                             </div>
                             <br>
-                            <button type='submit' class='profile-btn' onclick="TimeToSubmit()" style='text-align: center;'>Опубликовать</button>
+                            <button type='submit' class='profile-btn' onclick="return TimeToSubmit(category, title)" style='text-align: center;'>Опубликовать</button>
                         </form>    
                     </div>
                 </div><!-- /.blog-main -->
@@ -153,3 +166,4 @@ echo "<div class='main-field'>
     require_once 'footer.php'
 
 ?>
+
