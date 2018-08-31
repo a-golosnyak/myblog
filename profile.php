@@ -102,7 +102,7 @@
                         <h3 class='form-signin-heading profile-title'>Ваш профиль <b>$usermail</b></h3> 
                          <!--style='border: 1px solid grey;' -->
                         <br>
-                        <form>
+                        
                             <div class='row' >
                                     <div class='col-xs-5'>
                                         <span>Написать пост?</span>
@@ -114,7 +114,7 @@
                                         </div>
                                     </a>
                             </div>
-                        </form>
+                       
                         <hr>
                         <div class='row' >
                                 <div class='col-xs-5'>

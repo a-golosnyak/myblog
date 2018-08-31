@@ -81,7 +81,7 @@
 
 echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin-bottom: 0; display: none;'>
             <div class='container'>
-                <strong>Не заполнены некоторые поля.</strong>
+                <strong id='ErrorMessage'>Не заполнены некоторые поля.</strong>
             </div>
         </div>
         <div class='main-field'>  
@@ -109,9 +109,6 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                                     }
                                     ?>
                                 </select>
-                                <div id="categoryOk" class="">
-                                    <i class="fas fa-asterisk "></i> 
-                                </div>
                             </p>
                             <p>
                                 <!-- <p><input type="text" name="" rows=4 style="width: 70%;"></p> -->
@@ -135,6 +132,7 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                                         if(category.value=='')
                                         {
                                             document.getElementsByClassName('alert-warning')[0].style.display = 'block';
+                                            document.getElementById('#ErrorMessage').style.value = "Выберите пожалуйста категорию";
 
                                             return false;
                                         }
