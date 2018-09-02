@@ -48,7 +48,7 @@
         if(!empty($_POST['category']))
         {
             //=== Создаем посты ========================================= INSERT ==========================
-            print_r($_POST);
+           // print_r($_POST);
 
 
         }
@@ -113,7 +113,7 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                             <p>
                                 <!-- <p><input type="text" name="" rows=4 style="width: 70%;"></p> -->
                                 <div class="title-input">
-                                    <textarea class="title-box" name="title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 150 - символов."></textarea>
+                                    <textarea class="title-box" name="art_title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 150 - символов."></textarea>
                                 </div>
                             </p>
 
@@ -127,17 +127,25 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                                     CKEDITOR.config.extraPlugins  = 'autogrow';
                                     // CKEDITOR.config.height = '90%';
 
-                                    function TimeToSubmit(category, title)
+                                    function TimeToSubmit(category, art_title)
                                     {  
                                         if(category.value=='')
                                         {
-                                            document.getElementsByClassName('alert-warning')[0].style.display = 'block';
-                                            document.getElementById('#ErrorMessage').style.value = "Выберите пожалуйста категорию";
+                                            document.getElementsByClassName('alert')[0].style.display = 'block';
+                                            document.getElementById('ErrorMessage').innerHTML = "Выберите пожалуйста категорию";
 
                                             return false;
                                         }
-                                      //  var category = document.getElementsByName('category');
-                                        alert(category.value + (category.value==''?true:false));
+                                        if(art_title.value == '')
+                                        {
+                                           document.getElementsByClassName('alert')[0].style.display = 'block';
+                                            document.getElementById('ErrorMessage').innerHTML = "Введите пожалуйста заголовок";
+                                            
+                                            return false; 
+                                        }
+                                        document.getElementsByClassName('alert')[0].style.display = 'block';
+                                        document.getElementsByClassName('alert')[0].className = 'alert alert-success';
+                                        document.getElementById('ErrorMessage').innerHTML = "Пост получен";
 
                                         var data = CKEDITOR.instances.post-body.getData();
                                         
@@ -147,7 +155,7 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                                 </script>
                             </div>
                             <br>
-                            <button type='submit' class='profile-btn' onclick="return TimeToSubmit(category, title)" style='text-align: center;'>Опубликовать</button>
+                            <button type='submit' class='profile-btn' onclick="return TimeToSubmit(category, art_title)" style='text-align: center;'>Опубликовать</button>
                         </form>    
                     </div>
                 </div><!-- /.blog-main -->
