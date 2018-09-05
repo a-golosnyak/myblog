@@ -95,7 +95,8 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                                 <br><br>";
 ?>                   
 
-                        <form action="addpost.php" method="post">
+                         <!-- <form > action="addpost.php" method="post" --> 
+                        <form>
                             <p>
                                 <h5 class="sel-category">Категория:</h5>
                                 <select name="category" style="float: left;">
@@ -118,12 +119,12 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                             </p>
 
                             <div id="area" >
-                                <textarea name="post-body" id="post-body" rows="40" cols="80">
+                                <textarea name="post-body" id="postBody" rows="40" cols="80">
                                     Пост
                                 </textarea>
 
                                 <script>
-                                    CKEDITOR.replace('post-body');
+                                    CKEDITOR.replace('postBody');
                                     CKEDITOR.config.extraPlugins  = 'autogrow';
                                     // CKEDITOR.config.height = '90%';
 
@@ -147,16 +148,52 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                                         document.getElementsByClassName('alert')[0].className = 'alert alert-success';
                                         document.getElementById('ErrorMessage').innerHTML = "Пост получен";
 
-                                        var data = CKEDITOR.instances.post-body.getData();
+                                        var data = CKEDITOR.instances.postBody.getData();
                                         
-                                        alert(data);          
+                                        //alert(data);   
+                                        return false;        
                                     }
 
+                                    //--- Ajax ------------------------------------------------------------
+                                    function sendPost(email)
+                                    {
+                                        if(validateEmail(email.value) == "")    /*(email.value.length > 5)*/
+                                        {
+                                            params  = "email=" + email.value
+                                            request = new ajaxRequest()
+                                            request.open("POST", "checkuser.php", true)
+                                            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+
+                                            request.onreadystatechange = function()
+                                            {
+                                                if (this.readyState == 4)
+                                                    if (this.status == 200)
+                                                        if (this.responseText != null)
+                                                        {
+                                                            document.getElementById('emailOk').innerHTML = this.responseText;
+                                                        }
+                                            }
+                                            request.send(params)
+                                        }
+                                        else
+                                        {
+                                            document.getElementById('emailOk').innerHTML = "<i class='fas fa-asterisk'></i> ";
+                                        }
+                                    }
+                                    //--------------------------------------------------------------------   
                                 </script>
                             </div>
+
                             <br>
-                            <button type='submit' class='profile-btn' onclick="return TimeToSubmit(category, art_title)" style='text-align: center;'>Опубликовать</button>
-                        </form>    
+                           <!-- <div style="width: 300px; height: 30px; background-color: lightgrey; cursor: pointer;" onclick="TimeToSubmit(category, art_title)">
+                                    hello
+                            </div>  -->
+
+                            <br>
+                            <button  class='profile-btn' onclick="return TimeToSubmit(category, art_title)" style='text-align: center;'>Опубликовать</button>
+
+                            
+                        </form>   
                     </div>
                 </div><!-- /.blog-main -->
 
