@@ -1,4 +1,4 @@
-<?php // Example 26-6: checkuser.php
+<?php 
     require_once 'functions.php';
 
     if (isset($_POST['email']))

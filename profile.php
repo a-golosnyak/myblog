@@ -12,7 +12,7 @@
         $pl_screen_name = $row['screen_name'];
         $pl_creation_date = $row['creation_date'];
         $pl_creation_date = preg_replace( "#(:\d+):\d+#", '$1', $pl_creation_date ); 
-        echo "DB : "; 
+/*        echo "DB : "; 
         print_r($pl_usermail);
         echo "<br>"; 
         print_r($pl_password);
@@ -20,7 +20,7 @@
         print_r($pl_screen_name);
         echo "<br>"; 
         print_r($pl_creation_date);
-        echo "<br>";       
+        echo "<br>";    */   
     }
 
     if($usermail == $adminmail)
@@ -93,7 +93,7 @@
         } 
     }
 
-    echo "<div class='main-field'>  
+    echo "<div class='main-field style='background-color: lightgrey;'>  
     <div class='container-fluid ' >
         <div class='container data-field'>
             <div class='row'>
@@ -102,19 +102,30 @@
                         <h3 class='form-signin-heading profile-title'>Ваш профиль <b>$usermail</b></h3> 
                          <!--style='border: 1px solid grey;' -->
                         <br>
-                        
-                            <div class='row' >
-                                    <div class='col-xs-5'>
-                                        <span>Написать пост?</span>
+                        <div class='row' >
+                                <div class='col-xs-4'>
+                                    <span>Написать пост?</span>
+                                </div>
+                                <div class='col-xs-5'></div>
+                                <a href='addpost.php'>
+                                    <div class='col-xs-3' >
+                                            <button type='submit' class='profile-btn' style='text-align: center;'>Написать!</button>
                                     </div>
-                                    <div class='col-xs-3'></div>
-                                    <a href='addpost.php'>
-                                        <div class='col-xs-4' >
-                                                <button type='submit' class='profile-btn' style='text-align: center;'>Конечно написать!</button>
-                                        </div>
-                                    </a>
-                            </div>
-                       
+                                </a>
+                        </div>
+                        <hr>
+                        <div class='row' >
+                                <div class='col-xs-4'>
+                                    <span>Все мои статьи</span>
+                                </div>
+                                <div class='col-xs-5'></div>
+                                <a href='index.php'>
+                                    <div class='col-xs-3' >
+                                            <button type='submit' class='profile-btn' style='text-align: center;'>Посмотерть</button>
+                                    </div>
+                                </a>
+                        </div>
+                        <hr>
                         <hr>
                         <div class='row' >
                                 <div class='col-xs-5'>
@@ -133,7 +144,7 @@
                                         <label for='name'>Имя</label>
                                     </div>
                                     <div class='col-xs-5'>
-                                        <input type='name' id='name' name='name' placeholder=$pl_screen_name required onkeyup = 'validateName(this)'>
+                                        <input type='name' id='name' name='name' placeholder=$pl_screen_name required onkeyup = 'validateName(this)' size='18'>
                                         <div id='nameOk' class='page-item'>
                                             <i class='fas fa-asterisk'></i>
                                         </div>
@@ -150,7 +161,7 @@
                                             <label for='inputEmail'>Электронная почта</label>
                                         </div>
                                         <div class='col-xs-5'>
-                                            <input type='email' id='inputEmail' name='email' placeholder=$pl_usermail required onblur='checkUser(this)'>
+                                            <input type='email' id='inputEmail' name='email' placeholder=$pl_usermail required onblur='checkUser(this)' size='18'>
                                             <div id='emailOk' class='page-item' >
                                                 <i class='fas fa-asterisk'></i>
                                             </div>
@@ -170,13 +181,13 @@
                                         </div>
                                         <div class='col-xs-5'>
                                             <div>
-                                                <input type='password' name='password'  placeholder='Пароль' required onkeyup='validatePassword(this, password_confirm)'>
+                                                <input type='password' name='password'  placeholder='Пароль' required onkeyup='validatePassword(this, password_confirm)' size='18'>
                                                 <div id='pass1Ok' class='page-item' style="top: 100px; "> 
                                                     <i class='fas fa-asterisk'></i>
                                                 </div>
                                             </div>
 
-                                            <input type='password' name='password_confirm'  placeholder='Повторите пароль'  required onkeyup='validatePassword(password, this)'>
+                                            <input type='password' name='password_confirm'  placeholder='Повторите пароль'  required onkeyup='validatePassword(password, this)' size='18'>
                                             <div id='pass2Ok' class='page-item'>
                                                 <i class='fas fa-asterisk'></i>
                                             </div>

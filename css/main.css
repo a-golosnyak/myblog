@@ -505,7 +505,7 @@ a:focus, a:hover {
 /*  margin: 0,5em;  */
 }
 
-#InpProfileSelect, .profile-btn
+#InpProfileSelect, .profile-btn .addpost-btn
 {
     text-align: center;
     vertical-align: middle;
@@ -524,6 +524,11 @@ a:focus, a:hover {
     background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(236,241,243,1) 100%);
     background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(236,241,243,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ecf1f3', GradientType=0 );
+}
+
+.profile-btn{
+ /* width: 120px; */
+  width: 7em;
 }
 
 

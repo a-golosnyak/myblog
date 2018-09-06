@@ -78,8 +78,8 @@
         echo "<br>";
 */
     }
-
-echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin-bottom: 0; display: none;'>
+?>
+  <div class='alert alert-warning' role='alert' style='width: 100%; margin-bottom: 0; display: none;'>
             <div class='container'>
                 <strong id='ErrorMessage'>Не заполнены некоторые поля.</strong>
             </div>
@@ -90,17 +90,16 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                     <div class='row'>
                         <div class='col-md-8 blog-main'>
                             <div class='profile-field ' >
-                                <h3 class='form-signin-heading profile-title'>Создание поста от <b>$usermail</b></h3> 
+<?php                       
+                            echo "<h3 class='form-signin-heading profile-title'>Создание поста от <b>$usermail</b></h3>";
+?> 
                                  <!--style='border: 1px solid grey;' -->
-                                <br><br>";
-?>                   
-
-                         <!-- <form > action="addpost.php" method="post" --> 
+                                <br>
                         <form>
                             <p>
                                 <h5 class="sel-category">Категория:</h5>
                                 <select name="category" style="float: left;">
-                                    <option value="">Выберите категорию</option>
+                                    <!-- <option value="">Выберите категорию</option> -->
                                     <?php
                                     foreach ($category as $value)
                                     {
@@ -114,7 +113,7 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                             <p>
                                 <!-- <p><input type="text" name="" rows=4 style="width: 70%;"></p> -->
                                 <div class="title-input">
-                                    <textarea class="title-box" name="art_title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 150 - символов."></textarea>
+                                    <textarea class="title-box" name="art_title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 150 - символов.">Пример заголовка</textarea>
                                 </div>
                             </p>
 
@@ -126,73 +125,11 @@ echo "  <div class='alert alert-warning' role='alert' style='width: 100%; margin
                                 <script>
                                     CKEDITOR.replace('postBody');
                                     CKEDITOR.config.extraPlugins  = 'autogrow';
-                                    // CKEDITOR.config.height = '90%';
-
-                                    function TimeToSubmit(category, art_title)
-                                    {  
-                                        if(category.value=='')
-                                        {
-                                            document.getElementsByClassName('alert')[0].style.display = 'block';
-                                            document.getElementById('ErrorMessage').innerHTML = "Выберите пожалуйста категорию";
-
-                                            return false;
-                                        }
-                                        if(art_title.value == '')
-                                        {
-                                           document.getElementsByClassName('alert')[0].style.display = 'block';
-                                            document.getElementById('ErrorMessage').innerHTML = "Введите пожалуйста заголовок";
-                                            
-                                            return false; 
-                                        }
-                                        document.getElementsByClassName('alert')[0].style.display = 'block';
-                                        document.getElementsByClassName('alert')[0].className = 'alert alert-success';
-                                        document.getElementById('ErrorMessage').innerHTML = "Пост получен";
-
-                                        var data = CKEDITOR.instances.postBody.getData();
-                                        
-                                        //alert(data);   
-                                        return false;        
-                                    }
-
-                                    //--- Ajax ------------------------------------------------------------
-                                    function sendPost(email)
-                                    {
-                                        if(validateEmail(email.value) == "")    /*(email.value.length > 5)*/
-                                        {
-                                            params  = "email=" + email.value
-                                            request = new ajaxRequest()
-                                            request.open("POST", "checkuser.php", true)
-                                            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-
-                                            request.onreadystatechange = function()
-                                            {
-                                                if (this.readyState == 4)
-                                                    if (this.status == 200)
-                                                        if (this.responseText != null)
-                                                        {
-                                                            document.getElementById('emailOk').innerHTML = this.responseText;
-                                                        }
-                                            }
-                                            request.send(params)
-                                        }
-                                        else
-                                        {
-                                            document.getElementById('emailOk').innerHTML = "<i class='fas fa-asterisk'></i> ";
-                                        }
-                                    }
-                                    //--------------------------------------------------------------------   
+                                    // CKEDITOR.config.height = '90%'; 
                                 </script>
                             </div>
-
                             <br>
-                           <!-- <div style="width: 300px; height: 30px; background-color: lightgrey; cursor: pointer;" onclick="TimeToSubmit(category, art_title)">
-                                    hello
-                            </div>  -->
-
-                            <br>
-                            <button  class='profile-btn' onclick="return TimeToSubmit(category, art_title)" style='text-align: center;'>Опубликовать</button>
-
-                            
+                            <button  class='addpost-btn' onclick="return TimeToSubmitPost(category, art_title)" style='text-align: center;'>Опубликовать</button>
                         </form>   
                     </div>
                 </div><!-- /.blog-main -->
