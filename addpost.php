@@ -24,9 +24,7 @@
         print_r($category);
         echo "</pre>";
         echo "<br>"; 
-*/
-        
-
+*/     
         $current_category = $category['category_name'];
     }
 
@@ -39,46 +37,8 @@
                    window.location.href='profile.php';
                 </script>";   
     }
-
-    
-
-    if(isset($_POST['category']))
-    {
-        // if($_POST['category'] != NULL)
-        if(!empty($_POST['category']))
-        {
-            //=== Создаем посты ========================================= INSERT ==========================
-           // print_r($_POST);
-
-
-        }
-        
-
-        //$randPost = RandString(20);
- /*       $Title = 'string';
-
-        for($i=0; $i<5; $i++)
-            $Title[$i] = $Post[$i]; 
-
-        echo $Post;
-        echo "<br>";
-        echo $Title;
-        echo "<br>";
-
-        //--- Вставка нового элемента ---------------------------------------------
-        $date = date("Y-m-d H:i:s");
-        $query = "INSERT INTO posts VALUES 
-        ('0', '$pl_user_id', '$date','titl ". $Title ."', 'postik ". $Post ."')";
-        $result = $connection->query($query);
-
-        if($result)                                      
-            echo "Post created.";
-        else
-           echo "Post creation error.";
-        echo "<br>";
-*/
-    }
 ?>
+
   <div class='alert alert-warning' role='alert' style='width: 100%; margin-bottom: 0; display: none;'>
             <div class='container'>
                 <strong id='ErrorMessage'>Не заполнены некоторые поля.</strong>
@@ -103,7 +63,7 @@
                                     <?php
                                     foreach ($category as $value)
                                     {
-                                        echo "<option value=". $value['category_name'] . ">";
+                                        echo "<option value=". $value['id'] . ">";
                                         echo ($value['category_name']);
                                         echo "</option>";
                                     }
@@ -113,13 +73,13 @@
                             <p>
                                 <!-- <p><input type="text" name="" rows=4 style="width: 70%;"></p> -->
                                 <div class="title-input">
-                                    <textarea class="title-box" name="art_title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 150 - символов.">Пример заголовка</textarea>
+                                    <textarea class="title-box" id="art_title" name="art_title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 150 - символов.">Пример заголовка.</textarea>
                                 </div>
                             </p>
 
                             <div id="area" >
                                 <textarea name="post-body" id="postBody" rows="40" cols="80">
-                                    Пост
+                                    Начните вводить пост.
                                 </textarea>
 
                                 <script>
@@ -129,7 +89,7 @@
                                 </script>
                             </div>
                             <br>
-                            <button  class='addpost-btn' onclick="return TimeToSubmitPost(category, art_title)" style='text-align: center;'>Опубликовать</button>
+                            <button  class='addpost-btn' onclick="return TimeToSubmitPost(category, art_title, )" style='text-align: center;'>Опубликовать</button>
                         </form>   
                     </div>
                 </div><!-- /.blog-main -->

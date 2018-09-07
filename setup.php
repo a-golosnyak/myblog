@@ -55,6 +55,7 @@
         $query = 'CREATE TABLE IF NOT EXISTS posts (
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 author_id INT UNSIGNED,
+                category_id INT UNSIGNED,
                 pub_date DATETIME DEFAULT NULL,
                 title VARCHAR(255),
                 post_body TEXT)';
@@ -68,7 +69,7 @@
         else
            echo "Table posts creation error.";
 
-        //=== CREATE TABLE ================================== category =================================
+        //=== CREATE TABLE ================================== category ================================
         $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($connection->connect_error)
             die("Connectio attemt denied " . $connection->connect_error);
@@ -98,12 +99,24 @@
         $uniq_str = RandString(2);
 
         //--- Вставка нового элемента ---------------------------------------------
+        $newName = 'Vasya' . $uniq_str . '@gmail.com';
         $query = "INSERT INTO users VALUES (
-                   '0', 'Vasya".$uniq_str."@gmail.com', '1111', 'Vas" . $uniq_str . "', '$date')";
+                   '0', '$newName', '1111', 'Vas" . $uniq_str . "', '$date')";
         $result = $connection->query($query);
 
-        if($result)                                      
-            echo "User created.";
+        if($result)      
+        {                   
+            $file = "images/ava/Guest.jpg";
+            $newFile = "images/ava/$newName.jpeg";
+
+            //--- Присваеваем новому профилю стандартную картпинку --------------------------------
+            if (copy($file, $newFile))          // Делаем копию файла        
+                $status = "";
+            else
+                $status = "err01";
+
+            echo "User created." . $status;
+        }
         else
            echo "User creation error.";
         echo "<br>";
@@ -122,8 +135,9 @@
 
         //--- Вставка нового элемента ---------------------------------------------
         $date = date("Y-m-d H:i:s");
+        $category = random_int(1, 3);
         $query = "INSERT INTO posts VALUES 
-        ('0', '4', '$date','titl ". $randTitle ."', 'postik ". $randPost ."')";
+        ('0', '4', '$category','$date','titl ". $randTitle ."', 'postik ". $randPost ."')";
         $result = $connection->query($query);
 
         if($result)                                      
@@ -142,15 +156,7 @@
         $result = $connection->query($query);
 
         $query = "INSERT INTO category VALUES 
-        ('3', 'ПЛИС')";
-        $result = $connection->query($query);
-
-        $query = "INSERT INTO category VALUES 
-        ('4', 'Квадрокоптеры')";
-        $result = $connection->query($query);
-
-        $query = "INSERT INTO category VALUES 
-        ('5', 'Живые проекты')";
+        ('3', 'ЧПУ')";
         $result = $connection->query($query);
 
         if($result)                                      
