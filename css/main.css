@@ -505,7 +505,11 @@ a:focus, a:hover {
 /*  margin: 0,5em;  */
 }
 
-#InpProfileSelect, .profile-btn .addpost-btn
+.profile-btn{
+  width: 7em;
+}
+
+#InpProfileSelect, .profile-btn, .addpost-btn
 {
     text-align: center;
     vertical-align: middle;
@@ -525,12 +529,6 @@ a:focus, a:hover {
     background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(236,241,243,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ecf1f3', GradientType=0 );
 }
-
-.profile-btn{
- /* width: 120px; */
-  width: 7em;
-}
-
 
 .article-image{
   max-width: 100%;
@@ -624,8 +622,8 @@ a:focus, a:hover {
 
 /* === Add post section ====================================================================== */
 .sel-category{
+	margin-bottom: 1em;	
     float: left;
-    margin-right: 0.5em;
 }
 
 .title-input{
@@ -635,12 +633,27 @@ a:focus, a:hover {
 }
 
 .title-box{
+    padding-left: 1em;
+    padding-right: 1em;
     width:100%; 
     text-align: center;
+    border: 1px solid lightgrey;
+}
+
+.intro-box{
+	padding: 1em;
+    width:100%; 
     border: 1px solid lightgrey;
 }
 
 #categoryOk{
     margin-right: 14px; 
     margin-top: 14px;
+}
+
+.preview-area{
+	border: 1px solid lightgrey;
+	margin-bottom: 2em;
+	padding: 0em 1em 1em;
+
 }

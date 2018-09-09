@@ -23,75 +23,7 @@
         echo "<br>";    */   
     }
 
-    if($usermail == $adminmail)
-    {
-        echo "                                     
-            <div class='alert alert-success' role='alert' style='width: 100%; margin-bottom: 0;'>
-                <div class='container'>
-                    <strong>Добро пожаловать, админ!</strong>
-                </div>
-            </div>";    
-    }
 
-    if(isset($_POST['name']))
-    {
-        $name = sanitizeString($_POST['name']);
-        queryMysql("UPDATE users SET screen_name = '$name' 
-                        WHERE usermail='$usermail' ");
-        echo "  <script>
-                   window.location.href='profile.php';
-                </script>";   
-    }
-
-    if(isset($_POST['email']))
-    {
-        $email = sanitizeString($_POST['email']);
-        $result = queryMysql("SELECT * FROM users WHERE usermail='$email'");
-
-        if ($result->num_rows)
-        {
-            $status = "Такой адрес электронной почты уже существует<br>";
-
-                $signin_message = "                                     
-                <div class='alert alert-info' role='alert' style='width: 100%; margin-bottom: 0;'>
-                    <div class='container'>
-                        <strong>$status</strong>
-                    </div>
-                </div>";
-                echo $signin_message;
-        }
-        else
-        {
-            $_SESSION['usermail'] = $email;
-            queryMysql("UPDATE users SET usermail = '$email' 
-                        WHERE usermail='$usermail' ");
-            $file = "images/ava/$usermail.jpeg";
-            $newFile = "images/ava/$email.jpeg";
-
-            if (copy($file, $newFile))          // Делаем копию файла        
-                $status = "";
-            else
-                $status = "err01";
-
- //         unlink($file);                      // удаляем оригинал
-            echo "<script>
-                    alert('Адрес электронной почты изменен. Выполните пожалуйста вход. $status');
-                    window.location.href='logout.php';
-                </script>";    
-        }
-        
-    }
-
-    if(isset($_POST['password_confirm']))
-    {
-        echo "incoming password " . $_POST['password'] . "<br>";
-        echo "incoming password_confirm " . $_POST['password_confirm'];        
-
-        if(strcmp($_POST['password'], $_POST['password_confirm']))
-        {
-            
-        } 
-    }
 
     echo "<div class='main-field style='background-color: lightgrey;'>  
     <div class='container-fluid ' >
@@ -99,7 +31,7 @@
             <div class='row'>
                 <div class='col-md-8 blog-main'>
                     <div class='profile-field ' >
-                        <h3 class='form-signin-heading profile-title'>Ваш профиль <b>$usermail</b></h3> 
+                        <h3 class='form-signin-heading profile-title'>Все статьи <b>$usermail</b></h3> 
                          <!--style='border: 1px solid grey;' -->
                         <br>
                         <div class='row' >
@@ -119,7 +51,7 @@
                                     <span>Все мои статьи</span>
                                 </div>
                                 <div class='col-xs-5'></div>
-                                <a href='articles.php'>
+                                <a href='index.php'>
                                     <div class='col-xs-3' >
                                             <button type='submit' class='profile-btn' style='text-align: center;'>Посмотерть</button>
                                     </div>

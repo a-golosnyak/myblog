@@ -71,7 +71,7 @@ $("input[type=file]").on("change", function(){      // Это событие, к
                 // alert("Success! " + " " + response);
                 // $("#ProfilePhoto").attr({src: "images/ava/avamin.jpeg"});
                 // window.location.href = "profile.php";    // Не всегда обновляет картинку. Нужно нажимать Ctrl+F5.
-                location.reload();                      // Обновляет картинку чемно.
+                location.reload();                          // Обновляет картинку чемно.
             },
             complete: function(){
             //    alert("Complete!");

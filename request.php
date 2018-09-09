@@ -1,9 +1,9 @@
 <?php
     session_start();
-    require_once  'log.php' ;            // Проверяем авторизирован ли пользователь
-    require_once  'functions.php' ;  
+
+    require_once 'functions.php' ;  
     
-    if (!$userLoggedIn) 
+    if ($_SESSION['usermail'] == '') 
         die();
 
     if( isset( $_FILES['file'] ) )

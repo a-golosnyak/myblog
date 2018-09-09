@@ -7,10 +7,11 @@
         die();
     else
     {
-        if ((isset($_POST['category'])) && (isset($_POST['art_title'])) && (isset($_POST['post-body'])))
+        if ((isset($_POST['category'])) && (isset($_POST['art_title'])) && (isset($_POST['art_intro']))&& (isset($_POST['post-body'])))
         {
             $category_id   = sanitizeString($_POST['category']);
             $art_title   = sanitizeString($_POST['art_title']);
+            $art_intro   = sanitizeString($_POST['art_intro']);
             $post   = sanitizeString($_POST['post-body']);
             $usermail = $_SESSION['usermail'];
 
@@ -25,14 +26,39 @@
             $result = $connection->query($query);
 
             if($result)                                      
-                echo "Пост получен и готовится к публикации." . $category_id;
+                $status = "Пост получен и готовится к публикации." . $category_id;
             else
-                echo "Ошибка при добавлении поста в базу.";
+                $status = "Ошибка при добавлении поста в базу." . '<br>';
         }
         else
         {
             echo "Нарушена целостность данных. ";
         }
+
+        if( isset( $_FILES['image'] ) )
+        {
+//          echo var_dump($_FILES) . "<br>";
+            $image = $_FILES['image'];
+            $imageFormat = explode('/', $image['type']);
+            $imageType = $imageFormat[0];
+            $imageFormat = $imageFormat[1];
+            $imageName = 'images/posts/'. 
+                substr($art_title, 0, 5) .'_'. 
+                date("Y-m-d_His") .'_'. 
+                mt_rand(0, 1000);
+
+            $fileName = $imageName . '.' . $imageFormat;
+
+/*            if(copy($_FILES['image']['tmp_name'], $fileName))
+                $status .= 'Картинка есть' . '<br>';
+            else
+                $status .= "Shit happens<br>";    */    
+        }
+/*        $status .= $_POST['category'] . '<br>';
+        $status .= $_POST['art_title'] . '<br>';
+        $status .= $_POST['art_intro'] . '<br>';
+        $status .= var_dump($_FILES) . '<br>';  */
+        echo $status;
     }
 
 ?>

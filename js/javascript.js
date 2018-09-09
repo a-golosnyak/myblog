@@ -100,11 +100,12 @@ function validateName(field)
     }
 }
 //====== addpost.php ==============================================================================
-function TimeToSubmitPost(category, art_title)
+function TimeToSubmitPost(category, art_title, art_intro)
 {  
     if(category.value=='')
     {
         document.getElementsByClassName('alert')[0].style.display = 'block';
+        document.getElementsByClassName('alert')[0].className = 'alert alert-warning';
         document.getElementById('ErrorMessage').innerHTML = "Выберите пожалуйста категорию";
 
         return false;
@@ -112,17 +113,26 @@ function TimeToSubmitPost(category, art_title)
     if(art_title.value == '')
     {
         document.getElementsByClassName('alert')[0].style.display = 'block';
+        document.getElementsByClassName('alert')[0].className = 'alert alert-warning';
         document.getElementById('ErrorMessage').innerHTML = "Введите пожалуйста заголовок";
         
         return false; 
     }
+    if(art_intro.value == '')
+    {
+        document.getElementsByClassName('alert')[0].style.display = 'block';
+        document.getElementsByClassName('alert')[0].className = 'alert alert-warning';
+        document.getElementById('ErrorMessage').innerHTML = "Введите пожалуйста превью статьи";
+        
+        return false; 
+    }   
     document.getElementsByClassName('alert')[0].style.display = 'block';
     document.getElementsByClassName('alert')[0].className = 'alert alert-success';
     document.getElementById('ErrorMessage').innerHTML = "Пост получен";
 
     var data = CKEDITOR.instances.postBody.getData();               // Достаем данные из Цкедитора
         
-    sendPost(category, art_title, data);                            // Отправляем все значения по Ajax.
+    sendPost(category, art_title, art_intro, data);                            // Отправляем все значения по Ajax.
 
     CKEDITOR.instances.postBody.setData("Начните вводить пост.");   // Сбрасываем все к исходному виду
     document.getElementById('art_title').value = "";
@@ -130,15 +140,23 @@ function TimeToSubmitPost(category, art_title)
 }
 
 //--- Ajax ------------------------------------------------------------
-function sendPost(category, art_title, post)
+function sendPost(category, art_title, art_intro, post)
 {
-    params  = "category=" + category.value;
-    params  += "&art_title=" + art_title.value;
-    params  += "&post-body=" + post;
+    var data = new FormData();
+    data.append('category', category.value); 
+    data.append('art_title', art_title.value); 
+    data.append('art_intro', art_intro.value); 
+    data.append('post-body', post); 
+    data.append('image', $('input[type=file]')[0].files[0]); 
 
+/*  params  = "category=" + category.value;
+    params  += "&art_title=" + art_title.value;
+    params  += "&art_intro=" + art_intro.value;
+    params  += "&post-body=" + post;
+*/
     request = new ajaxRequest()
     request.open("POST", "getpost.php", true)
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+//  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")   // При использовании обьекта FormData это почему-то не нужно
 
     request.onreadystatechange = function()
     {
@@ -151,6 +169,6 @@ function sendPost(category, art_title, post)
     				document.getElementById('ErrorMessage').innerHTML = this.responseText;
                 }
     }
-    request.send(params)
+    request.send(data)
 }
 //=================================================================================================
