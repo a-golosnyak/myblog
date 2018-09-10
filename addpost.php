@@ -64,7 +64,7 @@
                                 <p>
                                     <!-- <p><input type="text" name="" rows=4 style="width: 70%;"></p> -->
                                     <div class="title-input">
-                                        <textarea class="title-box" id="art_title" name="art_title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 220 - символов.">Пример заголовка.</textarea>
+                                        <textarea class="title-box" id="art_title" name="art_title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 220 - символов."></textarea>
                                     </div>
                                 </p>
                                 <p>
