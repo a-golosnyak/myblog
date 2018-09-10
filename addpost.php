@@ -93,6 +93,7 @@
                                     CKEDITOR.replace('postBody');
                                     CKEDITOR.config.extraPlugins  = 'autogrow';
                                     // CKEDITOR.config.height = '90%'; 
+                                    
                                 </script>
                             </div>
                             <br>
