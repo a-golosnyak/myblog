@@ -22,7 +22,7 @@
             //--- Вставка нового элемента ---------------------------------------------
             $date = date("Y-m-d H:i:s");
             $query = "INSERT INTO posts VALUES 
-            ('0', '$user_id', '$category_id', '$date', '$art_title', '$post')";
+            ('0', '$user_id', '$category_id', '$date', '$art_title', 'art_intro', ' ' ,'$post')";
             $result = $connection->query($query);
 
             if($result)                                      
@@ -42,12 +42,16 @@
             $imageFormat = explode('/', $image['type']);
             $imageType = $imageFormat[0];
             $imageFormat = $imageFormat[1];
-            $imageName = 'images/posts/'. 
-                substr($art_title, 0, 5) .'_'. 
-                date("Y-m-d_His") .'_'. 
-                mt_rand(0, 1000);
+            $imageName = 'images/posts/'. substr($art_title, 0, 5) .'_'. date("Y-m-d_His") .'_'. mt_rand(0, 1000);
 
+            $status .= $imageName . '<br>';
+            $status .= $imageFormat . '<br>';
             $fileName = $imageName . '.' . $imageFormat;
+
+            queryMysql("UPDATE posts SET art_intro_img = '$fileName' 
+                        WHERE pub_date='$date' ");
+
+            $status .= $imageName . '<br>';
 
 /*            if(copy($_FILES['image']['tmp_name'], $fileName))
                 $status .= 'Картинка есть' . '<br>';

@@ -57,7 +57,9 @@
                 author_id INT UNSIGNED,
                 category_id INT UNSIGNED,
                 pub_date DATETIME DEFAULT NULL,
-                title VARCHAR(255),
+                title VARCHAR(220),
+                art_intro VARCHAR(800),  
+                art_intro_img VARCHAR(255),
                 post_body TEXT)';
 
         $result = $connection->query($query);
@@ -135,9 +137,9 @@
 
         //--- Вставка нового элемента ---------------------------------------------
         $date = date("Y-m-d H:i:s");
-        $category = random_int(1, 3);
+        $category = mt_rand(1, 3);
         $query = "INSERT INTO posts VALUES 
-        ('0', '4', '$category','$date','titl ". $randTitle ."', 'postik ". $randPost ."')";
+        ('0', '4', '$category','$date','titl ". $randTitle ."', 'art preview' , 'img' , 'postik ". $randPost ."')";
         $result = $connection->query($query);
 
         if($result)                                      
