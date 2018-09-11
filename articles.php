@@ -35,14 +35,14 @@
                     <div class="blog-post">
                         <h2 class="blog-post-title">Sample blog post</h2>
                         <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-                            <p>Шаг 4. Разрешите удаленные подключения
+                        <p>Шаг 4. Разрешите удаленные подключения
                             Запустите браузер Chrome.
                             Наберите chrome://apps в адресной строке и нажмите клавишу Ввод.
                             Выберите "Удаленный рабочий стол Chrome" Приложение "Удаленный рабочий стол Chrome".
                             В разделе "Мои компьютеры" нажмите Начало работы.
                             Нажмите Разрешить удаленные подключения.
                             Введите PIN-код, повторите его и нажмите ОК.
-                            Закройте диалоговое окно.
+                        Закройте диалоговое окно.
                         </p>
                         
 
@@ -65,15 +65,6 @@
                             $art_intro = $row['art_intro'];
                             $art_intro_img = $row['art_intro_img'];
                             $post_body = $row['post_body'];
-
-    /*                        echo  "<p>$posts</p>" ; 
-                            echo  "<p>$user</p>" ;           
-                            echo  "<p>$title</p>" ;
-                            echo  "<p>$pub_date</p>" ;
-                            echo  "<p>$art_intro_img</p>" ;
-                            echo  "<p><img src='$art_intro_img'></p>" ;
-                            echo  "<p>$art_intro</p>" ;
-                            echo  "<p class='.text-justify'>$post_body</p>" ; */
 
                             echo "  <div class='blog-post'>
                                         <h4 class='blog-post-title'> $title </h4>
