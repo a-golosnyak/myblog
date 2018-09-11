@@ -155,11 +155,15 @@
 
         $query = "INSERT INTO category VALUES 
         ('2', 'Программирование Linux')";
-        $result = $connection->query($query);
+        $result += $connection->query($query);
 
         $query = "INSERT INTO category VALUES 
         ('3', 'ЧПУ')";
-        $result = $connection->query($query);
+        $result += $connection->query($query);
+
+        $query = "INSERT INTO category VALUES 
+        ('4', 'Разное')";
+        $result += $connection->query($query);
 
         if($result)                                      
             echo "Category created.";

@@ -22,7 +22,7 @@
             //--- Вставка нового элемента ---------------------------------------------
             $date = date("Y-m-d H:i:s");
             $query = "INSERT INTO posts VALUES 
-            ('0', '$user_id', '$category_id', '$date', '$art_title', 'art_intro', ' ' ,'$post')";
+            ('0', '$user_id', '$category_id', '$date', '$art_title', '$art_intro', ' ' ,'$post')";
             $result = $connection->query($query);
 
             if($result)                                      
@@ -47,7 +47,8 @@
                             substr($art_title, 0, 5) .'_'. 
                             mt_rand(0, 1000);
 
-            $fileName = $imageName . '.' . $imageFormat;
+        //    $fileName = $imageName . '.' . $imageFormat;
+            $fileName = $imageName . '.' . 'jpeg';
 
             queryMysql("UPDATE posts SET art_intro_img = '$fileName' 
                         WHERE pub_date='$date' ");
