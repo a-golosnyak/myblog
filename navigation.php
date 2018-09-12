@@ -1,3 +1,4 @@
+
 <div class="navigation">
     <div class="row ">
         <div class="container">
@@ -9,27 +10,56 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <div class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Рубрика</div>
+                        <div class="nav-link dropdown-toggle" id="getCategory" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="GetCategory();">Рубрика</div>
                         <div class="dropdown-menu dropdown-menu-left">
                             <a href='emb_articles.php'>
-                                <div class="dropdown-item">Микроконтроллеры STM32</div>
+                                <div class='dropdown-item'>$category['category_name']</div>
                             </a>
                             <a href='sport_articles.php'>
-                                <div class="dropdown-item">Программирование Linux</div>
+                                <div class='dropdown-item'>Программирование Linux</div>
                             </a>
                             <a href='sport_articles.php'>
-                                <div class="dropdown-item">ПЛИС</div>
+                                <div class='dropdown-item'>ПЛИС</div>
                             </a>
                             <a href='sport_articles.php'>
-                                <div class="dropdown-item">Квадрокоптеры</div>
+                                <div class='dropdown-item'>Квадрокоптеры</div>
                             </a>
-                            <a href='sport_articles.php'>
-                                <div class="dropdown-item">Живые проекты</div>
-                            </a>
-                      <!--      <div class="dropdown-divider"></div>        
-                            <a href='index.php?view=1'>
-                                <div class="dropdown-item" href="#">Тестовые проекты</div>
-                            </a>    -->
+                            <script>
+                                function GetCategory ()
+                                {
+                                    // alert('Alert!');
+                                    
+                                    data = "getcategory=true";
+
+                                    request = new ajaxRequest()
+                                    request.open("POST", "getcategory.php", true)
+                                    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")   // При использовании обьекта FormData это почему-то не нужно
+
+                                    request.onreadystatechange = function()
+                                    {
+                                        if (this.readyState == 4)
+                                            if (this.status == 200)
+                                                if (this.responseText != null)
+                                                {
+                                                    alert(this.responseText);
+                                                    document.createElement('div').id = 'nextCategory';
+                                                    document.body.appendChild(newdiv);
+
+                                                    S(newdiv).border = 'solid 1px red'
+                                                    S(newdiv).width = '100px'
+                                                    S(newdiv).height = '100px'
+                                                    newdiv.innerHTML= "Это новый объект, вставленный в DOM"
+                                                    tmp= newdiv.offsetTop
+
+
+                                                    $('.dropdown-menu-left .dropdown-item').innerHTML(this.responseText);
+                                                }
+                                    }
+                                    request.send(data)
+
+
+                                }
+                            </script>
                         </div>
                     </div>
                     <div class="nav-item">
@@ -138,6 +168,6 @@
     echo $usermail;
     echo "<br>REQUEST ";
     print_r($_REQUEST);
-    */
+*/
 ?>
 

@@ -57,7 +57,9 @@
                 author_id INT UNSIGNED,
                 category_id INT UNSIGNED,
                 pub_date DATETIME DEFAULT NULL,
-                title VARCHAR(255),
+                title VARCHAR(220),
+                art_intro VARCHAR(1200),  
+                art_intro_img VARCHAR(255),
                 post_body TEXT)';
 
         $result = $connection->query($query);
@@ -96,7 +98,8 @@
         else        echo "adm creation error.";
         echo "<br>";
 
-        $uniq_str = RandString(2);
+        //$uniq_str = RandString(2);
+        $uniq_str = mt_rand(0, 9);
 
         //--- Вставка нового элемента ---------------------------------------------
         $newName = 'Vasya' . $uniq_str . '@gmail.com';
@@ -135,9 +138,9 @@
 
         //--- Вставка нового элемента ---------------------------------------------
         $date = date("Y-m-d H:i:s");
-        $category = random_int(1, 3);
+        $category = mt_rand(1, 3);
         $query = "INSERT INTO posts VALUES 
-        ('0', '4', '$category','$date','titl ". $randTitle ."', 'postik ". $randPost ."')";
+        ('0', '4', '$category','$date','titl ". $randTitle ."', 'art preview' , 'img' , 'postik ". $randPost ."')";
         $result = $connection->query($query);
 
         if($result)                                      
@@ -153,11 +156,15 @@
 
         $query = "INSERT INTO category VALUES 
         ('2', 'Программирование Linux')";
-        $result = $connection->query($query);
+        $result += $connection->query($query);
 
         $query = "INSERT INTO category VALUES 
         ('3', 'ЧПУ')";
-        $result = $connection->query($query);
+        $result += $connection->query($query);
+
+        $query = "INSERT INTO category VALUES 
+        ('4', 'Разное')";
+        $result += $connection->query($query);
 
         if($result)                                      
             echo "Category created.";

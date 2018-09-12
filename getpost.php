@@ -22,7 +22,7 @@
             //--- Вставка нового элемента ---------------------------------------------
             $date = date("Y-m-d H:i:s");
             $query = "INSERT INTO posts VALUES 
-            ('0', '$user_id', '$category_id', '$date', '$art_title', '$post')";
+            ('0', '$user_id', '$category_id', '$date', '$art_title', '$art_intro', ' ' ,'$post')";
             $result = $connection->query($query);
 
             if($result)                                      
@@ -37,25 +37,34 @@
 
         if( isset( $_FILES['image'] ) )
         {
+            ini_set('default_charset','UTF-8');
+
 //          echo var_dump($_FILES) . "<br>";
             $image = $_FILES['image'];
             $imageFormat = explode('/', $image['type']);
             $imageType = $imageFormat[0];
             $imageFormat = $imageFormat[1];
+
+            $art_title_trnslt = translit($art_title);
+            $tmp = substr($art_title_trnslt, 0, 5);     // substr делает ошибку с кирилическим текстом.
             $imageName = 'images/posts/'. 
-                substr($art_title, 0, 5) .'_'. 
-                date("Y-m-d_His") .'_'. 
-                mt_rand(0, 1000);
+                            date("Y-m-d_His") .'_'. 
+                            $tmp .'_'. 
+                            mt_rand(0, 1000);
 
-            $fileName = $imageName . '.' . $imageFormat;
+        //    $fileName = $imageName . '.' . $imageFormat;
+            $fileName = $imageName.'.'.'jpeg';
 
-/*            if(copy($_FILES['image']['tmp_name'], $fileName))
+            queryMysql("UPDATE posts SET art_intro_img = '$fileName' 
+                        WHERE pub_date='$date' ");         
+
+            if(copy($_FILES['image']['tmp_name'], $fileName))
                 $status .= 'Картинка есть' . '<br>';
             else
-                $status .= "Shit happens<br>";    */    
+                $status .= "Shit happens<br>";       
         }
-/*        $status .= $_POST['category'] . '<br>';
-        $status .= $_POST['art_title'] . '<br>';
+        $status .= $fileName . '<br>';
+/*        $status .= $_POST['art_title'] . '<br>';
         $status .= $_POST['art_intro'] . '<br>';
         $status .= var_dump($_FILES) . '<br>';  */
         echo $status;

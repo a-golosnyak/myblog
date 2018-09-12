@@ -8,6 +8,8 @@
 
     if( isset( $_FILES['file'] ) )
     {
+        $usermail = $_SESSION['usermail'];
+
 //        echo var_dump($_FILES) . "<br>";
 
         $image = $_FILES['file'];
