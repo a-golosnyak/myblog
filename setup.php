@@ -58,7 +58,7 @@
                 category_id INT UNSIGNED,
                 pub_date DATETIME DEFAULT NULL,
                 title VARCHAR(220),
-                art_intro VARCHAR(800),  
+                art_intro VARCHAR(1200),  
                 art_intro_img VARCHAR(255),
                 post_body TEXT)';
 

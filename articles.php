@@ -13,14 +13,14 @@
         $author_id = $row['id'];
         $user_screen_name = $row['screen_name'];
 
-        echo "DB : "; 
+/*        echo "DB : "; 
         print_r($author_id);
         echo "<br>";         
         echo "<pre>";
         print_r($user_screen_name);
         echo "</pre>";
         echo "<br>";
-
+*/
         $result = queryMysql("SELECT * FROM posts ORDER BY pub_date DESC" );
         $posts = mysqli_num_rows($result);
     }
@@ -66,7 +66,7 @@
                             $art_intro_img = $row['art_intro_img'];
                             $post_body = $row['post_body'];
 
-    /*                        echo  "<p>$posts</p>" ; 
+/*                          echo  "<p>$posts</p>" ; 
                             echo  "<p>$user</p>" ;           
                             echo  "<p>$title</p>" ;
                             echo  "<p>$pub_date</p>" ;
@@ -81,6 +81,7 @@
                                             <a href='#'></a>
                                         </p>
                                         <p>$art_intro</p>
+                                        <p><img class='post-preview-img' src='$art_intro_img'></p>
                                         <div class='post-footer'>
                                             <div class='pull-xs-left'>
                                                 <button type='' class='post-btn' >Читать далее...</button>

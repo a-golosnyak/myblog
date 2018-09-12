@@ -130,7 +130,7 @@
 
     echo $signin_message;
 
-    echo "SESSION ";
+/*    echo "SESSION ";
     print_r($_SESSION);
     echo "<br>COOKIES ";
     print_r($_COOKIE);
@@ -138,6 +138,6 @@
     echo $usermail;
     echo "<br>REQUEST ";
     print_r($_REQUEST);
-    
+*/
 ?>
 

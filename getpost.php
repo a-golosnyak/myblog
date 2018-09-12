@@ -37,29 +37,34 @@
 
         if( isset( $_FILES['image'] ) )
         {
+            ini_set('default_charset','UTF-8');
+
 //          echo var_dump($_FILES) . "<br>";
             $image = $_FILES['image'];
             $imageFormat = explode('/', $image['type']);
             $imageType = $imageFormat[0];
             $imageFormat = $imageFormat[1];
+
+            $art_title_trnslt = translit($art_title);
+            $tmp = substr($art_title_trnslt, 0, 5);     // substr делает ошибку с кирилическим текстом.
             $imageName = 'images/posts/'. 
                             date("Y-m-d_His") .'_'. 
-                            substr($art_title, 0, 5) .'_'. 
+                            $tmp .'_'. 
                             mt_rand(0, 1000);
 
         //    $fileName = $imageName . '.' . $imageFormat;
-            $fileName = $imageName . '.' . 'jpeg';
+            $fileName = $imageName.'.'.'jpeg';
 
             queryMysql("UPDATE posts SET art_intro_img = '$fileName' 
-                        WHERE pub_date='$date' ");
+                        WHERE pub_date='$date' ");         
 
             if(copy($_FILES['image']['tmp_name'], $fileName))
                 $status .= 'Картинка есть' . '<br>';
             else
                 $status .= "Shit happens<br>";       
         }
-/*        $status .= $_POST['category'] . '<br>';
-        $status .= $_POST['art_title'] . '<br>';
+        $status .= $fileName . '<br>';
+/*        $status .= $_POST['art_title'] . '<br>';
         $status .= $_POST['art_intro'] . '<br>';
         $status .= var_dump($_FILES) . '<br>';  */
         echo $status;
