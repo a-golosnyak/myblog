@@ -1,29 +1,37 @@
 <?php
     require_once 'main.php' ; 
 
-    if ($_SESSION['usermail'] == '') 
-        die();
+    
+
+
+    
+    $author_id = '';
+
+    if(isset($_GET['show']))
+    {
+        if($_GET['show'] == 'user_articles')
+        {
+            if ($_SESSION['usermail'] != '') 
+            {
+                $usermail = $_SESSION['usermail'];
+
+                $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
+                $row = $result->fetch_assoc();
+             
+                $author_id = $row['id'];
+                $user_screen_name = $row['screen_name'];
+
+                $result = queryMysql("SELECT * FROM posts WHERE author_id='$author_id' ORDER BY pub_date DESC" );
+                $posts = mysqli_num_rows($result);
+            }   
+        }
+    }
     else
     {
-        $usermail = $_SESSION['usermail'];
-
-        $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
-        $row = $result->fetch_assoc();
-     
-        $author_id = $row['id'];
-        $user_screen_name = $row['screen_name'];
-
-/*        echo "DB : "; 
-        print_r($author_id);
-        echo "<br>";         
-        echo "<pre>";
-        print_r($user_screen_name);
-        echo "</pre>";
-        echo "<br>";
-*/
         $result = queryMysql("SELECT * FROM posts ORDER BY pub_date DESC" );
         $posts = mysqli_num_rows($result);
     }
+    
 ?>
 
 
@@ -66,18 +74,7 @@
                             $art_intro_img = $row['art_intro_img'];
                             $post_body = $row['post_body'];
 
-<<<<<<< HEAD
-/*                          echo  "<p>$posts</p>" ; 
-                            echo  "<p>$user</p>" ;           
-                            echo  "<p>$title</p>" ;
-                            echo  "<p>$pub_date</p>" ;
-                            echo  "<p>$art_intro_img</p>" ;
-                            echo  "<p><img src='$art_intro_img'></p>" ;
-                            echo  "<p>$art_intro</p>" ;
-                            echo  "<p class='.text-justify'>$post_body</p>" ; */
 
-=======
->>>>>>> bac540486cadb6d2a276cc05cd1f0d84df670c1e
                             echo "  <div class='blog-post'>
                                         <h4 class='blog-post-title'> $title </h4>
                                         <p class='blog-post-meta'>$pub_date by $user_screen_name

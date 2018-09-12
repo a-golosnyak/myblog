@@ -98,7 +98,8 @@
         else        echo "adm creation error.";
         echo "<br>";
 
-        $uniq_str = RandString(2);
+        //$uniq_str = RandString(2);
+        $uniq_str = mt_rand(0, 9);
 
         //--- Вставка нового элемента ---------------------------------------------
         $newName = 'Vasya' . $uniq_str . '@gmail.com';

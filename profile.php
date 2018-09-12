@@ -126,6 +126,17 @@
                                 </a>
                         </div>
                         <hr>
+                        <div class='row' >
+                                <div class='col-xs-4'>
+                                    <span>Все мои статьи</span>
+                                </div>
+                                <div class='col-xs-5'></div>
+                                <form class='col-xs-3' action='articles.php' method='get'>
+                                    <input type='hidden' name='show' value='user_articles'>
+                                    <button type='submit' class='profile-btn' style='text-align: center;'>Посмотерть</button>
+                                </form>
+                        </div>
+                        <hr>
                         <hr>
                         <div class='row' >
                                 <div class='col-xs-5'>
