@@ -18,7 +18,7 @@
         
         if(!$db_selected)
         {
-            $query = "CREATE DATABASE test_blog_db";  
+            $query = "CREATE DATABASE test_blog_db DEFAULT CHARACTER SET utf8";  
             $result = mysqli_query($link, $query);                  // Запрос без создания сущности
             echo "Database test_blog_db created.";
         }
