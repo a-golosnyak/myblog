@@ -5,6 +5,8 @@
     if ($connection->connect_error) 
         die($connection->connect_error);
 
+    $result = queryMysql("SET NAMES utf8 COLLATE utf8_unicode_ci");
+
     function createTable($name, $query)
     {
         queryMysql("CREATE TABLE IF NOT EXISTS $name($query)");
