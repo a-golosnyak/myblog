@@ -27,9 +27,7 @@
         $result = queryMysql("SELECT * FROM posts ORDER BY pub_date DESC" );
         $posts = mysqli_num_rows($result);
     }
-    
 ?>
-
 
 <div class='main-field style='background-color: lightgrey;'>  
     <div class='container-fluid ' >
@@ -80,11 +78,9 @@
                                         <p><img class='post-preview-img' src='$art_intro_img'></p>
                                         <br>
                                         <div class='post-footer'>
-                                            <form class='pull-xs-left ' action='article.php' method='get'>
-                                                <input type='hidden' name='show' value='user_articles'>
-                                                <button type='submit' class='read-more-btn' style='text-align: center;'>Читать далее...</button>
-                                            </form>
-
+                                            <div class='pull-xs-left'>
+                                                <button type='' class='post-btn' >Читать далее...</button>
+                                            </div>
                                             <div class='pull-xs-right offset-xs-1 show-comments'>Комментарии</div>
                                         </div>
                                         <br style='clear: both;''>
