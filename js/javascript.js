@@ -132,10 +132,11 @@ function TimeToSubmitPost(category, art_title, art_intro)
 
     var data = CKEDITOR.instances.postBody.getData();               // Достаем данные из Цкедитора
         
-    sendPost(category, art_title, art_intro, data);                            // Отправляем все значения по Ajax.
+    sendPost(category, art_title, art_intro, data);                 // Отправляем все значения по Ajax.
 
     CKEDITOR.instances.postBody.setData("Начните вводить пост.");   // Сбрасываем все к исходному виду
     document.getElementById('art_title').value = "";
+    document.getElementById('art_intro').value = "";
     return false;                                                   // Форму сабмитить и отправялть не нужно.    
 }
 

@@ -39,6 +39,8 @@
             <div class='row'>
                 <div class='col-md-8 blog-main'>
 
+                    <script src="ckeditor/ckeditor.js"></script>          <!-- Текстовый редактор для поств -->
+                    
                     <div class='profile-field ' >
 <?php                       
                         echo "<h3 class='form-signin-heading profile-title'>Создание поста от <b>$usermail</b></h3>";

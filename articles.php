@@ -1,10 +1,6 @@
 <?php
     require_once 'main.php' ; 
 
-    
-
-
-    
     $author_id = '';
 
     if(isset($_GET['show']))
@@ -26,7 +22,7 @@
             }   
         }
     }
-    else
+    else        // Если поле show не приходит, выводим все статьи подряд.
     {
         $result = queryMysql("SELECT * FROM posts ORDER BY pub_date DESC" );
         $posts = mysqli_num_rows($result);
@@ -40,7 +36,7 @@
         <div class='container data-field'>
             <div class='row'>
                 <div class='col-md-8 blog-main'>
-                    <div class="blog-post">
+<!--                    <div class="blog-post">
                         <h2 class="blog-post-title">Sample blog post</h2>
                         <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
                         <p>Шаг 4. Разрешите удаленные подключения
@@ -62,7 +58,7 @@
                         </div>
                         <br style="clear: both;">
                         <hr>
-                    </div>
+                    </div>      -->
 
                     <?php              
                         while($row = $result->fetch_assoc())
@@ -89,7 +85,9 @@
                                             <div class='pull-xs-right offset-xs-1 show-comments'>Комментарии</div>
                                         </div>
                                         <br style='clear: both;''>
+                                        <br>
                                         <hr>
+                                        <br>
                                     </div>";
                         }
 ?>

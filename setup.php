@@ -125,7 +125,7 @@
         echo "<br>";
 
         //=== Создаем посты ========================================= INSERT ==========================
-        $randPost = RandString(20);
+/*        $randPost = RandString(20);
         $randTitle = 'string';
 
         for($i=0; $i<5; $i++)
@@ -147,7 +147,7 @@
             echo "Post created.";
         else
             echo "Post creation error.";
-        echo "<br>";
+        echo "<br>";    */
 
         //=== Создаем рубрики ======================================= INSERT ==========================
         $query = "INSERT INTO category VALUES 
