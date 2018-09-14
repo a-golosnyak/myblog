@@ -12,7 +12,8 @@
             $category_id   = sanitizeString($_POST['category']);
             $art_title   = sanitizeString($_POST['art_title']);
             $art_intro   = sanitizeString($_POST['art_intro']);
-            $post   = sanitizeString($_POST['post-body']);
+            $post = stripslashes($_POST['post-body']);
+            $connection->real_escape_string($post);
             $usermail = $_SESSION['usermail'];
 
             $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");

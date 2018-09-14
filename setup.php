@@ -6,7 +6,7 @@
     <body>
         <h3>Setting up...</h3>
 
-        <?php
+<?php
 		require_once 'db.php';
 
         //=== CREATE DATABASE ================================== test_blog_db ==========================
@@ -102,7 +102,7 @@
         $uniq_str = mt_rand(0, 9);
 
         //--- Вставка нового элемента ---------------------------------------------
-        $newName = 'Vasya' . $uniq_str . '@gmail.com';
+/*        $newName = 'Vasya' . $uniq_str . '@gmail.com';
         $query = "INSERT INTO users VALUES (
                    '0', '$newName', '1111', 'Vas" . $uniq_str . "', '$date')";
         $result = $connection->query($query);
@@ -123,7 +123,7 @@
         else
            echo "User creation error.";
         echo "<br>";
-
+*/
         //=== Создаем посты ========================================= INSERT ==========================
 /*        $randPost = RandString(20);
         $randTitle = 'string';
@@ -159,11 +159,15 @@
         $result += $connection->query($query);
 
         $query = "INSERT INTO category VALUES 
-        ('3', 'ЧПУ')";
+        ('3', 'Электроника')";
         $result += $connection->query($query);
 
         $query = "INSERT INTO category VALUES 
-        ('4', 'Разное')";
+        ('4', 'ЧПУ')";
+        $result += $connection->query($query);
+
+        $query = "INSERT INTO category VALUES 
+        ('5', 'Разное')";
         $result += $connection->query($query);
 
         if($result)                                      
@@ -173,43 +177,7 @@
         
         echo "<br>";
 
-
-        
-/*
-        createTable('user',
-        'id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        user VARCHAR(16),
-        password VARCHAR(16),
-        screen_name VARCHAR(16)');
-
-        createTable('members',
-        'user VARCHAR(16),
-        pass VARCHAR(16),
-        INDEX(user(6))');
-
-        createTable('messages', 
-        'id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        auth VARCHAR(16),
-        recip VARCHAR(16),
-        pm CHAR(1),
-        time INT UNSIGNED,
-        message VARCHAR(4096),
-        INDEX(auth(6)),
-        INDEX(recip(6))');
-
-        createTable('friends',
-        'user VARCHAR(16),
-        friend VARCHAR(16),
-        INDEX(user(6)),
-        INDEX(friend(6))');
-
-        createTable('profiles',
-        'user VARCHAR(16),
-        text VARCHAR(4096),
-        INDEX(user(6))');
-*/
-
-        ?>
+?>
         <br>...done.
     </body>
 </html>

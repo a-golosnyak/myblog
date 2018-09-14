@@ -6,22 +6,22 @@
                 <div class="nav nav-tabs ">
                     <div class="nav-item">
                         <div class="nav-link">
-                            <a href="index.php">Главная</a>
+                            <a class='none-decored' href="index.php">Главная</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <div class="nav-link dropdown-toggle" id="getCategory" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="GetCategory();">Рубрика</div>
                         <div class="dropdown-menu dropdown-menu-left">
-                            <a href='emb_articles.php'>
+                            <a class='none-decored'href='emb_articles.php'>
                                 <div class='dropdown-item'>$category['category_name']</div>
                             </a>
-                            <a href='sport_articles.php'>
+                            <a class='none-decored'href='sport_articles.php'>
                                 <div class='dropdown-item'>Программирование Linux</div>
                             </a>
-                            <a href='sport_articles.php'>
+                            <a class='none-decored'href='sport_articles.php'>
                                 <div class='dropdown-item'>ПЛИС</div>
                             </a>
-                            <a href='sport_articles.php'>
+                            <a class='none-decored'href='sport_articles.php'>
                                 <div class='dropdown-item'>Квадрокоптеры</div>
                             </a>
                             <script>
@@ -101,11 +101,11 @@
                                     <div class='dropdown-menu dropdown-menu-right'>
                                         <div class='dropdown-item'href='#'>Вы вошли как $userstr</div>
                                         <div class='dropdown-divider'></div>
-                                        <a href='profile.php'>
+                                        <a class='none-decored' href='profile.php'>
                                             <div class='dropdown-item'href='#'>Профиль</div>
                                         </a>
                                         <div class='dropdown-divider'></div>
-                                        <a href='logout.php'>
+                                        <a class='none-decored' href='logout.php'>
                                             <div class='dropdown-item'>Выход</div>
                                         </a>
                                     </div>";
@@ -138,7 +138,7 @@
                                         </div>
                                     </form>
                                     <div class='dropdown-divider'></div>
-                                    <a href='registration.php'>
+                                    <a class='none-decored' href='registration.php'>
                                         <div class='dropdown-item' href='#'>
                                             <button class='btn btn-md btn-primary btn-block' type='submit'>
                                                 Регистрация

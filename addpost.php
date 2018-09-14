@@ -66,13 +66,13 @@
                                 <p>
                                     <!-- <p><input type="text" name="" rows=4 style="width: 70%;"></p> -->
                                     <div class="title-input">
-                                        <textarea class="title-box" id="art_title" name="art_title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 220 - символов.">абвгд</textarea>
+                                        <textarea class="title-box" id="art_title" name="art_title"  rows='3' maxlength='220' placeholder="Заголовок. Максимальная длинна 220 - символов."></textarea>
                                     </div>
                                 </p>
                                 <p>
                                     <!-- <p><input type="text" name="" rows=4 style="width: 70%;"></p> -->
                                     <div class="intro-input">
-                                        <textarea class="intro-box" id="art_intro" name="art_intro"  rows='5' maxlength='1200' placeholder="Превью статьи. Попробуйте уложиться в 1200 - символов.">Недорогой аудио фильтр подавляет шумы и фон</textarea>
+                                        <textarea class="intro-box" id="art_intro" name="art_intro"  rows='5' maxlength='1200' placeholder="Превью статьи. Попробуйте уложиться в 1200 - символов."></textarea>
                                     </div>
                                 </p>
                                 <input type="file" accept="image/*" onchange="loadFile(event)">
@@ -88,7 +88,7 @@
                         
                             <div id="area" >
                                 <textarea name="post-body" id="postBody" rows="40" cols="80">
-                                    Начните вводить пост. Недорогой аудио фильтр подавляет шумы и фон.
+                                    Начните вводить пост.
                                 </textarea>
 
                                 <script>

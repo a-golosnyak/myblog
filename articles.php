@@ -36,62 +36,39 @@
         <div class='container data-field'>
             <div class='row'>
                 <div class='col-md-8 blog-main'>
-<!--                    <div class="blog-post">
-                        <h2 class="blog-post-title">Sample blog post</h2>
-                        <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-                        <p>Шаг 4. Разрешите удаленные подключения
-                            Запустите браузер Chrome.
-                            Наберите chrome://apps в адресной строке и нажмите клавишу Ввод.
-                            Выберите "Удаленный рабочий стол Chrome" Приложение "Удаленный рабочий стол Chrome".
-                            В разделе "Мои компьютеры" нажмите Начало работы.
-                            Нажмите Разрешить удаленные подключения.
-                            Введите PIN-код, повторите его и нажмите ОК.
-                        Закройте диалоговое окно.
-                        </p>
-                        <hr>
-                        <br>
-                        <div class="post-footer">
-                            <div class="pull-xs-left">
-                                <button type='' class='post-btn' >Читат далее...</button>
-                            </div>
-                            <div class="pull-xs-right offset-xs-1 show-comments">Комментарии</div>
-                        </div>
-                        <br style="clear: both;">
-                        <hr>
-                    </div>      -->
+<?php              
+                    while($row = $result->fetch_assoc())
+                    {
+                        $art_id = $row['id'];
+                        $pub_date = $row['pub_date'];
+                        $pub_date = preg_replace( "#(:\d+):\d+#", '$1', $pub_date ); 
+                        $title = $row['title'];
+                        $art_intro = $row['art_intro'];
+                        $art_intro_img = $row['art_intro_img'];
+                        $post_body = $row['post_body'];
 
-                    <?php              
-                        while($row = $result->fetch_assoc())
-                        {
-                            $pub_date = $row['pub_date'];
-                            $pub_date = preg_replace( "#(:\d+):\d+#", '$1', $pub_date ); 
-                            $title = $row['title'];
-                            $art_intro = $row['art_intro'];
-                            $art_intro_img = $row['art_intro_img'];
-                            $post_body = $row['post_body'];
+                        echo "  <div class='blog-post'>
+                                    <h4 class='blog-post-title'> $title </h4>
+                                    <p class='blog-post-meta'>$pub_date by $user_screen_name
+                                        <a class='none-decored' href='#'></a>
+                                    </p>
+                                    <div style='display: none;'>$art_id</div>
+                                    <p>$art_intro</p>
+                                    <p><img class='post-preview-img' src='$art_intro_img'></p>
+                                    <br>
+                                    <div class='post-footer'>
+                                        <form class='pull-xs-left ' action='article.php' method='get'>
+                                            <button type='submit' class='read-more-btn' style='text-align: center;'>Читать далее...</button>
+                                            <input type='hidden' name='show' value='$art_id'>
+                                        </form>
 
-
-                            echo "  <div class='blog-post'>
-                                        <h4 class='blog-post-title'> $title </h4>
-                                        <p class='blog-post-meta'>$pub_date by $user_screen_name
-                                            <a href='#'></a>
-                                        </p>
-                                        <p>$art_intro</p>
-                                        <p><img class='post-preview-img' src='$art_intro_img'></p>
-                                        <br>
-                                        <div class='post-footer'>
-                                            <form class='pull-xs-left ' action='article.php' method='get'>
-                                                <input type='hidden' name='show' value='user_articles'>
-                                                <button type='submit' class='read-more-btn' style='text-align: center;'>Читать далее...</button>
-                                            </form>
-
-                                            <div class='pull-xs-right offset-xs-1 show-comments'>Комментарии</div>
-                                        </div>
-                                        <br style='clear: both;''>
-                                        <hr>
-                                        <br>
-                                    </div>";
-                        }
+                                        <div class='pull-xs-right offset-xs-1 show-comments'>Комментарии</div>
+                                    </div>
+                                    <br style='clear: both;''>
+                                    <hr>
+                                    <br>
+                                </div>";
+                    }
 ?>
 
                 </div><!-- /.blog-main -->
