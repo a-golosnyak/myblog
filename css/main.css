@@ -672,6 +672,16 @@ a:focus, a:hover {
 }
 
 .comments-main{
-  
+    margin-bottom: 1em;
+    background-color: #eed;
+    height: 13em;
+    padding: 1em;
+}
+
+.comments1{
+    margin: 1em;
+    padding: 1em;
+    background-color: #ddc;
+    height: 3em;
 }
 

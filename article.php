@@ -18,6 +18,9 @@
         $result = queryMysql("SELECT * FROM posts ORDER BY pub_date DESC" );
         $posts = mysqli_num_rows($result);
     }
+
+    $result = queryMysql("SELECT * FROM posts WHERE id='$id'");
+
 ?>
 
 <div class='main-field style='background-color: lightgrey;'>  
@@ -79,9 +82,21 @@
 ?>
 
                 <div class="comments-main">
-                    Comments
+                    <div class="row">
+                        <div class="col-xs-1">
+                            
+                        </div>
+                        <div class="col-xs-11">
+                            
+                        </div>
+                    </div>
+                    
                 </div>
 
+                <div class="comments1">
+                        comm
+                        
+                    </div>
                 </div><!-- /.blog-main -->
                 <?php 
                     require_once "sidebar.php";

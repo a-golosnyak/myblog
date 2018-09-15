@@ -26,7 +26,7 @@
             echo "DB test_blog_db exists.";
         echo "<br>";
 
-        //=== CREATE TABLE ================================== users ====================================
+        //=== CREATE TABLE  users ======================================================================
         $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($connection->connect_error)
             die("Connectio attemt denied " . $connection->connect_error);
@@ -47,7 +47,7 @@
         else
            echo "Table users creation error.";
 
-        //=== CREATE TABLE ================================== posts ====================================
+        //=== CREATE TABLE  posts ======================================================================
         $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($connection->connect_error)
             die("Connectio attemt denied " . $connection->connect_error);
@@ -71,7 +71,7 @@
         else
            echo "Table posts creation error.";
 
-        //=== CREATE TABLE ================================== category ================================
+        //=== CREATE TABLE  category ==================================================================
         $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($connection->connect_error)
             die("Connectio attemt denied " . $connection->connect_error);
@@ -88,6 +88,29 @@
         }
         else
            echo "Table category creation error.<br>";
+
+        //=== CREATE TABLE  comments ======================================================================
+        $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+        if ($connection->connect_error)
+            die("Connectio attemt denied " . $connection->connect_error);
+
+        $query = 'CREATE TABLE IF NOT EXISTS comments (
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                post_id INT UNSIGNED,
+                author_id INT UNSIGNED,
+                parent_comment_id INT UNSIGNED,
+                pub_date DATETIME DEFAULT NULL,
+                body TEXT)';
+
+        $result = $connection->query($query);
+
+        if($result)          /* if($result)  - если все нормально. if(!$result) - если что-то не так */
+        { 
+            print_r("Table comments created." . $result . "<br>");
+        }
+        else
+           echo "Table posts creation error.";
+
 
         //=== Создаем пользователей =================================== INSERT ========================
 		$date = date("Y-m-d H:i:s");
@@ -177,6 +200,31 @@
         
         echo "<br>";
 
+        //=== Создаем комментарии ================================== INSERT ==========================
+        $randPost = RandString(20);
+        $randTitle = 'string';
+
+        for($i=0; $i<5; $i++)
+            $randTitle[$i] = $randPost[$i]; 
+
+        echo $randPost;
+        echo "<br>";
+        echo $randTitle;
+        echo "<br>";
+
+        //--- Вставка нового элемента ---------------------------------------------
+        $date = date("Y-m-d H:i:s");
+        $category = mt_rand(1, 3);
+        $query = "INSERT INTO comments VALUES 
+        ('0', '55', '7', '0','$date', 'Здравствуйте. Мне очень понравилась статья! ". $randPost ."')";
+        $result = $connection->query($query);
+
+        if($result)                                      
+            echo "Comment created.";
+        else
+            echo "Comment creation error.";
+
+        echo "<br>";  
 ?>
         <br>...done.
     </body>
