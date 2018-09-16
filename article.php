@@ -9,6 +9,12 @@
         {
             $id = sanitizeString($_GET['show']);
 
+            $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
+            $row = $result->fetch_assoc();
+         
+            $author_id = $row['id'];
+            $user_screen_name = $row['screen_name'];
+            
             $result = queryMysql("SELECT * FROM posts WHERE id='$id'");
             $posts = mysqli_num_rows($result);  
         }
@@ -71,32 +77,76 @@
                                                     <img src='/images/000078_social_3d_cubs1_linkedin.png'>
                                                 </a>
                                             </div>
+                                            <span class='repost-notification'>Если Вам понравилась или была полезной эта статься, можно сделать репост в социальные сети.
+                                            </span>
                                         </div>
                                     </div>
-
-                                    <br style='clear: both;''>
-                                   
-                                    <br>
                                 </div>";
                     }
 ?>
 
                 <div class="comments-main">
-                    <div class="row">
+                    <div class="title-input">
+                        <textarea class="intro-box" id="" name=""  rows='5' maxlength='1000' placeholder="Комментарий"></textarea>
+                    </div>
+                    <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;'>Добавить комментарий</button>
+                    <div style="clear: both;">
+                        
+                    </div>
+                </div>
+
+                <div class="comments-main">
+                    <div class="row comment">
                         <div class="col-xs-1">
-                            
+                            <img class='avatar'  src='images/ava/adm1@mail.ru.jpeg' alt='...'>
                         </div>
-                        <div class="col-xs-11">
-                            
+
+                        <div class="col-xs-10 comments1 ">
+                            <div style="margin-bottom: 0.2em;">
+                                <div class="comment-author">
+                                    Василий
+                                </div>
+                                 <div class="comment-date">
+                                    2018-09-14 11:48
+                                </div>
+                            </div>
+                            <div>
+                                Именно такую терминологию обычно можно встретить в разных программах-эквалайзерах, используемых для настройки звука. Теперь вы знаете, что красивые графики из таких программ являются именно амплитудно-частотными характеристиками, с которыми мы познакомились в сегодняшней статье 🙂
+                            </div>
+                            <br>
+                            <button type='submit' class='comment-btn' style='text-align: center;'>Ответить</button>
+                            <button type='submit' class='comment-btn' style='text-align: center;'>Удалить</button>
+                            <br>
+                            <br>
+                            <div class="row ">
+                                <div class="col-xs-1">
+                                    <img class='avatar'  src='images/ava/adm@mail.ru.jpeg' alt='...'>
+                                </div>
+
+                                <div class="col-xs-10 comments1 ">
+                                    <div style="margin-bottom: 0.2em;">
+                                        <div class="comment-author">
+                                            Василий
+                                        </div>
+                                         <div class="comment-date">
+                                            2018-09-14 11:48
+                                        </div>
+                                    </div>
+                                    <div>
+                                        Именно такую терминологию обычно можно встретить в разных программах-эквалайзерах, используемых для настройки звука. Теперь вы знаете, что красивые графики из таких программ являются именно амплитудно-частотными характеристиками, с которыми мы познакомились в сегодняшней статье 🙂
+                                    </div>
+                                    <br>
+                                    <button type='submit' class='comment-btn' style='text-align: center;'>Ответить</button>
+                                    <button type='submit' class='comment-btn' style='text-align: center;'>Удалить</button>
+                                    <br>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
                 </div>
 
-                <div class="comments1">
-                        comm
-                        
-                    </div>
                 </div><!-- /.blog-main -->
                 <?php 
                     require_once "sidebar.php";

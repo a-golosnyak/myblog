@@ -49,8 +49,7 @@
 
                         echo "  <div class='blog-post'>
                                     <h4 class='blog-post-title'> $title </h4>
-                                    <p class='blog-post-meta'>$pub_date by $user_screen_name
-                                        <a class='none-decored' href='#'></a>
+                                    <p class='blog-post-meta'>$pub_date<a class='none-decored' href='#'></a>
                                     </p>
                                     <div style='display: none;'>$art_id</div>
                                     <p>$art_intro</p>
