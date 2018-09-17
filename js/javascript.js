@@ -24,7 +24,7 @@ function checkUser(email)
     {
         params  = "email=" + email.value
         request = new ajaxRequest()
-        request.open("POST", "checkuser.php", true)
+        request.open("POST", "ajax/checkuser.php", true)
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 
         request.onreadystatechange = function()
@@ -126,10 +126,10 @@ function TimeToSubmitPost(category, art_title, art_intro)
         
         return false; 
     }   
-    document.getElementsByClassName('alert')[0].style.display = 'block';
+/*    document.getElementsByClassName('alert')[0].style.display = 'block';
     document.getElementsByClassName('alert')[0].className = 'alert alert-success';
     document.getElementById('ErrorMessage').innerHTML = "Пост получен";
-
+*/
     var data = CKEDITOR.instances.postBody.getData();               // Достаем данные из Цкедитора
         
     sendPost(category, art_title, art_intro, data);                 // Отправляем все значения по Ajax.
@@ -156,7 +156,7 @@ function sendPost(category, art_title, art_intro, post)
     params  += "&post-body=" + post;
 */
     request = new ajaxRequest()
-    request.open("POST", "getpost.php", true)
+    request.open("POST", "ajax/getpost.php", true)
 //  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")   // При использовании обьекта FormData это почему-то не нужно
 
     request.onreadystatechange = function()

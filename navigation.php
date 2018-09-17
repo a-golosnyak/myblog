@@ -92,6 +92,7 @@
                         
                         if ($userLoggedIn == true) 
                         {
+                            $usermail = $_SESSION['usermail'];
                             echo    "<div class=' nav-item'>
                                         <img class='avatar'  src='images/ava/$usermail.jpeg' alt='...'>
                                     </div>
@@ -99,7 +100,7 @@
                                     <div class='nav-link dropdown-toggle nav-item user_nav_item'data-toggle='dropdown'href='#'role='button'    aria-haspopup='true'aria-expanded='false'>
                                     </div>
                                     <div class='dropdown-menu dropdown-menu-right'>
-                                        <div class='dropdown-item'href='#'>Вы вошли как $userstr</div>
+                                        <div class='dropdown-item'href='#'>Вы вошли как $usermail</div>
                                         <div class='dropdown-divider'></div>
                                         <a class='none-decored' href='profile.php'>
                                             <div class='dropdown-item'href='#'>Профиль</div>
@@ -160,7 +161,7 @@
 
     echo $signin_message;
 
-/*    echo "SESSION ";
+    echo "SESSION ";
     print_r($_SESSION);
     echo "<br>COOKIES ";
     print_r($_COOKIE);
@@ -168,6 +169,6 @@
     echo $usermail;
     echo "<br>REQUEST ";
     print_r($_REQUEST);
-*/
+
 ?>
 

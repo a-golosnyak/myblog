@@ -5,6 +5,7 @@
         die();
     else
     {
+        $usermail = $_SESSION['usermail'];
         $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
         $row = $result->fetch_assoc();
      

@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once 'functions.php' ;  
+    require_once '../functions.php' ;  
     
     if ($_SESSION['usermail'] == '') 
         die();
@@ -17,7 +17,7 @@
         $imageType = $imageFormat[0];
         $imageFormat = $imageFormat[1];
 //        $imageName = 'images/ava/'. $usermail .'_'. date("Y-m-d_His");
-        $imageName = 'images/ava/'. $usermail;
+        $imageName = '../images/ava/'. $usermail;
 
         $fileName = $imageName . '.' . $imageFormat;
 

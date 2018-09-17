@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    require_once 'functions.php';
+    require_once '../functions.php';
 
     if ($_SESSION['usermail'] == '') 
         die();
@@ -48,7 +48,7 @@
 
             $art_title_trnslt = translit($art_title);
             $tmp = substr($art_title_trnslt, 0, 5);     // substr делает ошибку с кирилическим текстом.
-            $imageName = 'images/posts/'. 
+            $imageName = '../images/posts/'. 
                             date("Y-m-d_His") .'_'. 
                             $tmp .'_'. 
                             mt_rand(0, 1000);

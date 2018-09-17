@@ -5,6 +5,7 @@
         die();
     else
     {
+        $usermail = $_SESSION['usermail'];
         $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
         $user = $result->fetch_assoc();                     // Способ 1
      
@@ -79,10 +80,11 @@
                                 <br>
                                 <img class="w-100" id="output" style="display: none; margin-top: 1em;">
                                 <script>
-                                  var loadFile = function(event) {
-                                    var output = document.getElementById('output');
-                                    output.style.display = 'block';                                    output.src = URL.createObjectURL(event.target.files[0]);
-                                  };
+                                    var loadFile = function(event) {
+                                        var output = document.getElementById('output');
+                                        output.style.display = 'block';
+                                        output.src = URL.createObjectURL(event.target.files[0]);
+                                    };
                                 </script>
                             </div>
                         
