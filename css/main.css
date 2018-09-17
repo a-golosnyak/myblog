@@ -676,7 +676,7 @@ a:focus, a:hover {
 .comments-main{
     margin-bottom: 1em;
     background-color: rgba(235, 235, 240, 0.3);
-    padding: 1em;
+    padding: 1em 1em 0em;               /* верх, лево/право, низ */
     border: 1px solid lightgrey;
     border-radius: 4px;
 }

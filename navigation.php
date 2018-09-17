@@ -56,8 +56,6 @@
                                                 }
                                     }
                                     request.send(data)
-
-
                                 }
                             </script>
                         </div>
@@ -161,13 +159,14 @@
 
     echo $signin_message;
 
-    echo "SESSION ";
+ /*   echo "SESSION ";
     print_r($_SESSION);
     echo "<br>COOKIES ";
     print_r($_COOKIE);
     echo "<br>";
     echo $usermail;
-    echo "<br>REQUEST ";
+    echo "<br>";*/
+    echo "REQUEST ";
     print_r($_REQUEST);
 
 ?>

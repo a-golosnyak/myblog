@@ -111,7 +111,6 @@
         else
            echo "Table posts creation error.";
 
-
         //=== Создаем пользователей =================================== INSERT ========================
 		$date = date("Y-m-d H:i:s");
         $query = "INSERT INTO users VALUES ('1', '$adminmail', '111', 'adm', '$date')";   // id=1 уже есть. Будет ошибка.
