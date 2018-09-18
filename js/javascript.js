@@ -6,7 +6,7 @@ function C(i) { return document.getElementsByClassName(i)                    }
 
 
 //==== Common =====================================================================================
-
+/*
 $( document ).ready(function() {
 //    alert( "ready!" );
 
@@ -15,7 +15,7 @@ $( document ).ready(function() {
 
     $(document).ready(function(){
         $(".alert-primary").css({"backgroundColor" : "#BFB", "font-size" : "20px" }) ; });
-});
+});*/
 
 //==== registration.php ===========================================================================
 function checkUser(email)
@@ -172,4 +172,6 @@ function sendPost(category, art_title, art_intro, post)
     }
     request.send(data)
 }
+//=== article.php === getcomment.php ==============================================================
+
 //=================================================================================================

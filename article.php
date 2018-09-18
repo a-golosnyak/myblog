@@ -47,34 +47,13 @@
             $post_body = $row['post_body'];
         }
     }
-
-    //--- Этот запрос приходит из этого же файла ---------------------------------------------
-    if(isset($_POST['comment-body']))
-    {
-        $comment_body = sanitizeString($_POST['comment-body']);
-        $art_id = sanitizeString($_POST['art_id']);
-        $usermail = $_SESSION['usermail'];
-
-        //--- Получаем данные по автору статьи --------------------------------------
-        $result = queryMysql("SELECT * FROM users WHERE usermail='$usermail'");
-        $row = $result->fetch_assoc();
-        $author_id = $row['id'];
-        $user_screen_name = $row['screen_name'];
-
-        $post_id = sanitizeString($_GET['show']);
-
-        $date = date("Y-m-d H:i:s");
-        $query = "INSERT INTO comments VALUES 
-        ('0', '$art_id', '$author_id', '0','$date', '$comment_body')";
-        $result = $connection->query($query);
-
-        if($result)                                      
-            echo "Comment created.";
-        else
-            echo "Comment creation error.";
-    }
 ?>
 
+<div class='alert alert-warning' role='alert' style='width: 100%; margin-bottom: 0; display: none;'>
+    <div class='container'>
+        <strong id='ErrorMessage'>Не заполнены некоторые поля.</strong>
+    </div>
+</div>
 <div class='main-field style='background-color: lightgrey;'>  
     <div class='container-fluid ' >
         <div class='container data-field'>
@@ -181,12 +160,12 @@
                                 <br>
                                 <button type='submit' class='comment-btn' style='text-align: center;' onclick = ShowReplyInput('$replyId')>Ответить</button>
 
-                                <form id='$replyId' action='article.php?show=$art_id&parent_comment_id=$comment_id' method='post' style='display: none;'>
-                                     <textarea class='intro-box' id='' name='comment-body'  rows='5' maxlength='1000' placeholder='Комментарий''></textarea>
-                                    
-                                    <input type='hidden' name='art_id' value='$art_id'>
-                                    <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;'>Добавить комментарий</button>
-                                    <div style='clear: both;''></div>
+                                <form id='$replyId' style='display: none;'>
+                                    <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий''></textarea>
+                                    <input id='' type='hidden' name='art_id' value='$art_id'>
+                                    <input id='' type='hidden' name='parent_comment_id' value='$comment_id'>
+                                    <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+                                    <div style='clear: both;'></div>
                                 </form>
                                 ";         
                     //--- Получаем данные по ответу на комментарий ---------------------------- 
@@ -243,7 +222,49 @@
                     function ShowReplyInput(elem)   
                     {
                         var param = elem;
-                        document.getElementById(elem).style.display = "block";
+                        commentForm = document.getElementById(elem);
+
+                        if(commentForm.style.display == "block")
+                            commentForm.style.display = "none";
+                        else
+                            commentForm.style.display = "block";
+                    }
+
+                    function TimeToSendComment(art_id, parent_comment_id, comment_body)
+                    {
+                        if((art_id.value=='') || (parent_comment_id.value=='') || (comment_body.value==''))
+                        {
+                        //  alert("alert!" + art_id.value +' '+ parent_comment_id.value +' '+           comment_body.value);
+                            document.getElementsByClassName('alert')[0].style.display = 'block';
+                            document.getElementsByClassName('alert')[0].className = 'alert alert-warning';
+                            document.getElementById('ErrorMessage').innerHTML = "Введите пожалуйста комментарий";
+                            return false;
+                        }
+                        sendComment(art_id, parent_comment_id, comment_body);
+
+                        return false;
+                    }
+
+                    function sendComment(art_id, parent_comment_id, comment_body)
+                    {
+                        var data = new FormData();
+                        data.append('post_id', art_id.value); 
+                        data.append('parent_comment_id', parent_comment_id.value); 
+                        data.append('comment_body', comment_body.value); 
+
+                        request = new ajaxRequest()
+                        request.open("POST", "ajax/getcomment.php", true)
+
+                        request.onreadystatechange = function()
+                        {
+                            if (this.readyState == 4)
+                                if (this.status == 200)
+                                    if (this.responseText != null)
+                                    {
+                                        location.reload();
+                                    }
+                        }
+                        request.send(data);
                     }
                     //------------------------------------------------------------------------
                 </script>   
