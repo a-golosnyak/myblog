@@ -165,9 +165,9 @@
     print_r($_COOKIE);
     echo "<br>";
     echo $usermail;
-    echo "<br>";*/
+    echo "<br>";
     echo "REQUEST ";
     print_r($_REQUEST);
-
+*/
 ?>
 

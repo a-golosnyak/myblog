@@ -24,7 +24,7 @@
     }
     else        // Если поле show не приходит, выводим все статьи подряд.
     {
-        $result = queryMysql("SELECT * FROM posts ORDER BY pub_date DESC" );
+        $result = queryMysql("SELECT P.id, P.pub_date, P.title, P.art_intro, P.art_intro_img, U.screen_name FROM posts P INNER JOIN users U ON P.author_id = U.id ORDER BY P.pub_date DESC" );
         $posts = mysqli_num_rows($result);
     }
     
@@ -39,17 +39,21 @@
 <?php              
                     while($row = $result->fetch_assoc())
                     {
+/*                      echo "<pre>";
+                        var_dump($row);
+                        echo "</pre>";     
+*/
                         $art_id = $row['id'];
                         $pub_date = $row['pub_date'];
                         $pub_date = preg_replace( "#(:\d+):\d+#", '$1', $pub_date ); 
                         $title = $row['title'];
                         $art_intro = $row['art_intro'];
                         $art_intro_img = $row['art_intro_img'];
-                        $post_body = $row['post_body'];
+                        $screen_name = $row['screen_name'];
 
                         echo "  <div class='blog-post'>
                                     <h4 class='blog-post-title'> $title </h4>
-                                    <p class='blog-post-meta'>$pub_date<a class='none-decored' href='#'></a>
+                                    <p class='blog-post-meta'>$pub_date автор $screen_name<a class='none-decored' href='#'></a>
                                     </p>
                                     <div style='display: none;'>$art_id</div>
                                     <p>$art_intro</p>

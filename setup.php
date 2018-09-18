@@ -69,7 +69,7 @@
             print_r("Table posts created." . $result . "<br>");
         }
         else
-           echo "Table posts creation error.";
+            echo "Table posts creation error.";
 
         //=== CREATE TABLE  category ==================================================================
         $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);

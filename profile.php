@@ -13,7 +13,8 @@
         $pl_screen_name = $row['screen_name'];
         $pl_creation_date = $row['creation_date'];
         $pl_creation_date = preg_replace( "#(:\d+):\d+#", '$1', $pl_creation_date ); 
-/*        echo "DB : "; 
+
+/*      echo "DB : "; 
         print_r($pl_usermail);
         echo "<br>"; 
         print_r($pl_password);
