@@ -183,7 +183,7 @@ function TimeToSendComment(art_id, parent_comment_id, comment_body)
         document.getElementById('ErrorMessage').innerHTML = "Введите пожалуйста комментарий";
         return false;
     }
-    if(parent_comment_id.value < 3)
+    if(comment_body.value < 3)
     {
         document.getElementsByClassName('alert')[0].style.display = 'block';
         document.getElementsByClassName('alert')[0].className = 'alert alert-warning';

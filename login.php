@@ -35,7 +35,7 @@
 				}
 
 				$_SESSION['usermail'] = $mail;
-				$status =  "Вход выполнен пользователем ";
+				$status =  "Вход выполнен ";
 
 				$signin_message = "
 				<div class='alert alert-success' role='alert' style='width: 100%; margin-bottom: 0;'>
