@@ -173,5 +173,48 @@ function sendPost(category, art_title, art_intro, post)
     request.send(data)
 }
 //=== article.php === getcomment.php ==============================================================
+function TimeToSendComment(art_id, parent_comment_id, comment_body)
+{
+    if((art_id.value=='') || (parent_comment_id.value=='') || (comment_body.value==''))
+    {
+    //  alert("alert!" + art_id.value +' '+ parent_comment_id.value +' '+           comment_body.value);
+        document.getElementsByClassName('alert')[0].style.display = 'block';
+        document.getElementsByClassName('alert')[0].className = 'alert alert-warning';
+        document.getElementById('ErrorMessage').innerHTML = "Введите пожалуйста комментарий";
+        return false;
+    }
+    if(parent_comment_id.value < 3)
+    {
+        document.getElementsByClassName('alert')[0].style.display = 'block';
+        document.getElementsByClassName('alert')[0].className = 'alert alert-warning';
+        document.getElementById('ErrorMessage').innerHTML = "Комментарий должен быть больше трех символов";
+        return false;
+    }
+    sendComment(art_id, parent_comment_id, comment_body);
 
+    return false;
+}
+
+function sendComment(art_id, parent_comment_id, comment_body)
+{
+    var data = new FormData();
+    data.append('post_id', art_id.value); 
+    data.append('parent_comment_id', parent_comment_id.value); 
+    data.append('comment_body', comment_body.value); 
+
+    request = new ajaxRequest()
+    request.open("POST", "ajax/getcomment.php", true)
+
+    request.onreadystatechange = function()
+    {
+        if (this.readyState == 4)
+            if (this.status == 200)
+                if (this.responseText != null)
+                {
+                //    alert(this.responseText);
+                    location.reload();
+                }
+    }
+    request.send(data);
+}
 //=================================================================================================

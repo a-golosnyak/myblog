@@ -102,12 +102,15 @@
                 if($userLoggedIn == true)
                 {
                     echo "
-                    <form class='comments-main' action='article.php?show=$art_id' method='post'>
+                    <form id='$replyId' style='display: block;'>
                         <div class='title-input'>
-                            <textarea class='intro-box' id='' name='comment-body'  rows='5' maxlength='1000' placeholder='Комментарий''></textarea>
+                            <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий''></textarea>
                         </div>
-                        <input type='hidden' name='art_id' value='$art_id'>
-                        <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;'>Добавить комментарий</button>
+                        <input id='' type='hidden' name='art_id' value='$art_id'>
+                        <input id='' type='hidden' name='parent_comment_id' value='0'>
+                        <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+                                    <div style='clear: both;'></div>
+
                         <div style='clear: both;''></div>
                     </form>";
                 }
@@ -132,26 +135,27 @@
                                 INNER JOIN users U 
                                     ON C.author_id=U.id 
                                     WHERE C.post_id='$art_id'
-                                    AND C.parent_comment_id=0");
+                                    AND C.parent_comment_id=0
+                                    ORDER BY C.pub_date ASC");
                 $num_comments = mysqli_num_rows($result);  
 
                 while($row_comment = $result->fetch_assoc())
                 {
-                    $comment_id = $row_comment['id'];
+                    $parent_comment_id = $row_comment['id'];
                     $author_id = $row_comment['usermail'];
                     $pub_date = $row_comment['pub_date'];
                     $pub_date = preg_replace( "#(:\d+):\d+#", '$1', $pub_date); 
                     $comment_body = $row_comment['body'];
                     $author_mail = $row_comment['usermail'];
                     $author_screen_name = $row_comment['screen_name'];
-                    $replyId = 'reply-' . $comment_id;
+                    $replyId = 'reply-' . $parent_comment_id;
 
                     echo "<div class='comments-main'>
                         <div class='row comment'>
-                            <div class='col-xs-1'>
+                            <div class='col-sm-1'>
                                 <img class='avatar'  src='images/ava/$author_mail.jpeg' alt='...'>
                             </div>
-                            <div class='col-xs-10 comments1' >
+                            <div class='col-sm-10 comments1' >
                                 <div style='margin-bottom: 0.2em;'>
                                     <div class='comment-author'>$author_screen_name</div>
                                     <div class='comment-date'>$pub_date</div>
@@ -163,13 +167,14 @@
                                 <form id='$replyId' style='display: none;'>
                                     <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий''></textarea>
                                     <input id='' type='hidden' name='art_id' value='$art_id'>
-                                    <input id='' type='hidden' name='parent_comment_id' value='$comment_id'>
+                                    <input id='' type='hidden' name='parent_comment_id' value='$parent_comment_id'>
                                     <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
                                     <div style='clear: both;'></div>
                                 </form>
                                 ";         
                     //--- Получаем данные по ответу на комментарий ---------------------------- 
                     $result2 = queryMysql("SELECT 
+                                    C.id,
                                     C.pub_date,
                                     C.body,
                                     U.usermail,
@@ -178,31 +183,42 @@
                                 INNER JOIN users U 
                                     ON C.author_id=U.id 
                                     WHERE C.post_id='$art_id'
-                                    AND C.parent_comment_id=$comment_id");
+                                    AND C.parent_comment_id='$parent_comment_id'
+                                    ORDER BY C.pub_date ASC");
 
                     if(mysqli_num_rows($result2) >= 1)
                     {
                         while($row_reply=$result2->fetch_assoc())
                         { 
+                            $comment_id = $row_reply['id'];
                             $author_id = $row_reply['usermail'];
                             $pub_date = $row_reply['pub_date'];
                             $pub_date = preg_replace( "#(:\d+):\d+#", '$1', $pub_date); 
                             $comment_body = $row_reply['body'];
                             $author_mail = $row_reply['usermail'];
                             $author_screen_name = $row_reply['screen_name'];
+                            $replyId = 'reply-' . $comment_id;
 
                             echo "<div class='row '>
-                                        <div class='col-xs-1'>
+                                        <div class='col-md-1'>
                                             <img class='avatar'  src='images/ava/$author_mail.jpeg' alt='...'>
                                         </div>
-                                        <div class='col-xs-10 comments1 '>
+                                        <div class='col-md-10 comments1 '>
                                             <div style='margin-bottom: 0.2em;'>
                                                 <div class='comment-author'>$author_screen_name</div>
                                                  <div class='comment-date'>$pub_date</div>
                                             </div>
                                             <div>$comment_body</div>
                                             <br>
-                                            <button type='submit' class='comment-btn' style='text-align: center;'>Ответить</button>
+                                            <button type='submit' class='comment-btn' style='text-align: center;' onclick = ShowReplyInput('$replyId')>Ответить</button>
+                                            <form id='$replyId' style='display: none;'>
+                                                <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий''></textarea>
+                                                <input id='' type='hidden' name='art_id' value='$art_id'>
+                                                <input id='' type='hidden' name='parent_comment_id' value='$parent_comment_id'>
+                                                <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+                                                <div style='clear: both;'></div>
+                                            </form>
+
                                             <!--<button type='submit' class='comment-btn pull-xs-right'     style='text-align: center;'>Удалить</button>    -->
                                             <br>
                                         </div>  
@@ -228,43 +244,6 @@
                             commentForm.style.display = "none";
                         else
                             commentForm.style.display = "block";
-                    }
-
-                    function TimeToSendComment(art_id, parent_comment_id, comment_body)
-                    {
-                        if((art_id.value=='') || (parent_comment_id.value=='') || (comment_body.value==''))
-                        {
-                        //  alert("alert!" + art_id.value +' '+ parent_comment_id.value +' '+           comment_body.value);
-                            document.getElementsByClassName('alert')[0].style.display = 'block';
-                            document.getElementsByClassName('alert')[0].className = 'alert alert-warning';
-                            document.getElementById('ErrorMessage').innerHTML = "Введите пожалуйста комментарий";
-                            return false;
-                        }
-                        sendComment(art_id, parent_comment_id, comment_body);
-
-                        return false;
-                    }
-
-                    function sendComment(art_id, parent_comment_id, comment_body)
-                    {
-                        var data = new FormData();
-                        data.append('post_id', art_id.value); 
-                        data.append('parent_comment_id', parent_comment_id.value); 
-                        data.append('comment_body', comment_body.value); 
-
-                        request = new ajaxRequest()
-                        request.open("POST", "ajax/getcomment.php", true)
-
-                        request.onreadystatechange = function()
-                        {
-                            if (this.readyState == 4)
-                                if (this.status == 200)
-                                    if (this.responseText != null)
-                                    {
-                                        location.reload();
-                                    }
-                        }
-                        request.send(data);
                     }
                     //------------------------------------------------------------------------
                 </script>   

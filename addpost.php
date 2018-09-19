@@ -76,7 +76,7 @@
                                         <textarea class="intro-box" id="art_intro" name="art_intro"  rows='5' maxlength='1200' placeholder="Превью статьи. Попробуйте уложиться в 1200 - символов."></textarea>
                                     </div>
                                 </p>
-                                <input type="file" accept="image/*" onchange="loadFile(event)">
+                                <input type="file"  onchange="loadFile(event)">
                                 <br>
                                 <img class="w-100" id="output" style="display: none; margin-top: 1em;">
                                 <script>
