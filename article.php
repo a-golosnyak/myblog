@@ -108,7 +108,7 @@
                         </div>
                         <input id='' type='hidden' name='art_id' value='$art_id'>
                         <input id='' type='hidden' name='parent_comment_id' value='0'>
-                        <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+                        <button  class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
                                     <div style='clear: both;'></div>
 
                         <div style='clear: both;''></div>
@@ -148,7 +148,7 @@
                     $comment_body = $row_comment['body'];
                     $author_mail = $row_comment['usermail'];
                     $author_screen_name = $row_comment['screen_name'];
-                    $replyId = 'reply-' . $parent_comment_id;
+                    $replyId = 'reply_' . $parent_comment_id;
 
                     echo "<div class='comments-main'>
                         <div class='row comment'>
@@ -162,13 +162,13 @@
                                 </div>
                                 <div>$comment_body</div>
                                 <br>
-                                <button type='submit' class='comment-btn' style='text-align: center;' onclick = ShowReplyInput('$replyId')>Ответить</button>
+                                <button class='comment-btn' style='text-align: center;' onclick=ShowReplyInput('$replyId','$author_screen_name')>Ответить</button>
 
                                 <form id='$replyId' style='display: none;'>
                                     <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий''></textarea>
                                     <input id='' type='hidden' name='art_id' value='$art_id'>
                                     <input id='' type='hidden' name='parent_comment_id' value='$parent_comment_id'>
-                                    <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+                                    <button  class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
                                     <div style='clear: both;'></div>
                                 </form>
                                 ";         
@@ -197,7 +197,7 @@
                             $comment_body = $row_reply['body'];
                             $author_mail = $row_reply['usermail'];
                             $author_screen_name = $row_reply['screen_name'];
-                            $replyId = 'reply-' . $comment_id;
+                            $replyId = 'reply_' . $comment_id;
 
                             echo "<div class='row '>
                                         <div class='col-md-1'>
@@ -210,16 +210,16 @@
                                             </div>
                                             <div>$comment_body</div>
                                             <br>
-                                            <button type='submit' class='comment-btn' style='text-align: center;' onclick = ShowReplyInput('$replyId')>Ответить</button>
+                                            <button  class='comment-btn' style=';'onclick=ShowReplyInput('$replyId','$author_screen_name')>Ответить</button>
                                             <form id='$replyId' style='display: none;'>
-                                                <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий''></textarea>
+                                                <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий'' value='xxx'></textarea>
                                                 <input id='' type='hidden' name='art_id' value='$art_id'>
                                                 <input id='' type='hidden' name='parent_comment_id' value='$parent_comment_id'>
-                                                <button type='submit' class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+                                                <button  class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
                                                 <div style='clear: both;'></div>
                                             </form>
 
-                                            <!--<button type='submit' class='comment-btn pull-xs-right'     style='text-align: center;'>Удалить</button>    -->
+                                            <!--<button  class='comment-btn pull-xs-right'     style='text-align: center;'>Удалить</button>    -->
                                             <br>
                                         </div>  
                                     </div>
@@ -236,15 +236,18 @@
 ?>
                 <script type="text/javascript">
                     //--- Принимаем строку со значением идентификатора -----------------------
-                    function ShowReplyInput(elem)   
+                    function ShowReplyInput(elem, name)   
                     {
-                        var param = elem;
+                        elem2 = '#'+elem+' > textarea';
                         commentForm = document.getElementById(elem);
 
                         if(commentForm.style.display == "block")
                             commentForm.style.display = "none";
                         else
                             commentForm.style.display = "block";
+
+                        document.querySelectorAll(elem2)[0].value = name+','+' ';
+
                     }
                     //------------------------------------------------------------------------
                 </script>   

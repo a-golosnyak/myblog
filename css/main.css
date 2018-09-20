@@ -721,3 +721,7 @@ a:focus, a:hover {
     max-width: 50%;
     line-height: 1.2em;
 }
+
+.comment-btn{
+  text-align: center;
+}
