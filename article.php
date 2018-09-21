@@ -108,7 +108,7 @@
                         </div>
                         <input id='' type='hidden' name='art_id' value='$art_id'>
                         <input id='' type='hidden' name='parent_comment_id' value='0'>
-                        <button  class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+                        <button  class='comment-btn pull-xs-right'  onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
                                     <div style='clear: both;'></div>
 
                         <div style='clear: both;''></div>
@@ -162,14 +162,18 @@
                                 </div>
                                 <div>$comment_body</div>
                                 <br>
-                                <button class='comment-btn' style='text-align: center;' onclick=ShowReplyInput('$replyId','$author_screen_name')>Ответить</button>
+                                <button class='comment-btn'  onclick=ShowReplyInput('$replyId','$author_screen_name')>Ответить</button>";
+                    if(strcmp($author_mail, $usermail) == 0)
+                    {         
+                        echo "  <button  class='comment-btn pull-xs-right' onclick=deleteComment('$parent_comment_id')>Удалить</button> ";
+                    }
 
-                                <form id='$replyId' style='display: none;'>
+                    echo   "    <form id='$replyId' style='display: none;'>
                                     <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий''></textarea>
                                     <input id='' type='hidden' name='art_id' value='$art_id'>
                                     <input id='' type='hidden' name='parent_comment_id' value='$parent_comment_id'>
-                                    <button  class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
-                                    <div style='clear: both;'></div>
+                                    <button  class='comment-btn pull-xs-right' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+                                <div style='clear: both;'></div>
                                 </form>
                                 ";         
                     //--- Получаем данные по ответу на комментарий ---------------------------- 
@@ -210,17 +214,20 @@
                                             </div>
                                             <div>$comment_body</div>
                                             <br>
-                                            <button  class='comment-btn' style=';'onclick=ShowReplyInput('$replyId','$author_screen_name')>Ответить</button>
-                                            <form id='$replyId' style='display: none;'>
+                                            <button  class='comment-btn' onclick=ShowReplyInput('$replyId','$author_screen_name')>Ответить</button> ";
+                    if(strcmp($author_mail, $usermail) == 0)
+                    {         
+                        echo "              <button  class='comment-btn pull-xs-right' onclick=deleteComment('$comment_id')>Удалить</button> ";
+                    }
+                            echo "          <form id='$replyId' style='display: none;'>
                                                 <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий'' value='xxx'></textarea>
                                                 <input id='' type='hidden' name='art_id' value='$art_id'>
                                                 <input id='' type='hidden' name='parent_comment_id' value='$parent_comment_id'>
-                                                <button  class='comment-btn pull-xs-right' style='text-align: center;' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+                                                <button  class='comment-btn pull-xs-right' onclick = 'return TimeToSendComment(art_id,  parent_comment_id, comment_body)'>Добавить комментарий</button>
+   
                                                 <div style='clear: both;'></div>
-                                            </form>
-
-                                            <!--<button  class='comment-btn pull-xs-right'     style='text-align: center;'>Удалить</button>    -->
-                                            <br>
+                                            </form> 
+                                        <br>
                                         </div>  
                                     </div>
                                     <br>

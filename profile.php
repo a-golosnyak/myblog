@@ -103,8 +103,11 @@
                     <div class='profile-field ' >
                         <h3 class='form-signin-heading profile-title'>Ваш профиль <b>$usermail</b></h3> 
                          <!--style='border: 1px solid grey;' -->
-                        <br>
-                        <div class='row' >
+                        <br> ";
+
+        if($usermail == $adminmail)
+        {
+            echo "          <div class='row' >
                                 <div class='col-xs-4'>
                                     <span>Написать пост?</span>
                                 </div>
@@ -114,7 +117,7 @@
                                             <button type='submit' class='profile-btn' style='text-align: center;'>Написать!</button>
                                     </div>
                                 </a>
-                        </div>
+                        </div> 
                         <hr>
                         <div class='row' >
                                 <div class='col-xs-4'>
@@ -126,14 +129,26 @@
                                     <button type='submit' class='profile-btn' style='text-align: center;'>Посмотерть</button>
                                 </form>
                         </div>
-                        <hr>
+                        <hr>";
+        }            
+
+        echo "          
+                        <div class='row' >
+                                <div class='col-xs-6'>
+                                    <span>Все мои комментарии</span>
+                                </div>
+                                <div class='col-xs-3'></div>
+                                <form class='col-xs-3' action='comments.php' method='get'>
+                                    <input type='hidden' name='show' value='user_articles'>
+                                    <button type='submit' class='profile-btn' style='text-align: center;'>Посмотерть</button>
+                                </form>
+                        </div> 
                         <hr>
                         <div class='row' >
-                                <div class='col-xs-5'>
+                                <div class='col-xs-6 pull-xs-left'>
                                     <span>Профиль создан</span>
                                 </div>
-                                <div class='col-xs-4'></div>
-                                <div class='col-xs-3' >
+                                <div class='pull-xs-right' >
                                     <span class='profile-meta '>$pl_creation_date</span>
                                 </div>
                         </div> 

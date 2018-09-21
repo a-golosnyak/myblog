@@ -2,6 +2,7 @@
     require_once 'main.php' ; 
 
     $author_id = '';
+    $usermail = '';
 
     if(isset($_GET['show']))
     {
@@ -19,12 +20,39 @@
 
                 $result = queryMysql("SELECT * FROM posts WHERE author_id='$author_id' ORDER BY pub_date DESC" );
                 $posts = mysqli_num_rows($result);
+
+                $result = queryMysql("SELECT 
+                                        P.id, 
+                                        P.pub_date, 
+                                        P.title, 
+                                        P.art_intro, 
+                                        P.art_intro_img, 
+                                        U.usermail,
+                                        U.screen_name 
+                                    FROM posts P 
+                                    INNER JOIN users U
+                                    ON P.author_id = U.id
+                                    WHERE U.usermail='$usermail' 
+                                    ORDER BY P.pub_date DESC" );
+        $posts = mysqli_num_rows($result);
+
             }   
         }
     }
     else        // Если поле show не приходит, выводим все статьи подряд.
     {
-        $result = queryMysql("SELECT P.id, P.pub_date, P.title, P.art_intro, P.art_intro_img, U.screen_name FROM posts P INNER JOIN users U ON P.author_id = U.id ORDER BY P.pub_date DESC" );
+        $result = queryMysql("SELECT 
+                                P.id, 
+                                P.pub_date, 
+                                P.title, 
+                                P.art_intro, 
+                                P.art_intro_img, 
+                                U.usermail,
+                                U.screen_name 
+                            FROM posts P 
+                            INNER JOIN users U
+                            ON P.author_id = U.id 
+                            ORDER BY P.pub_date DESC" );
         $posts = mysqli_num_rows($result);
     }
     
@@ -50,6 +78,7 @@
                         $art_intro = $row['art_intro'];
                         $art_intro_img = $row['art_intro_img'];
                         $screen_name = $row['screen_name'];
+                        $author_mail = $row['usermail'];
 
                         echo "  <div class='blog-post'>
                                     <h4 class='blog-post-title'> $title </h4>
@@ -61,11 +90,14 @@
                                     <br>
                                     <div class='post-footer'>
                                         <form class='pull-xs-left ' action='article.php' method='get'>
-                                            <button type='submit' class='read-more-btn' style='text-align: center;'>Читать далее...</button>
-                                            <input type='hidden' name='show' value='$art_id'>
+                                            <button type='submit' class='read-more-btn'>Читать далее...</button>";
+                        if(strcmp($usermail, $author_mail) == 0)
+                            echo "          <button class='read-more-btn' onclick='return deletePost(show)'>Изменить</button>
+                                            <button class='read-more-btn' onclick='return deletePost(show)'>Удалить</button>";
+                        echo "              <input type='hidden' name='show' value='$art_id'>
                                         </form>
 
-                                        <div class='pull-xs-right offset-xs-1 show-comments'>Комментарии</div>
+                                        <div class='pull-xs-right show-comments'>Комментарии</div>
                                     </div>
                                     <br style='clear: both;''>
                                     <hr>

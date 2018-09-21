@@ -11,6 +11,7 @@
 	}
 	else if (isset($_COOKIE['usermail']))
 	{
+		global $usermail;
 		$usermail = $_COOKIE['usermail'];
 		$_SESSION['usermail'] = $usermail;
 		$userLoggedIn = TRUE;

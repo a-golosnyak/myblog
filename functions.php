@@ -42,20 +42,6 @@
             $connection->real_escape_string($var);
     }
 
-    function showProfile($user)
-    {
-        if (file_exists("$user.jpg"))
-            echo "<img src='$user.jpg' style='float:left;'>";
-
-        $result = queryMysql("SELECT * FROM users WHERE user='$user'");
-
-        if ($result->num_rows)
-        {
-            $row = $result->fetch_array(MYSQLI_ASSOC);
-            echo stripslashes($row['text']) . "<br style='clear:left;'><br>";
-        }
-    }
-
     function translit($str) 
     {
         $rus = array('А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
