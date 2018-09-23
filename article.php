@@ -27,7 +27,7 @@
                                     WHERE P.id='$art_id'");
             $row = $result->fetch_assoc();
 
-            if($posts == '0')                       // Если поста с нужным id в базе не обнаружено
+            if($posts == '0')            // Если поста с нужным id в базе не обнаружено
             {
                 echo "<div class='alert alert-warning' role='alert' style='width: 100%; margin-bottom: 0; display: block;'>
                             <div class='container'>

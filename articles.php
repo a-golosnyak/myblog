@@ -8,6 +8,7 @@
     {
         if($_GET['show'] == 'user_articles')
         {
+            //--- Вариант отображения всех статей одного пользователя -----------------------
             if ($_SESSION['usermail'] != '') 
             {
                 $usermail = $_SESSION['usermail'];
@@ -34,12 +35,32 @@
                                     ON P.author_id = U.id
                                     WHERE U.usermail='$usermail' 
                                     ORDER BY P.pub_date DESC" );
-        $posts = mysqli_num_rows($result);
-
-            }   
+                $posts = mysqli_num_rows($result);
+            }  
         }
     }
-    else        // Если поле show не приходит, выводим все статьи подряд.
+    //--- Вариант отображения всех статей одной категории ---------------------------
+    if(isset($_GET['category']))
+    {
+        $cat_id = sanitizeString($_GET['category']);
+
+        $result = queryMysql("SELECT 
+                                P.id, 
+                                P.pub_date, 
+                                P.title, 
+                                P.art_intro, 
+                                P.art_intro_img, 
+                                U.usermail,
+                                U.screen_name 
+                            FROM posts P 
+                            INNER JOIN users U
+                            ON P.author_id = U.id 
+                            WHERE p.category_id='$cat_id'
+                            ORDER BY P.pub_date DESC" );
+        $posts = mysqli_num_rows($result);
+    }
+
+    else        // Если поле show или category не приходит, выводим все статьи подряд.
     {
         $result = queryMysql("SELECT 
                                 P.id, 
@@ -57,7 +78,6 @@
     }
     
 ?>
-
 
 <div class='main-field style='background-color: lightgrey;'>  
     <div class='container-fluid ' >
@@ -90,12 +110,12 @@
                                     <br>
                                     <div class='post-footer'>
                                         <form class='pull-xs-left ' action='article.php' method='get'>
-                                            <button type='submit' class='read-more-btn'>Читать далее...</button>";
+                                            <button type='submit' class='read-more-btn'>Читать далее...</button>
+                                            <input type='hidden' name='show' value='$art_id'>";
                         if(strcmp($usermail, $author_mail) == 0)
-                            echo "          <button class='read-more-btn' onclick='return deletePost(show)'>Изменить</button>
+                            echo "   <!--       <button class='read-more-btn' onclick='return deletePost(show)'>Изменить</button>   -->
                                             <button class='read-more-btn' onclick='return deletePost(show)'>Удалить</button>";
-                        echo "              <input type='hidden' name='show' value='$art_id'>
-                                        </form>
+                            echo "          </form>
 
                                         <div class='pull-xs-right show-comments'>Комментарии</div>
                                     </div>

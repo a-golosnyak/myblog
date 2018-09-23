@@ -1,3 +1,8 @@
+<?php
+
+    $result = queryMysql("SELECT * FROM category");
+
+?>
 
 <div class="navigation">
     <div class="row ">
@@ -11,28 +16,25 @@
                     </div>
                     <div class="nav-item dropdown">
                         <div class="nav-link dropdown-toggle" id="getCategory" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="GetCategory();">Рубрика</div>
-                        <div class="dropdown-menu dropdown-menu-left">
-                            <a class='none-decored'href='emb_articles.php'>
-                                <div class='dropdown-item'>$category['category_name']</div>
-                            </a>
-                            <a class='none-decored'href='sport_articles.php'>
-                                <div class='dropdown-item'>Программирование Linux</div>
-                            </a>
-                            <a class='none-decored'href='sport_articles.php'>
-                                <div class='dropdown-item'>ПЛИС</div>
-                            </a>
-                            <a class='none-decored'href='sport_articles.php'>
-                                <div class='dropdown-item'>Квадрокоптеры</div>
-                            </a>
-                            <script>
-                                function GetCategory ()
-                                {
-                                    // alert('Alert!');
-                                    
-                                    data = "getcategory=true";
+                        <div class="dropdown-menu dropdown-menu-left"  id="Categories" >
+    <?php
+            while($row = $result->fetch_assoc()) 
+            {
+                $cat_id = $row['id'];
+                $category_name = $row['category_name'];
 
+                echo "      <form action='articles.php' method='get'>
+                                <input type='hidden' name='category' value='$cat_id'>
+                                <button class='dropdown-item' type='submit' >$category_name</button>
+                            </form> ";
+            }
+    ?>
+                            <script>
+/*                                function GetCategory ()
+                                {
+                                    data = "getcategory=true";
                                     request = new ajaxRequest()
-                                    request.open("POST", "getcategory.php", true)
+                                    request.open("POST", "ajax/getcategory.php", true)
                                     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")   // При использовании обьекта FormData это почему-то не нужно
 
                                     request.onreadystatechange = function()
@@ -42,21 +44,23 @@
                                                 if (this.responseText != null)
                                                 {
                                                     alert(this.responseText);
-                                                    document.createElement('div').id = 'nextCategory';
-                                                    document.body.appendChild(newdiv);
+                                                    var response = JSON.parse(this.responseText);
 
-                                                    S(newdiv).border = 'solid 1px red'
-                                                    S(newdiv).width = '100px'
-                                                    S(newdiv).height = '100px'
-                                                    newdiv.innerHTML= "Это новый объект, вставленный в DOM"
-                                                    tmp= newdiv.offsetTop
+                                                    for (var key in response) 
+                                                    {
+                                                        // этот код будет вызван для каждого свойства объекта
+                                                        // ..и выведет имя свойства и его значение
+                                                        // alert( "Ключ: " + key + " значение: " + response[key] );
+                                                        newdiv = document.createElement('div');
+                                                        newdiv.className = "dropdown-item";
+                                                        newdiv.innerHTML  = response[key];
 
-
-                                                    $('.dropdown-menu-left .dropdown-item').innerHTML(this.responseText);
+                                                        Categories.appendChild(newdiv);
+                                                    }
                                                 }
                                     }
                                     request.send(data)
-                                }
+                                }*/
                             </script>
                         </div>
                     </div>

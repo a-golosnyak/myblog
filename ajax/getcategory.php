@@ -8,12 +8,16 @@
         $result = queryMysql("SELECT * FROM category");
 /*        while ($row = mysqli_fetch_assoc($result)) {        // Способ 2
             $category[] = $row;     */
+        $catNumber = mysqli_num_rows($result);
+        $data = array();   
 
-        $row = mysqli_fetch_assoc($result);
-
-        $category = $row['category_name'];
-
-        echo "Ajax получен";
+        for($i=0; $i<$catNumber; $i++) 
+        {
+            $row = mysqli_fetch_assoc($result);
+            $data[$row['id']] = $row['category_name'];
+        }
+        header('Content-Type: application/json');
+        echo json_encode($data);
     } 
 
 /*      echo "DB : "; 

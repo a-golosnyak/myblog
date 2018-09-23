@@ -133,7 +133,7 @@
         }            
 
         echo "          
-                        <div class='row' >
+                <!--        <div class='row' >
                                 <div class='col-xs-6'>
                                     <span>Все мои комментарии</span>
                                 </div>
@@ -143,7 +143,7 @@
                                     <button type='submit' class='profile-btn' style='text-align: center;'>Посмотерть</button>
                                 </form>
                         </div> 
-                        <hr>
+                        <hr>    -->
                         <div class='row' >
                                 <div class='col-xs-6 pull-xs-left'>
                                     <span>Профиль создан</span>
