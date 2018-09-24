@@ -7,27 +7,27 @@
     <div class="sidebar-module">
         <h4>Archives</h4>
         <ol class="list-unstyled">
-            <li><a class='none-decored' href="#">March 2014</a></li>
-            <li><a class='none-decored' href="#">February 2014</a></li>
-            <li><a class='none-decored' href="#">January 2014</a></li>
-            <li><a class='none-decored' href="#">December 2013</a></li>
-            <li><a class='none-decored' href="#">November 2013</a></li>
-            <li><a class='none-decored' href="#">October 2013</a></li>
-            <li><a class='none-decored' href="#">September 2013</a></li>
-            <li><a class='none-decored' href="#">August 2013</a></li>
-            <li><a class='none-decored' href="#">July 2013</a></li>
-            <li><a class='none-decored' href="#">June 2013</a></li>
-            <li><a class='none-decored' href="#">May 2013</a></li>
-            <li><a class='none-decored' href="#">April 2013</a></li>
+            <li><a class='none-decored' href="#">September 2018</a></li>
+            <li><a class='none-decored' href="#">August 2018</a></li>
+            <li><a class='none-decored' href="#">July 2018</a></li>
+            <li><a class='none-decored' href="#">June 2018</a></li>
+            <li><a class='none-decored' href="#">May 2018</a></li>
+            <li><a class='none-decored' href="#">April 2018</a></li>
+            <li><a class='none-decored' href="#">March 2018</a></li>
+            <li><a class='none-decored' href="#">February 2018</a></li>
+            <li><a class='none-decored' href="#">January 2018</a></li>
+            <li><a class='none-decored' href="#">December 2017</a></li>
+            <li><a class='none-decored' href="#">November 2017</a></li>
+            <li><a class='none-decored' href="#">October 2017</a></li>
         </ol>
     </div>
  
-    <div class="sidebar-module">
+<!--    <div class="sidebar-module">
         <h4>Elsewhere</h4>
         <ol class="list-unstyled">
             <li><a class='none-decored' href="#">GitHub</a></li>
             <li><a class='none-decored' href="#">Twitter</a></li>
             <li><a class='none-decored' href="#">Facebook</a></li>
         </ol>
-    </div>
+    </div>  -->
 </div><!-- /.blog-sidebar -->
