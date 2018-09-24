@@ -70,7 +70,7 @@
                         <br>
                         <p>$post_body</p>
                         <br>
-                        <div class='social-links'>
+                        <div id='commentAnchor' class='social-links'>
                             <div class='row'>
                                 <div class='pull-xs-left'>
                                     <a href='https://vk.com/share.php?url=http://myblog/article.php?show=55' class='social-vk' target='_blank'>
@@ -120,6 +120,7 @@
                         <div class='title-input'>
                             Выполните вход, чтобы оставить комментарий.
                         </div>
+                        <br>
                     </div>";
                 }
 ?>

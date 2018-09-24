@@ -55,7 +55,7 @@
                             FROM posts P 
                             INNER JOIN users U
                             ON P.author_id = U.id 
-                            WHERE p.category_id='$cat_id'
+                            WHERE P.category_id='$cat_id'
                             ORDER BY P.pub_date DESC" );
         $posts = mysqli_num_rows($result);
     }
@@ -69,11 +69,12 @@
                                 P.art_intro, 
                                 P.art_intro_img, 
                                 U.usermail,
-                                U.screen_name 
+                                U.screen_name
                             FROM posts P 
                             INNER JOIN users U
                             ON P.author_id = U.id 
-                            ORDER BY P.pub_date DESC" );
+                            ORDER BY P.pub_date DESC
+                            " );
         $posts = mysqli_num_rows($result);
     }
     
@@ -99,9 +100,13 @@
                         $art_intro_img = $row['art_intro_img'];
                         $screen_name = $row['screen_name'];
                         $author_mail = $row['usermail'];
+                        $artId = 'reply_' . $parent_comment_id;
+                        $num_comments = $row['C_id'];
 
                         echo "  <div class='blog-post'>
-                                    <h4 class='blog-post-title'> $title </h4>
+                                    <a class=' none-decored' href='article.php?show=$art_id'>
+                                        <h4 class='blog-post-title'> $title </h4>
+                                    </a>
                                     <p class='blog-post-meta'>$pub_date автор $screen_name<a class='none-decored' href='#'></a>
                                     </p>
                                     <div style='display: none;'>$art_id</div>
@@ -115,9 +120,11 @@
                         if(strcmp($usermail, $author_mail) == 0)
                             echo "   <!--       <button class='read-more-btn' onclick='return deletePost(show)'>Изменить</button>   -->
                                             <button class='read-more-btn' onclick='return deletePost(show)'>Удалить</button>";
-                            echo "          </form>
-
-                                        <div class='pull-xs-right show-comments'>Комментарии</div>
+                            echo "      </form>
+                                        <a href='article.php?show=$art_id#commentAnchor' class='show-comments none-decored'>
+                                            <div class='pull-xs-right'>Комментарии
+                                            </div>
+                                        </a>
                                     </div>
                                     <br style='clear: both;''>
                                     <hr>
