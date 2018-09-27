@@ -139,9 +139,14 @@ a:focus, a:hover {
   text-decoration: none;
 }
 
-.form-control {
-    margin-top: 3px;
+
+
+.dropdown-item:focus, .dropdown-item:hover {
+  color: #4b4d4f;
+  text-decoration: none;
+  background-color: #fff;
 }
+
 /*
  * Header -------------------------------------------------------------------
  */
@@ -618,6 +623,12 @@ a:focus, a:hover {
     margin: 0 auto; 
 }
 
+.form-signup-message {
+    max-width: 440px;
+    padding: 15px;
+    margin: 0 auto; 
+}
+
 .fa-asterisk{
   color: rgb(200, 50, 50);
   font-size: 0.8rem;
@@ -742,4 +753,13 @@ a:focus, a:hover {
 
 .comment-btn{
   text-align: center;
+}
+
+/*=== About =================================================================*/
+
+.about{
+  padding: 3em;
+  background-color: #fEfEfE;
+  height: 80vh;
+  overflow-x: hidden;
 }

@@ -21,8 +21,8 @@
         }
         else
         {
-            //--- Запмсываем данные по профилю в базу данных --------------------------------------
-//            echo "This email can be used<br><br>";
+            //--- Записываем данные по профилю в базу данных --------------------------------------
+//          echo "This email can be used<br><br>";
             queryMysql("INSERT INTO users VALUES('0', '$email', '$password' , '$screen_name', '$date')");
             
             $file = "images/ava/Guest.jpg";

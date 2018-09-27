@@ -17,6 +17,10 @@ $( document ).ready(function() {
         $(".alert-primary").css({"backgroundColor" : "#BFB", "font-size" : "20px" }) ; });
 });*/
 
+//==== passrecovery.php ===========================================================================
+// Восстановление пароля 
+
+
 //==== registration.php ===========================================================================
 function checkUser(email)
 {

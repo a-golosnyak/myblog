@@ -65,10 +65,10 @@
                         </div>
                     </div>
                     <div class="nav-item">
-                        <div class="nav-link disabled" href="#">Контакты</div>
+                        <a class="nav-link disabled" href="#">Контакты</a>
                     </div>
                     <div class="nav-item">
-                        <div class="nav-link " href="#">О сайте</div>
+                        <a class="nav-link " href="about.php">О сайте</a>
                     </div>
                 </div>
             </div>
@@ -121,20 +121,20 @@
                                 <div class='dropdown-menu dropdown-menu-right'>
                                     <form class='form-signin' method='post' action='index.php'>
                                         <div class='dropdown-item' href='#'>
-                                            <label for='inputEmail' class='sr-only'></label>
                                             <input type='email' name='usermail' maxlength='30' size='20' class='form-control' placeholder='Email address' required autofocus>
                                         </div>
 
                                         <div class='dropdown-item' href='#'>
-                                            <label for='inputPassword' class='sr-only'>Password</label>
                                             <input type='password' name='pass' class='form-control' size='40' placeholder='Password' required>
                                         </div>
-                                        <div class='dropdown-item' href='#'>
+                                        <div class='dropdown-item text-xs-center' href='#'>
                                             <div class='checkbox '>
-                                                <label>
-                                                    <input type='checkbox' name='remember'>  Запомнить меня  
-                                                </label>
+                                                <div>
+                                                    <input type='checkbox' name='remember'> Запомнить меня  
+                                                </div>
+                                                <a href='passrecovery.php'>  Забыли пароль?</a>
                                             </div>
+
                                         </div>
                                         <div class='dropdown-item' href='#'>
                                             <button class='btn btn-lg btn-primary btn-block' type='submit'>Вход </button>
