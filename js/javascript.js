@@ -5,6 +5,8 @@ function S(i) { return O(i).style                                            }
 function C(i) { return document.getElementsByClassName(i)                    }
 
 
+
+
 //==== Common =====================================================================================
 /*
 $( document ).ready(function() {
@@ -19,9 +21,56 @@ $( document ).ready(function() {
 
 //==== passrecovery.php ===========================================================================
 // Восстановление пароля 
+function checkUserRecovery(email)
+{
+    if(validateEmail(email.value) == "")    /*(email.value.length > 5)*/
+    {
+        params  = "email=" + email.value
+        request = new ajaxRequest()
+        request.open("POST", "ajax/checkuser.php", true)
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 
+        request.onreadystatechange = function()
+        {
+            if (this.readyState == 4)
+                if (this.status == 200)
+                    if (this.responseText != null)
+                    {
+                        if(this.responseText == 'exists')
+                        {
+                            document.getElementById('emailOk').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.8rem;'> ";
+                            return '';  
+                        }
+                        else
+                        {        
+                            document.getElementById('emailOk').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.8rem;'> ";
+                            return 'error';
+                        }
+                    }
+        }
+        request.send(params)
+    }
+    else
+    {
+        document.getElementById('emailOk').innerHTML = "<i class='fas fa-asterisk'></i> ";
+    }
+}
 
 //==== registration.php ===========================================================================
+function validateRegFormAll(form)
+{
+    result = checkUserFlag;
+    result += validatePassword(form.password, form.password_confirm);
+    result += validateName(form.screen_name);
+
+    if(result == '')
+    {
+        return true;    
+    }
+    return false;
+}
+
+
 function checkUser(email)
 {
     if(validateEmail(email.value) == "")    /*(email.value.length > 5)*/
@@ -37,10 +86,19 @@ function checkUser(email)
                 if (this.status == 200)
                     if (this.responseText != null)
                     {
-                        document.getElementById('emailOk').innerHTML = this.responseText;
+                        if(this.responseText == 'exists')
+                        {
+                            document.getElementById('emailOk').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.8rem;'> ";
+                            checkUserFlag = 'error';
+                        }
+                        else
+                        {
+                            document.getElementById('emailOk').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.8rem;'> "; 
+                            checkUserFlag = '';  
+                        }
                     }
         }
-        request.send(params)
+        request.send(params);
     }
     else
     {
@@ -66,11 +124,21 @@ function ajaxRequest()
 
 function validateEmail(field)
 {
-    if (field == "") 
+    /* Не проверяем адрес. Он проверяется браузером, 
+    а нам нужна инициализация checkUserFlag = 'error'; до того, 
+    как пользователь нажмет "Зарегистрироваться"    */
+
+/*    if (field == "") 
         return "Не введен адрес электронной почты.\n"
     else if (!((field.toString().indexOf(".") > 0) &&
                 (field.toString().indexOf("@") > 0)) ||
     /[^a-zA-Z0-9.@_-]/.test(field) )
+        return "Электронный адрес имеет неверный формат.\n"
+*/
+
+    if (field == "") 
+        return "Не введен адрес электронной почты.\n"
+    else if (!((field.toString().indexOf(".") > 0) &&(field.toString().indexOf("@") > 0)) || /[^a-zA-Z0-9.@_-]/.test(field) )
         return "Электронный адрес имеет неверный формат.\n"
 
     return "";
@@ -84,11 +152,13 @@ function validatePassword(pass1, pass2)
     {
         document.getElementById('pass1Ok').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.7rem;'> ";
         document.getElementById('pass2Ok').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.7rem;'> ";
+        return '';  // means Ok
     }
     else
     {
         document.getElementById('pass1Ok').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
         document.getElementById('pass2Ok').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
+        return 'error';
     }  
 }
 
@@ -97,10 +167,12 @@ function validateName(field)
     if(field.value.length < 3)
     {
         document.getElementById('nameOk').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.9rem;'> ";
+        return 'error';
     }
     else
     {
         document.getElementById('nameOk').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.7rem;'> ";
+        return '';  // means Ok
     }
 }
 //====== addpost.php ==============================================================================

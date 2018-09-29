@@ -35,19 +35,17 @@
                 $status = "err01";
 
             echo "<script>
-                    alert('Учетная запист зарегистрирована. Выполните пожалуйста вход. $status');
+                    alert('Учетная запись зарегистрирована. Выполните пожалуйста вход. $status');
                     window.location.href='registration.php';
                 </script>";
         }
     }
 ?>
 
-
-
     <div id="info"></div>
     <div class='reg-field'>
         <div class="container registration-container " style="height: 100%;">
-            <form class="form-signin" action="registration.php" method="post">
+            <form class="form-signin" action="registration.php" method="post" onSubmit='return validateRegFormAll(this)'>
                 <h2 class="form-signin-heading">Регистрация</h2>
                 <div>
                     <input type="email" name="email" class="form-control form-signup page-item" placeholder="Email" required onblur='checkUser(this)'>

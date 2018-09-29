@@ -12,10 +12,10 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="css/main.css">         <!-- В файле main.css подключен bootstrap -->
 
-     <!--   <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />   -->
+<!--   <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />   -->
         <link rel="stylesheet" href="css/jquery.Jcrop.css" type="text/css" />       <!-- Для редактирования картинки перед загрузкой -->        
 
-     <!--   <link href="cover.css" rel="stylesheet">    -->
+<!--   <link href="cover.css" rel="stylesheet">    -->
     </head>
     <body>
         <div class="blog-header">
