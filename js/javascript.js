@@ -5,8 +5,6 @@ function S(i) { return O(i).style                                            }
 function C(i) { return document.getElementsByClassName(i)                    }
 
 
-
-
 //==== Common =====================================================================================
 /*
 $( document ).ready(function() {
@@ -20,6 +18,18 @@ $( document ).ready(function() {
 });*/
 
 //==== passrecovery.php ===========================================================================
+
+function validateRecoveryForm(form)
+{
+    result = checkUserFlag;
+
+    if(result == '')
+    {
+        return true;    
+    }
+    return false;
+}
+
 // Восстановление пароля 
 function checkUserRecovery(email)
 {
@@ -39,12 +49,14 @@ function checkUserRecovery(email)
                         if(this.responseText == 'exists')
                         {
                             document.getElementById('emailOk').innerHTML = "<i class='fas fa-check' style='color: rgb(50, 200, 50); font-size: 0.8rem;'> ";
+                            checkUserFlag = ''; 
                             return '';  
                         }
                         else
                         {        
                             document.getElementById('emailOk').innerHTML = "<i class='fas fa-times' style='color: rgb(200, 50, 50); font-size: 0.8rem;'> ";
-                            return 'error';
+                            checkUserFlag = 'error'; 
+                            return false;
                         }
                     }
         }
@@ -53,7 +65,9 @@ function checkUserRecovery(email)
     else
     {
         document.getElementById('emailOk').innerHTML = "<i class='fas fa-asterisk'></i> ";
+        return false;
     }
+    return false;
 }
 
 //==== registration.php ===========================================================================

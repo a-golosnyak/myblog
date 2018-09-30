@@ -12,7 +12,7 @@
 			echo "Заполните пожалуйста все поля<br>";
 		else
 		{
-			$query = "SELECT * FROM users WHERE usermail='$mail' AND password=$pass";
+			$query = "SELECT * FROM users WHERE usermail='$mail' AND password='$pass'";
 			$result = $connection->query($query);
 
 			if($result->num_rows == 0)

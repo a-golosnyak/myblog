@@ -86,12 +86,25 @@
 
     if(isset($_POST['password_confirm']))
     {
-        echo "incoming password " . $_POST['password'] . "<br>";
-        echo "incoming password_confirm " . $_POST['password_confirm'];        
+        $password = sanitizeString($_POST['password']);
+        $password_confirm = sanitizeString($_POST['password_confirm']);
 
-        if(strcmp($_POST['password'], $_POST['password_confirm']))
+        if(strcmp($password, $password_confirm) == 0)
         {
-            
+            $usermail = $_SESSION['usermail'];
+            queryMysql("UPDATE users SET password = '$password' 
+                        WHERE usermail='$usermail'");
+
+/*            echo "                                     
+            <div class='alert alert-success' role='alert' style='width: 100%; margin-bottom: 0;'>
+                <div class='container'>
+                    <strong>Пароль изменен!</strong>
+                </div>
+            </div>";        */
+
+            echo "  <script>
+                   window.location.href='profile.php';
+                </script>"; 
         } 
     }
 

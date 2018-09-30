@@ -132,7 +132,7 @@
                                                 <div>
                                                     <input type='checkbox' name='remember'> Запомнить меня  
                                                 </div>
-                                                <a href='passrecovery.php'>  Забыли пароль?</a>
+                                                <a class='passrecovery' href='passrecovery.php'>  Забыли пароль?</a>
                                             </div>
 
                                         </div>
@@ -162,7 +162,7 @@
 <?php
 
     echo $signin_message;
-
+/*
     echo "SESSION ";
     print_r($_SESSION);
     echo "<br>COOKIES ";
@@ -172,6 +172,7 @@
     echo "<br>";
     echo "REQUEST ";
     print_r($_REQUEST['_POST']);
-
+*/
+    
 ?>
 
