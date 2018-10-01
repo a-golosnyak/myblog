@@ -17,7 +17,7 @@
             $row = mysqli_fetch_assoc($result);
             $username = $row['screen_name'];
 
-            $password = RandString(2);
+            $password = RandStringLowerCase(3);
             $connection->query("UPDATE users SET password='$password' WHERE usermail='$email'");
             $result = mail( 'andrey_g.pt@mail.ru', 
                             'Запрос на восстановление пароля.', 

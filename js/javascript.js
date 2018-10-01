@@ -363,4 +363,28 @@ function deleteComment(comment_id)
     return false;
 }
 
+function editComment(comment_id)
+{
+  alert(comment_id + ' написать функцию редактирования комментария');
+/*    var data = new FormData();
+    data.append('comment_id', comment_id); 
+
+    request = new ajaxRequest()
+    request.open("POST", "ajax/delcomment.php", true)
+
+    request.onreadystatechange = function()
+    {
+        if (this.readyState == 4)
+            if (this.status == 200)
+                if (this.responseText != null)
+                {
+                    //alert(this.responseText);
+                    location.reload();
+                }
+    }
+    request.send(data); 
+*/
+    return false;
+}
+
 //=================================================================================================

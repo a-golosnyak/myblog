@@ -167,6 +167,7 @@
                     if(strcmp($author_mail, $usermail) == 0)
                     {         
                         echo "  <button  class='comment-btn pull-xs-right' onclick=deleteComment('$parent_comment_id')>Удалить</button> ";
+                        echo "  <button  class='comment-btn pull-xs-right' onclick=editComment('$parent_comment_id')>Изменить</button> ";
                     }
 
                     echo   "    <form id='$replyId' style='display: none;'>
@@ -217,8 +218,10 @@
                                             <br>
                                             <button  class='comment-btn' onclick=ShowReplyInput('$replyId','$author_screen_name')>Ответить</button> ";
                     if(strcmp($author_mail, $usermail) == 0)
-                    {         
-                        echo "              <button  class='comment-btn pull-xs-right' onclick=deleteComment('$comment_id')>Удалить</button> ";
+                    {      
+                    echo "                  <button  class='comment-btn pull-xs-right' onclick=deleteComment('$parent_comment_id')>Удалить</button> ";
+
+                        echo "              <button  class='comment-btn pull-xs-right' onclick=editComment('$comment_id')>Изменить</button> ";
                     }
                             echo "          <form id='$replyId' style='display: none;'>
                                                 <textarea class='intro-box' id='' name='comment_body'  rows='5' maxlength='1000' placeholder='Комментарий'' value='xxx'></textarea>
