@@ -122,7 +122,7 @@
                                             <button class='read-more-btn' onclick='return deletePost(show)'>Удалить</button>";
                             echo "      </form>
                                         <a href='article.php?show=$art_id#commentAnchor' class='show-comments none-decored'>
-                                            <div class='pull-xs-right'>Комментарии
+                                            <div class='pull-xs-right comments-link'>Комментарии
                                             </div>
                                         </a>
                                     </div>

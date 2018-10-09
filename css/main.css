@@ -756,6 +756,10 @@ a:focus, a:hover {
   text-align: center;
 }
 
+.comments-link{
+  margin-top: 10px;
+}
+
 /*=== About =================================================================*/
 
 .about{
