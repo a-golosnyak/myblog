@@ -178,7 +178,7 @@ a:focus, a:hover {
 }
 .item-search {
   padding-left: 10px;
-  padding-top: 6px;
+ /* padding-top: 2px; */
   /*  width: 50px;*/
   font-size: 30px;
   color: #666;
