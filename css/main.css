@@ -148,6 +148,10 @@ a:focus, a:hover {
   font-size: 0.85em;
 }
 
+.search{
+  margin-top: 3px;
+}
+
 /*
  * Header -------------------------------------------------------------------
  */
@@ -178,7 +182,7 @@ a:focus, a:hover {
 }
 .item-search {
   padding-left: 10px;
- /* padding-top: 2px; */
+  padding-top: 4px; 
   /*  width: 50px;*/
   font-size: 30px;
   color: #666;
@@ -186,7 +190,8 @@ a:focus, a:hover {
 }
 
 .nav-tabs {
-  padding: 0em 0em;
+/*  padding: 0em 0em;*/
+  margin-top: 0px; 
   cursor: pointer;
 }
 
