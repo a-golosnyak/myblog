@@ -105,7 +105,7 @@
 
                         echo "  <div class='blog-post'>
                                     <a class=' none-decored' href='article.php?show=$art_id'>
-                                        <h4 class='blog-post-title'> $title </h4>
+                                        <h2 class='blog-post-title'> $title </h2>
                                     </a>
                                     <p class='blog-post-meta'>$pub_date автор $screen_name<a class='none-decored' href='#'></a>
                                     </p>

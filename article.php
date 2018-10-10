@@ -61,7 +61,7 @@
                 <div class='col-md-8 blog-main'>
 <?php               
                 echo "  <div class='blog-post'>
-                        <h4 class='blog-post-title'> $title </h4>
+                        <h2 class='blog-post-title'> $title </h2>
                         <p class='blog-post-meta'>$pub_date автор $user_screen_name
                             <a href='#'></a>
                         </p>

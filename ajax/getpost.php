@@ -28,7 +28,7 @@
             $result = $connection->query($query);
 
             if($result)                                      
-                $status = "Пост получен и готовится к публикации. " . $category_id .'<br>';
+                $status = "Пост получен и готовится к публикации. " . $category_id;
             else
                 $status = "Ошибка при добавлении поста в базу. " . $result .'<br>';
         }
