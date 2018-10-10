@@ -39,8 +39,8 @@
         <div class='container data-field'>
             <div class='row'>
                 <div class='col-md-8 blog-main'>
-
-                    <script src="ckeditor/ckeditor.js"></script>          <!-- Текстовый редактор для поств -->
+                    
+                    <script src="ckeditor/ckeditor.js"></script>      <!-- Текстовый редактор для поств -->
                     
                     <div class='profile-field ' >
 <?php                       
@@ -95,7 +95,9 @@
 
                                 <script>
                                     CKEDITOR.replace('postBody');
+                                    CKEDITOR.config.extraPlugins  = 'codesnippet';
                                     CKEDITOR.config.extraPlugins  = 'autogrow';
+
                                     // CKEDITOR.config.height = '90%'; 
                                     
                                 </script>

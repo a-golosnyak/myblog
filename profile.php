@@ -242,7 +242,7 @@
                                     <input type="file" id="InpProfilePhoto" style="display:none" aria-hidden="true">
                                 </label>
 
-                                <button class="btn btn-md btn-danger" id="PhotoCancel" style="display: none" href='profile.php'>Отмена</button>
+                                <button class="btn btn-md btn-danger" id="PhotoCancel"crop style="display: none" href='profile.php'>Отмена</button>
 
                                 <button type="submit" class="profile-btn btn-md btn-primary" id="PhotoSubmit" style="display:none">Загрузить</button>  
                             </form>

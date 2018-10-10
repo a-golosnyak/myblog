@@ -13,11 +13,17 @@
         <link rel="stylesheet" href="css/main.css">         <!-- В файле main.css подключен bootstrap -->
 
 <!--   <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />   -->
-        <link rel="stylesheet" href="css/jquery.Jcrop.css" type="text/css" />       <!-- Для редактирования картинки перед загрузкой -->        
+        <link rel="stylesheet" href="css/jquery.Jcrop.css" type="text/css" />       <!-- Для редактирования 
+        картинки перед загрузкой -->       
+        <link href="ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" rel="stylesheet">    <!-- Code highlight -->
+        <!-- Это нужно для подсветки кода в статьях ---------------------------------- -->
+        <script src="ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
 
 <!--   <link href="cover.css" rel="stylesheet">    -->
     </head>
     <body>
+
         <div class="blog-header">
             <div class="container">
                 <h3 class="blog-title"> 
