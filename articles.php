@@ -119,7 +119,7 @@
                                             <input type='hidden' name='show' value='$art_id'>";
                         if(strcmp($usermail, $author_mail) == 0)
                             echo "   <!--       <button class='read-more-btn' onclick='return deletePost(show)'>Изменить</button>   -->
-                                            <button class='read-more-btn' onclick='return deletePost(show)'>Удалить</button>";
+                                            <button class='read-more-btn' onclick='return deletePost($art_id)'>Удалить</button>";
                             echo "      </form>
                                         <a href='article.php?show=$art_id#commentAnchor' class='show-comments none-decored'>
                                             <div class='pull-xs-right comments-link'>Комментарии

@@ -170,6 +170,8 @@
     echo "<br>";
     echo $usermail;
     echo "<br>";
+    print_r($_FILES);
+    echo "<br>";
     echo "REQUEST ";
     print_r($_REQUEST['_POST']);
 */

@@ -231,6 +231,7 @@ function TimeToSubmitPost(category, art_title, art_intro)
 }
 
 //--- Ajax ------------------------------------------------------------
+//=== articles.php === delpost.php ==============================================================
 function sendPost(category, art_title, art_intro, post)
 {
     var data = new FormData();
@@ -262,6 +263,32 @@ function sendPost(category, art_title, art_intro, post)
     }
     request.send(data)
 }
+
+function deletePost(art_id)
+{
+//    alert(art_id);
+
+    var data = new FormData();
+    data.append('art_id', art_id); 
+
+    request = new ajaxRequest()
+    request.open("POST", "ajax/delpost.php", true)
+
+    request.onreadystatechange = function()
+    {
+        if (this.readyState == 4)
+            if (this.status == 200)
+                if (this.responseText != null)
+                {
+//                    alert(this.responseText);
+                    location.reload();
+                }
+    }
+    request.send(data); 
+
+    return false;
+}
+
 //=== article.php === getcomment.php ==============================================================
 function TimeToSendComment(art_id, parent_comment_id, comment_body)
 {
@@ -307,37 +334,6 @@ function sendComment(art_id, parent_comment_id, comment_body)
     }
     request.send(data);
 }
-
-//=== articles.php === delpost.php ==============================================================
-
-function deletePost(art_id)
-{
-    alert(art_id);
-
-/*    var data = new FormData();
-    data.append('post_id', art_id.value); 
-    data.append('parent_comment_id', parent_comment_id.value); 
-    data.append('comment_body', comment_body.value); 
-
-    request = new ajaxRequest()
-    request.open("POST", "ajax/getcomment.php", true)
-
-    request.onreadystatechange = function()
-    {
-        if (this.readyState == 4)
-            if (this.status == 200)
-                if (this.responseText != null)
-                {
-                //    alert(this.responseText);
-                    location.reload();
-                }
-    }
-    request.send(data); */
-
-    return false;
-}
-
-//=== article.php === delcomment.php ==============================================================
 
 function deleteComment(comment_id)
 {

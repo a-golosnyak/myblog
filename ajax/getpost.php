@@ -62,8 +62,14 @@
             if(copy($_FILES['image']['tmp_name'], $fileName))
                 $status .= 'Картинка есть' . '<br>';
             else
-                $status .= "Shit happens<br>";       
+            {
+                $status .= "Shit happens<br>";      
+            }
         }
+        echo "<pre>";
+        var_dump($_FILES) ;
+        echo "</pre>";
+
         $status .= $fileName . '<br>';
 /*        $status .= $_POST['art_title'] . '<br>';
         $status .= $_POST['art_intro'] . '<br>';
