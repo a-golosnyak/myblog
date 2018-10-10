@@ -27,9 +27,9 @@
             $result = $connection->query($query);
 
             if($result)                                      
-                $status = "Пост получен и готовится к публикации." . $category_id;
+                $status = "Пост получен и готовится к публикации. " . $category_id .'<br>';
             else
-                $status = "Ошибка при добавлении поста в базу." . '<br>';
+                $status = "Ошибка при добавлении поста в базу. " . $result .'<br>';
         }
         else
         {
@@ -60,16 +60,16 @@
                         WHERE pub_date='$date' ");         
 
             if(copy($_FILES['image']['tmp_name'], $fileName))
-                $status .= 'Картинка есть' . '<br>';
+                $status .= 'Картинка есть' . '<br>' . "Путь: ";
             else
             {
-                $status .= "Shit happens<br>";      
+                $status .= "Ошибка загрузки картинки.<br>";      
             }
         }
-        echo "<pre>";
+/*        echo "<pre>";
         var_dump($_FILES) ;
         echo "</pre>";
-
+*/
         $status .= $fileName . '<br>';
 /*        $status .= $_POST['art_title'] . '<br>';
         $status .= $_POST['art_intro'] . '<br>';
