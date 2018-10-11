@@ -60,10 +60,9 @@
             <div class='row'>
                 <div class='col-md-8 blog-main'>
 <?php         
-                $name = explode('/', $art_intro_img);
+                $name = explode('/', $art_intro_img);   // Убираем "../" из адреса картинки
                 array_shift($name);
                 $art_intro_img = implode('/', $name);
-
 
                 echo "  <div class='blog-post'>
                         <h2 class='blog-post-title'> $title </h2>
