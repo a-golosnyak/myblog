@@ -59,13 +59,21 @@
         <div class='container data-field'>
             <div class='row'>
                 <div class='col-md-8 blog-main'>
-<?php               
+<?php         
+                $name = explode('/', $art_intro_img);
+                array_shift($name);
+                $art_intro_img = implode('/', $name);
+
+
                 echo "  <div class='blog-post'>
                         <h2 class='blog-post-title'> $title </h2>
                         <p class='blog-post-meta'>$pub_date автор $user_screen_name
                             <a href='#'></a>
                         </p>
                         <p>$art_intro</p>
+
+                        $art_intro_img
+
                         <p><img class='post-preview-img' src='$art_intro_img'></p>
                         <br>
                         <p>$post_body</p>
@@ -92,7 +100,7 @@
                                         <img src='/images/000078_social_3d_cubs1_linkedin.png'>
                                     </a>
                                 </div>
-                                <span class='repost-notification'>Если Вам понравилась или была полезной эта статься, можно сделать репост в социальные сети.
+                                <span class='repost-notification'>Если Вам понравилась или была полезной эта статья, можно сделать репост в социальные сети.
                                 </span>
                             </div>
                         </div>
