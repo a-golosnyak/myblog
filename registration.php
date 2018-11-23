@@ -49,7 +49,7 @@
             onSubmit='return validateRegFormAll(this)'>
                 <h2 class="form-signin-heading">Регистрация</h2>
                 <div>
-                    <input type="email" name="email" class="form-control form-signup page-item" placeholder="Email" required onblur='checkUser(this)'>
+                    <input type="email" name="email" class="form-control form-signup page-item" placeholder="Email" required onblur='checkUser(this, '{!! csrf_token() !!}')'>
                     <div id="emailOk" class="page-item">
                         <i class="fas fa-asterisk "></i> 
                     </div>
