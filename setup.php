@@ -36,7 +36,9 @@
                 usermail VARCHAR(30),
                 password VARCHAR(40),
                 screen_name VARCHAR(30),
-                creation_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)';
+    //            creation_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+   		creation_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+		)';
 
         $result = $connection->query($query);
 
